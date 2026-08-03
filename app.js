@@ -1,12 +1,30 @@
 /**
- * Md. Shahroz Nasir — Apple + Linear + Framer Interactive Motion Engine
- * Powered by Three.js (3D Workspace Canvas), Web Audio API Synthesizer, GitHub Live API, & GSAP
+ * Md. Shahroz Nasir — Senior Product Designer Tier (Vercel / Linear) Interactive Motion Engine
+ * Powered by Lenis (60fps Inertia Scroll), Three.js (3D Workspace Canvas), Web Audio API Synthesizer, & GitHub Live API
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       1. Synthesized Web Audio API Sci-Fi Sound Engine
+       1. Lenis Smooth Scroll Engine (60fps Buttery Inertia)
+       ========================================================================== */
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            smoothTouch: false
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    }
+
+    /* ==========================================================================
+       2. Synthesized Web Audio API Sci-Fi Sound Engine
        ========================================================================== */
     let soundEnabled = true;
     let audioCtx = null;
@@ -39,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 osc.stop(audioCtx.currentTime + duration);
             }
         } catch (e) {
-            // Audio context gesture fallback
+            // Audio context gesture restriction fallback
         }
     };
 
@@ -60,15 +78,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Attach hover & click sound triggers
-    const soundTargets = document.querySelectorAll('button, a, .magnetic-target, .dock-item, .tilt-card');
+    const soundTargets = document.querySelectorAll('button, a, .magnetic-target, .dock-item, .tilt-card, .skill-expander-card, .filter-pill');
     soundTargets.forEach(target => {
         target.addEventListener('mouseenter', () => playBeep(520, 0.03));
         target.addEventListener('click', () => playBeep(840, 0.08));
     });
 
     /* ==========================================================================
-       2. Terminal Boot Loader Sequence
+       3. NEW: Interactive Paper Resume Unfold Modal Handler (#18)
+       ========================================================================== */
+    const resumeModal = document.getElementById('resume-modal');
+    const openResumeBtn = document.getElementById('open-resume-btn');
+    const resumeClose = document.getElementById('resume-close');
+
+    if (openResumeBtn && resumeModal) {
+        openResumeBtn.addEventListener('click', () => {
+            resumeModal.classList.add('show');
+            playBeep(900, 0.08);
+        });
+    }
+    if (resumeClose && resumeModal) {
+        resumeClose.addEventListener('click', () => {
+            resumeModal.classList.remove('show');
+        });
+    }
+
+    /* ==========================================================================
+       4. NEW: Project Category Filter Engine (#18, #23)
+       ========================================================================== */
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const projectWindows = document.querySelectorAll('.apple-project-window');
+
+    filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            filterPills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+
+            const filterVal = pill.getAttribute('data-filter');
+
+            projectWindows.forEach(win => {
+                const cat = win.getAttribute('data-category');
+                if (filterVal === 'all' || cat === filterVal) {
+                    win.classList.remove('hide');
+                } else {
+                    win.classList.add('hide');
+                }
+            });
+            playBeep(820, 0.06);
+        });
+    });
+
+    /* ==========================================================================
+       5. Interactive Skill Category Expanders (No Progress Bars!)
+       ========================================================================== */
+    const expanderCards = document.querySelectorAll('.skill-expander-card');
+    expanderCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('active');
+            playBeep(750, 0.05);
+        });
+    });
+
+    /* ==========================================================================
+       6. Terminal Boot Loader Sequence
        ========================================================================== */
     const bootScreen = document.getElementById('boot-screen');
     const bootFill = document.getElementById('boot-fill');
@@ -98,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       3. Custom Dual-Ring Cursor & Trailing Particle Sparks
+       7. Custom Dual-Ring Cursor
        ========================================================================== */
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
@@ -122,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         renderRing();
 
-        const targets = document.querySelectorAll('a, button, .magnetic-target, .tilt-card, .dock-item');
+        const targets = document.querySelectorAll('a, button, .magnetic-target, .tilt-card, .dock-item, .skill-expander-card, .filter-pill');
         targets.forEach(t => {
             t.addEventListener('mouseenter', () => cursorRing.classList.add('active'));
             t.addEventListener('mouseleave', () => cursorRing.classList.remove('active'));
@@ -130,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       4. Three.js 3D Holographic Developer Workspace Scene
+       8. Three.js 3D Holographic Developer Workspace Scene
        ========================================================================== */
     const container3D = document.getElementById('three-canvas-container');
 
@@ -204,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       5. Interactive Background Particle Canvas
+       9. Interactive Background Particle Canvas
        ========================================================================== */
     const bgCanvas = document.getElementById('bg-particle-canvas');
     if (bgCanvas) {
@@ -253,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       6. Live GitHub API Integration
+       10. Live GitHub API Integration
        ========================================================================== */
     const ghContainer = document.getElementById('live-github-grid');
     const repoCounter = document.getElementById('repo-counter');
@@ -300,17 +372,17 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubData();
 
     /* ==========================================================================
-       7. 1-Click Mobile vCard (.vcf) Contact Card Generator
+       11. 1-Click Mobile vCard (.vcf) Generator
        ========================================================================== */
     const downloadVCard = () => {
         const vcardData = `BEGIN:VCARD
 VERSION:3.0
 FN:Md. Shahroz Nasir
-TITLE:Computer Science Engineer | AI & Full-Stack
+TITLE:Software Engineer | AI & Full-Stack
 EMAIL:mdshahroznasir@gmail.com
 URL:https://github.com/shahroznasir
 ADR:;;Bengaluru;Karnataka;;India
-NOTE:Computer Science Engineer specializing in AI, FastAPI, and Full-Stack Systems.
+NOTE:Software Engineer specializing in AI, FastAPI, and Full-Stack Systems.
 END:VCARD`;
 
         const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
@@ -332,10 +404,10 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       8. Hero Typewriter Role Morphing Engine
+       12. Hero Typewriter Role Morphing Engine (#1)
        ========================================================================== */
     const roleEl = document.getElementById('role-typewriter');
-    const roles = ["Backend Developer", "AI Engineer", "Software Engineer", "Problem Solver", "Open Source Contributor"];
+    const roles = ["Software Engineer", "Backend Developer", "AI Enthusiast", "Open Source Contributor", "Problem Solver"];
     let roleIdx = 0;
     let charIdx = 0;
     let isDeleting = false;
@@ -381,7 +453,7 @@ END:VCARD`;
     };
 
     /* ==========================================================================
-       9. WOW Module: Command Palette (Ctrl + K)
+       13. WOW Module: Command Palette (Ctrl + K)
        ========================================================================== */
     const cmdModal = document.getElementById('cmd-modal');
     const cmdTrigger = document.getElementById('cmd-trigger');
@@ -419,6 +491,8 @@ END:VCARD`;
             if (action === 'goto' && target) {
                 const el = document.querySelector(target);
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
+            } else if (action === 'resume') {
+                if (resumeModal) resumeModal.classList.add('show');
             } else if (action === 'vcard') {
                 downloadVCard();
             } else if (action === 'email') {
@@ -431,7 +505,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       10. WOW Module: Hacker Terminal ($ CLI)
+       14. WOW Module: Hacker Terminal ($ CLI)
        ========================================================================== */
     const termModal = document.getElementById('hacker-term-modal');
     const dockTermBtn = document.getElementById('dock-term-btn');
@@ -458,10 +532,10 @@ END:VCARD`;
 
                 switch (cmd) {
                     case 'help':
-                        res.innerHTML = `Available commands: <span class="t-gold">about</span>, <span class="t-gold">projects</span>, <span class="t-gold">skills</span>, <span class="t-gold">vcard</span>, <span class="t-gold">contact</span>, <span class="t-gold">clear</span>, <span class="t-gold">matrix</span>`;
+                        res.innerHTML = `Available commands: <span class="t-gold">about</span>, <span class="t-gold">projects</span>, <span class="t-gold">skills</span>, <span class="t-gold">process</span>, <span class="t-gold">resume</span>, <span class="t-gold">contact</span>, <span class="t-gold">clear</span>, <span class="t-gold">matrix</span>`;
                         break;
                     case 'about':
-                        res.textContent = "Md. Shahroz Nasir — Computer Science Engineer specializing in AI, Backend, and Full Stack applications.";
+                        res.textContent = "Md. Shahroz Nasir — Software Engineer specializing in AI, Backend, and Full Stack applications.";
                         break;
                     case 'projects':
                         res.textContent = "Projects: ADCB Card AI Platform, YouTube Summarizer, Social Media App API, Async TripPlanner.";
@@ -469,9 +543,12 @@ END:VCARD`;
                     case 'skills':
                         res.textContent = "Skills: Python, FastAPI, SQLAlchemy, Generative AI, PostgreSQL, Docker, AWS, React.";
                         break;
-                    case 'vcard':
-                        downloadVCard();
-                        res.textContent = "Downloading Md_Shahroz_Nasir_Contact.vcf...";
+                    case 'process':
+                        res.textContent = "Process: Planning -> Architecture -> Development -> Testing -> Deployment -> Monitoring.";
+                        break;
+                    case 'resume':
+                        if (resumeModal) resumeModal.classList.add('show');
+                        res.textContent = "Unfolding interactive paper resume...";
                         break;
                     case 'contact':
                         res.textContent = "Email: mdshahroznasir@gmail.com | Location: Bengaluru, India";
@@ -495,7 +572,7 @@ END:VCARD`;
     }
 
     /* ==========================================================================
-       11. WOW Module: AI Assistant Chatbot
+       15. WOW Module: AI Assistant Chatbot
        ========================================================================== */
     const aiDrawer = document.getElementById('ai-drawer');
     const dockAiBtn = document.getElementById('dock-ai-btn');
@@ -524,12 +601,14 @@ END:VCARD`;
             const lower = text.toLowerCase();
             if (lower.includes('skill') || lower.includes('stack')) {
                 botMsg.textContent = "Shahroz specializes in Python, FastAPI, Generative AI / LLMs, PostgreSQL, Docker, AWS, and React!";
+            } else if (lower.includes('process') || lower.includes('build')) {
+                botMsg.textContent = "Shahroz follows a 6-stage engineering process: 1. Planning -> 2. Architecture -> 3. Development -> 4. Testing -> 5. Deployment -> 6. Monitoring!";
             } else if (lower.includes('project') || lower.includes('work')) {
                 botMsg.textContent = "Shahroz has created 37+ repositories! Highlights include the ADCB Card AI Platform, YouTube Summarizer, and Social Media API.";
             } else if (lower.includes('contact') || lower.includes('email') || lower.includes('hire')) {
                 botMsg.textContent = "You can reach Shahroz at mdshahroznasir@gmail.com! He is based in Bengaluru, India and open for AI/Backend roles.";
             } else {
-                botMsg.textContent = "Md. Shahroz Nasir is a Computer Science Engineer passionate about building clean, scalable backend systems & AI applications!";
+                botMsg.textContent = "Md. Shahroz Nasir is a Software Engineer passionate about building clean, scalable backend systems & AI applications!";
             }
 
             aiMessages.appendChild(botMsg);
@@ -542,7 +621,7 @@ END:VCARD`;
     if (aiInput) aiInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleAiSend(); });
 
     /* ==========================================================================
-       12. WOW Module: Konami Code Easter Egg (↑ ↑ ↓ ↓ ← → ← → B A)
+       16. WOW Module: Konami Code Easter Egg (↑ ↑ ↓ ↓ ← → ← → B A)
        ========================================================================== */
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIdx = 0;
@@ -562,7 +641,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       13. WOW Module: 5-Theme Engine Switcher
+       17. WOW Module: 5-Theme Engine Switcher
        ========================================================================== */
     const themeBtn = document.getElementById('theme-toggle');
     const themeDropdown = document.getElementById('theme-dropdown');
@@ -589,7 +668,7 @@ END:VCARD`;
     }
 
     /* ==========================================================================
-       14. WOW Module: Apple Fullscreen Case Study Modal
+       18. WOW Module: Apple Fullscreen Case Study Modal
        ========================================================================== */
     const casestudyModal = document.getElementById('casestudy-modal');
     const casestudyClose = document.getElementById('casestudy-close');
@@ -661,19 +740,9 @@ END:VCARD`;
     if (casestudyClose) casestudyClose.addEventListener('click', () => casestudyModal.classList.remove('show'));
 
     /* ==========================================================================
-       15. 3D Interactive Education Book Flip
+       19. 1-Click Copy Email & Toast Notification
        ========================================================================== */
-    const book = document.getElementById('3d-book');
-    if (book) {
-        book.addEventListener('click', () => {
-            book.classList.toggle('open');
-            playBeep(650, 0.08);
-        });
-    }
-
-    /* ==========================================================================
-       16. 1-Click Copy Email & Toast Notification
-       ========================================================================== */
+    const targetEmail = "mdshahroznasir@gmail.com";
     const toast = document.getElementById('toast');
     const copyEmail = () => {
         navigator.clipboard.writeText(targetEmail).then(() => {
@@ -700,7 +769,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       17. 3D Card Tilt Physics & Mobile Navigation
+       20. 3D Card Tilt Physics & Mobile Navigation
        ========================================================================== */
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
@@ -717,9 +786,7 @@ END:VCARD`;
         });
 
         card.addEventListener('mouseleave', () => {
-            if (!card.classList.contains('open')) {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-            }
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         });
     });
 

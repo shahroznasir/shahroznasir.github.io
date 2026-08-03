@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Md. Shahroz Nasir — Computer Science Engineer | AI • Backend • Full Stack</title>
+    <title>Md. Shahroz Nasir — Software Engineer | Backend • AI • Full Stack</title>
     
     <!-- Meta & OpenGraph Social Sharing Cards -->
     <meta name="theme-color" content="#050816">
     <meta name="author" content="Md. Shahroz Nasir">
-    <meta name="description" content="Md. Shahroz Nasir — Computer Science Engineer | AI • Backend • Full Stack. Building scalable applications that merge clean engineering with exceptional user experience.">
-    <meta name="keywords" content="Md. Shahroz Nasir, Shahroz Nasir, Computer Science Engineer, Backend Developer, AI Engineer, FastAPI, Python, Portfolio, Bengaluru">
+    <meta name="description" content="Md. Shahroz Nasir — Software Engineer. I build scalable backend systems, AI-powered applications, and modern web experiences.">
+    <meta name="keywords" content="Md. Shahroz Nasir, Shahroz Nasir, Software Engineer, Backend Developer, AI Engineer, FastAPI, Python, Portfolio, Bengaluru">
     
-    <meta property="og:title" content="Md. Shahroz Nasir — Computer Science Engineer | AI • Backend • Full Stack">
-    <meta property="og:description" content="Building scalable applications that merge clean engineering with exceptional user experience. Open for AI, Backend, and Full-Stack roles.">
+    <meta property="og:title" content="Md. Shahroz Nasir — Software Engineer | Backend • AI • Full Stack">
+    <meta property="og:description" content="I build scalable backend systems, AI-powered applications, and modern web experiences. Open for AI, Backend, and Full-Stack roles.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shahroznasir.dev">
+    <meta property="og:url" content="https://shahroznasir.github.io">
     
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Md. Shahroz Nasir — Computer Science Engineer">
-    <meta property="twitter:description" content="Building scalable applications that merge clean engineering with exceptional user experience.">
+    <meta property="twitter:title" content="Md. Shahroz Nasir — Software Engineer">
+    <meta property="twitter:description" content="I build scalable backend systems, AI-powered applications, and modern web experiences.">
 
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts: Syne, Outfit, Playfair Display, Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- Boxicons CDN -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Lenis Smooth Scroll CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
 </head>
 <body>
     <!-- Top Neon Scroll Progress Bar -->
@@ -45,7 +47,7 @@
             <div class="boot-log" id="boot-log">
                 <p class="log-line">$ Initializing Shahroz Nasir Portfolio OS...</p>
                 <p class="log-line">$ Loading Three.js WebGL 3D Canvas Engine...</p>
-                <p class="log-line">$ Mounting GSAP Motion Controllers &amp; Sound Synthesizer...</p>
+                <p class="log-line">$ Mounting Lenis 60fps Inertia Scroll Controller...</p>
                 <p class="log-line">$ Connecting Intelligence &amp; GitHub API...</p>
                 <p class="log-line highlight">$ System Status: OPTIMAL [Press Any Key or Wait]</p>
             </div>
@@ -84,10 +86,12 @@
                 <ul class="nav-links">
                     <li><a href="#hero" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#why-hire-me" class="nav-link">Why Hire Me</a></li>
+                    <li><a href="#skills" class="nav-link">Technologies</a></li>
+                    <li><a href="#process" class="nav-link">Process</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                    <li><a href="#achievements" class="nav-link">Metrics</a></li>
+                    <li><a href="#testimonials" class="nav-link">Social Proof</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -128,43 +132,46 @@
             <ul class="sidebar-links">
                 <li><a href="#hero" class="sidebar-link">Home</a></li>
                 <li><a href="#about" class="sidebar-link">About</a></li>
-                <li><a href="#skills" class="sidebar-link">Skills</a></li>
-                <li><a href="#experience" class="sidebar-link">Experience</a></li>
+                <li><a href="#why-hire-me" class="sidebar-link">Why Hire Me</a></li>
+                <li><a href="#skills" class="sidebar-link">Technologies</a></li>
+                <li><a href="#process" class="sidebar-link">Process</a></li>
                 <li><a href="#projects" class="sidebar-link">Projects</a></li>
-                <li><a href="#achievements" class="sidebar-link">Achievements</a></li>
+                <li><a href="#achievements" class="sidebar-link">Metrics</a></li>
+                <li><a href="#testimonials" class="sidebar-link">Social Proof</a></li>
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
             </ul>
         </div>
 
-        <!-- Hero Section -->
+        <!-- 1. Hero Section (Vercel & Senior Designer Split Layout #1) -->
         <section class="hero" id="hero">
             <div class="hero-backdrop-card glass-card"></div>
             
             <div class="hero-left">
-                <div class="hero-kicker">
-                    <i class="bx bx-code-alt"></i> Computer Science Engineer
+                <h1 class="hero-name-title">Md. Shahroz Nasir</h1>
+                <div class="hero-role-title">Software Engineer</div>
+                
+                <div class="hero-subhead-tags">
+                    Backend • AI • Full Stack
                 </div>
 
-                <h1 class="hero-name">Md. Shahroz Nasir</h1>
-
-                <div class="hero-role-wrapper">
-                    <span class="role-static">Specialized as &nbsp;</span>
-                    <span class="role-typewriter gold-gradient" id="role-typewriter">Backend Developer</span>
+                <div class="hero-typewriter-box">
+                    <span class="role-static">Specializing as &nbsp;</span>
+                    <span class="role-typewriter gold-gradient" id="role-typewriter">Software Engineer</span>
                 </div>
 
-                <p class="hero-bio">
-                    Building scalable applications that merge clean engineering with exceptional user experience. Open for AI, Backend, and Full-Stack opportunities.
+                <p class="hero-lead-desc">
+                    I build scalable backend systems, AI-powered applications, and modern web experiences with clean architecture.
                 </p>
 
                 <div class="hero-buttons">
-                    <a href="mailto:mdshahroznasir@gmail.com" class="btn btn-primary magnetic-target copy-email-btn">
-                        <i class="bx bx-paper-plane"></i> Let's Connect
-                    </a>
-                    <button class="btn btn-secondary magnetic-target download-vcard-btn">
-                        <i class="bx bx-id-card"></i> Save vCard
+                    <button class="btn btn-primary magnetic-target" id="open-resume-btn">
+                        <i class="bx bx-file"></i> Resume
                     </button>
-                    <a href="#projects" class="btn btn-outline magnetic-target">
+                    <a href="#projects" class="btn btn-secondary magnetic-target">
                         <i class="bx bx-grid-alt"></i> View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline magnetic-target">
+                        <i class="bx bx-paper-plane"></i> Contact
                     </a>
                 </div>
             </div>
@@ -185,11 +192,11 @@
             </div>
         </section>
 
-        <!-- About Timeline Section -->
+        <!-- 2. Story Arc: Who I Am (#about) -->
         <section class="about-section" id="about">
             <div class="section-header">
-                <span class="section-subtitle">MILESTONES &amp; JOURNEY</span>
-                <h2 class="section-title">Career &amp; Engineering Timeline</h2>
+                <span class="section-subtitle">WHO I AM</span>
+                <h2 class="section-title">Engineering Journey &amp; Milestones</h2>
             </div>
 
             <div class="timeline-container">
@@ -217,7 +224,7 @@
                     <div class="timeline-node"><i class="bx bx-server"></i></div>
                     <div class="timeline-content glass-card">
                         <span class="timeline-date">2023</span>
-                        <h3>Mastered Backend Systems</h3>
+                        <h3>Backend Development Mastery</h3>
                         <p>Deep-dived into Python FastAPI, SQLAlchemy, asynchronous concurrency, rate limiting, and scalable REST microservices.</p>
                     </div>
                 </div>
@@ -226,39 +233,72 @@
                     <div class="timeline-node"><i class="bx bx-brain"></i></div>
                     <div class="timeline-content glass-card">
                         <span class="timeline-date">2024</span>
-                        <h3>Explored Generative AI</h3>
+                        <h3>AI &amp; Generative Intelligence</h3>
                         <p>Engineered LLM pipelines, prompt query analyzers, video transcription summarizers, and AI credit card profiling platforms.</p>
                     </div>
                 </div>
 
-                <div class="timeline-item tilt-card">
-                    <div class="timeline-node"><i class="bx bx-award"></i></div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">2025</span>
-                        <h3>CSE Graduate</h3>
-                        <p>Graduated in Computer Science Engineering with robust expertise across Software Architecture, AI, and Full-Stack Systems.</p>
-                    </div>
-                </div>
-
                 <div class="timeline-item highlight-item tilt-card">
-                    <div class="timeline-node active-node"><i class="bx bx-briefcase-alt-2"></i></div>
+                    <div class="timeline-node active-node"><i class="bx bx-award"></i></div>
                     <div class="timeline-content glass-card glowing-card">
-                        <span class="timeline-date">Present</span>
-                        <h3>Open to Opportunities</h3>
-                        <p>Actively seeking Software Engineer, AI Engineer, and Backend Developer roles in forward-thinking tech organizations.</p>
+                        <span class="timeline-date">2025 - Present</span>
+                        <h3>Graduated CSE — Seeking Opportunities</h3>
+                        <p>Graduated in Computer Science Engineering. Actively seeking Software Engineer, AI Engineer, and Backend roles.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tech Orbit & Skills Section -->
-        <section class="skills-section" id="skills">
+        <!-- 3. NEW: Why Hire Me? Recruiter Evaluation Matrix (#24) -->
+        <section class="why-hire-section" id="why-hire-me">
             <div class="section-header">
-                <span class="section-subtitle">SKILLS &amp; ARCHITECTURE</span>
-                <h2 class="section-title">Solar Tech Stack Orbit</h2>
+                <span class="section-subtitle">VALUE PROPOSITION</span>
+                <h2 class="section-title">Why Hire Md. Shahroz Nasir?</h2>
+                <p class="section-desc">Key engineering competencies that make me a high-value software engineer for your team.</p>
             </div>
 
-            <!-- Animated Tech Orbit System -->
+            <div class="why-hire-grid">
+                <div class="why-card glass-card tilt-card">
+                    <div class="why-icon"><i class="bx bx-check-circle"></i></div>
+                    <h3>Clean Architecture</h3>
+                    <p>Strict separation of concerns, modular domain layers, type annotations, and maintainable Python code standards.</p>
+                </div>
+                <div class="why-card glass-card tilt-card">
+                    <div class="why-icon"><i class="bx bx-server"></i></div>
+                    <h3>Backend Development</h3>
+                    <p>Asynchronous Python FastAPI, Node.js REST endpoints, JWT authentication, and sub-50ms query latencies.</p>
+                </div>
+                <div class="why-card glass-card tilt-card">
+                    <div class="why-icon"><i class="bx bx-code-block"></i></div>
+                    <h3>REST APIs</h3>
+                    <p>Production-grade API design, Pydantic request validation, rate-limiting middleware, and automated OpenAPI docs.</p>
+                </div>
+                <div class="why-card glass-card tilt-card">
+                    <div class="why-icon"><i class="bx bx-bot"></i></div>
+                    <h3>AI Integration</h3>
+                    <p>Integrating OpenAI LLMs, LangChain RAG pipelines, video transcript summarizers, and prompt engineering.</p>
+                </div>
+                <div class="why-card glass-card tilt-card">
+                    <div class="why-icon"><i class="bx bx-data"></i></div>
+                    <h3>Database Design</h3>
+                    <p>Relational PostgreSQL database schema design, SQLAlchemy ORM modeling, indexing, and Redis caching.</p>
+                </div>
+                <div class="why-card glass-card tilt-card">
+                    <div class="why-icon"><i class="bx bx-fast-forward"></i></div>
+                    <h3>Fast Learner</h3>
+                    <p>Authored 37+ repositories, rapidly adapting to new frameworks, cloud infrastructure, and modern developer tooling.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Story Arc: Technologies & Interactive Skills (No Progress Bars!) -->
+        <section class="skills-section" id="skills">
+            <div class="section-header">
+                <span class="section-subtitle">WHAT I USE</span>
+                <h2 class="section-title">Interactive Technology Stack</h2>
+            </div>
+
+            <!-- Solar Orbit -->
             <div class="orbit-wrapper">
                 <div class="orbit-center-core tilt-card">
                     <i class="bx bxl-python"></i>
@@ -280,87 +320,121 @@
                 </div>
             </div>
 
-            <!-- Skill Categories Expanders -->
-            <div class="skills-categories-grid">
-                <div class="skill-cat-card glass-card tilt-card">
-                    <div class="cat-icon"><i class="bx bx-server"></i></div>
-                    <h3>Backend Engineering</h3>
-                    <ul class="cat-list">
-                        <li><span>Python / FastAPI</span> <div class="p-bar"><div class="p-fill" style="width: 95%;"></div></div></li>
-                        <li><span>Asynchronous REST APIs</span> <div class="p-bar"><div class="p-fill" style="width: 90%;"></div></div></li>
-                        <li><span>Node.js / Express</span> <div class="p-bar"><div class="p-fill" style="width: 82%;"></div></div></li>
-                        <li><span>System Architecture</span> <div class="p-bar"><div class="p-fill" style="width: 88%;"></div></div></li>
-                    </ul>
+            <!-- Interactive Skill Category Expanders (No Progress Bars) -->
+            <div class="skills-expanders-grid">
+                <div class="skill-expander-card glass-card tilt-card active" data-category="backend">
+                    <div class="expander-header">
+                        <i class="bx bx-server"></i>
+                        <h3>Backend Engineering</h3>
+                        <i class="bx bx-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="expander-body">
+                        <div class="skill-badge-pill"><i class="bx bxl-python"></i> Python</div>
+                        <div class="skill-badge-pill"><i class="bx bx-bolt-circle"></i> FastAPI</div>
+                        <div class="skill-badge-pill"><i class="bx bxl-nodejs"></i> Node.js</div>
+                        <div class="skill-badge-pill"><i class="bx bx-terminal"></i> RESTful APIs</div>
+                        <div class="skill-badge-pill"><i class="bx bx-refresh"></i> Async Concurrency</div>
+                        <div class="skill-badge-pill"><i class="bx bx-lock"></i> JWT Auth</div>
+                        <div class="skill-badge-pill"><i class="bx bx-data"></i> Redis</div>
+                    </div>
                 </div>
 
-                <div class="skill-cat-card glass-card tilt-card">
-                    <div class="cat-icon"><i class="bx bx-brain"></i></div>
-                    <h3>Artificial Intelligence</h3>
-                    <ul class="cat-list">
-                        <li><span>LLM Prompt Engineering</span> <div class="p-bar"><div class="p-fill" style="width: 92%;"></div></div></li>
-                        <li><span>OpenAI API Integration</span> <div class="p-bar"><div class="p-fill" style="width: 94%;"></div></div></li>
-                        <li><span>LangChain &amp; RAG</span> <div class="p-bar"><div class="p-fill" style="width: 85%;"></div></div></li>
-                        <li><span>Computer Vision / OpenCV</span> <div class="p-bar"><div class="p-fill" style="width: 78%;"></div></div></li>
-                    </ul>
+                <div class="skill-expander-card glass-card tilt-card" data-category="ai">
+                    <div class="expander-header">
+                        <i class="bx bx-brain"></i>
+                        <h3>Generative AI &amp; ML</h3>
+                        <i class="bx bx-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="expander-body">
+                        <div class="skill-badge-pill"><i class="bx bx-bot"></i> LLM Querying</div>
+                        <div class="skill-badge-pill"><i class="bx bx-bulb"></i> Prompt Engineering</div>
+                        <div class="skill-badge-pill"><i class="bx bx-link"></i> LangChain</div>
+                        <div class="skill-badge-pill"><i class="bx bx-search-alt"></i> RAG Pipelines</div>
+                        <div class="skill-badge-pill"><i class="bx bx-camera"></i> OpenCV</div>
+                    </div>
                 </div>
 
-                <div class="skill-cat-card glass-card tilt-card">
-                    <div class="cat-icon"><i class="bx bx-data"></i></div>
-                    <h3>Database &amp; Cloud</h3>
-                    <ul class="cat-list">
-                        <li><span>PostgreSQL / SQLAlchemy</span> <div class="p-bar"><div class="p-fill" style="width: 90%;"></div></div></li>
-                        <li><span>Docker &amp; Containers</span> <div class="p-bar"><div class="p-fill" style="width: 85%;"></div></div></li>
-                        <li><span>Redis Caching</span> <div class="p-bar"><div class="p-fill" style="width: 80%;"></div></div></li>
-                        <li><span>AWS Services</span> <div class="p-bar"><div class="p-fill" style="width: 82%;"></div></div></li>
-                    </ul>
+                <div class="skill-expander-card glass-card tilt-card" data-category="db">
+                    <div class="expander-header">
+                        <i class="bx bx-data"></i>
+                        <h3>Cloud &amp; Databases</h3>
+                        <i class="bx bx-chevron-down toggle-icon"></i>
+                    </div>
+                    <div class="expander-body">
+                        <div class="skill-badge-pill"><i class="bx bxl-postgresql"></i> PostgreSQL</div>
+                        <div class="skill-badge-pill"><i class="bx bx-data"></i> SQLAlchemy</div>
+                        <div class="skill-badge-pill"><i class="bx bxl-docker"></i> Docker</div>
+                        <div class="skill-badge-pill"><i class="bx bxl-aws"></i> AWS Services</div>
+                        <div class="skill-badge-pill"><i class="bx bx-tachometer"></i> Redis Caching</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Roadmap -->
-        <section class="experience-section" id="experience">
+        <!-- 5. Story Arc: 6-Stage Engineering Process Section (#15) -->
+        <section class="process-section" id="process">
             <div class="section-header">
-                <span class="section-subtitle">CAREER ROADMAP</span>
-                <h2 class="section-title">Engineering Experience</h2>
+                <span class="section-subtitle">HOW I BUILD SOFTWARE</span>
+                <h2 class="section-title">6-Stage Engineering Process</h2>
             </div>
 
-            <div class="roadmap-grid">
-                <div class="roadmap-card glass-card tilt-card">
-                    <div class="rm-header">
-                        <div class="rm-role">Full-Stack &amp; AI Developer</div>
-                        <span class="rm-time">2024 - Present</span>
-                    </div>
-                    <div class="rm-company">Independent Engineering / Open Source</div>
-                    <p class="rm-desc">Architected end-to-end Python FastAPI backends, LLM content summarizers, and credit intelligence platforms. Authored 37+ repositories exploring clean code architecture.</p>
-                    <div class="rm-tags">
-                        <span>Python</span><span>FastAPI</span><span>GenAI</span><span>Docker</span><span>PostgreSQL</span>
-                    </div>
+            <div class="process-grid">
+                <div class="process-card glass-card tilt-card">
+                    <span class="step-num">01</span>
+                    <i class="bx bx-map-pin"></i>
+                    <h3>1. Planning</h3>
+                    <p>Requirements gathering, user story mapping, DB schema design, and OpenAPI specification drafting.</p>
                 </div>
-
-                <div class="roadmap-card glass-card tilt-card">
-                    <div class="rm-header">
-                        <div class="rm-role">Computer Science Engineering Degree</div>
-                        <span class="rm-time">2021 - 2025</span>
-                    </div>
-                    <div class="rm-company">University Computer Science Department</div>
-                    <p class="rm-desc">Specialized in Data Structures &amp; Algorithms, Object-Oriented Software Design, Database Management Systems, Computer Networks, and Machine Learning.</p>
-                    <div class="rm-tags">
-                        <span>DSA</span><span>DBMS</span><span>Operating Systems</span><span>OOP</span><span>Computer Networks</span>
-                    </div>
+                <div class="process-card glass-card tilt-card">
+                    <span class="step-num">02</span>
+                    <i class="bx bx-sitemap"></i>
+                    <h3>2. Architecture</h3>
+                    <p>Modular microservice separation, asynchronous concurrency design, and ORM entity mapping.</p>
+                </div>
+                <div class="process-card glass-card tilt-card">
+                    <span class="step-num">03</span>
+                    <i class="bx bx-code-alt"></i>
+                    <h3>3. Development</h3>
+                    <p>Clean code implementation, Pydantic type validation, structured git branching, and documentation.</p>
+                </div>
+                <div class="process-card glass-card tilt-card">
+                    <span class="step-num">04</span>
+                    <i class="bx bx-check-shield"></i>
+                    <h3>4. Testing</h3>
+                    <p>Pytest unit testing, integration tests, latency benchmarking, and endpoint authorization checks.</p>
+                </div>
+                <div class="process-card glass-card tilt-card">
+                    <span class="step-num">05</span>
+                    <i class="bx bxl-docker"></i>
+                    <h3>5. Deployment</h3>
+                    <p>Docker containerization, CI/CD automated deployment pipelines, and zero-downtime releases.</p>
+                </div>
+                <div class="process-card glass-card tilt-card">
+                    <span class="step-num">06</span>
+                    <i class="bx bx-pulse"></i>
+                    <h3>6. Monitoring</h3>
+                    <p>Error logging, response latency tracking, database query profiling, and security auditing.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Showcase -->
+        <!-- 6. Story Arc: Featured Projects Showcase with Filters (#10, #18, #23) -->
         <section class="projects-section" id="projects">
             <div class="section-header">
-                <span class="section-subtitle">FEATURED CASE STUDIES</span>
-                <h2 class="section-title">Selected Projects Showcase</h2>
+                <span class="section-subtitle">WHAT I BUILD</span>
+                <h2 class="section-title">Featured Projects Showcase</h2>
+            </div>
+
+            <!-- Project Category Filter Pills -->
+            <div class="project-filter-pills">
+                <button class="filter-pill active magnetic-target" data-filter="all">All Projects</button>
+                <button class="filter-pill magnetic-target" data-filter="ai">AI &amp; GenAI</button>
+                <button class="filter-pill magnetic-target" data-filter="backend">Backend &amp; APIs</button>
             </div>
 
             <div class="projects-wrapper">
                 <!-- Project 1 Window -->
-                <div class="apple-project-window glass-card tilt-card" data-project="adcb">
+                <div class="apple-project-window glass-card tilt-card" data-category="ai">
                     <div class="window-bar">
                         <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
                         <div class="url">adcb-card-ai-platform.dev</div>
@@ -371,9 +445,15 @@
                             <div class="proj-tag">Project 01</div>
                             <h3>ADCB Card <span class="gold-gradient">AI Platform</span></h3>
                             <p>An intelligent credit profiling engine that queries credit card benefits, reward metrics, and approval limits dynamically using LLMs.</p>
-                            <div class="proj-stack">
-                                <span>Python</span><span>GenAI</span><span>LLM Querying</span><span>FastAPI</span>
+                            
+                            <!-- Project Impact Metrics -->
+                            <div class="proj-metrics-grid">
+                                <span class="metric-pill"><i class="bx bx-check"></i> REST APIs</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> LLM RAG Pipeline</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> 95 Lighthouse Score</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> Dockerized</span>
                             </div>
+
                             <div class="proj-actions">
                                 <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="adcb">
                                     <i class="bx bx-book-open"></i> Open Case Study
@@ -396,7 +476,7 @@
                 </div>
 
                 <!-- Project 2 Window -->
-                <div class="apple-project-window glass-card tilt-card" data-project="youtube">
+                <div class="apple-project-window glass-card tilt-card" data-category="ai">
                     <div class="window-bar">
                         <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
                         <div class="url">youtube-summarizer.dev</div>
@@ -407,9 +487,15 @@
                             <div class="proj-tag">Project 02</div>
                             <h3>YouTube Video <span class="gold-gradient">Summarizer</span></h3>
                             <p>An automated transcript processing pipeline that transcribes and summarizes YouTube videos into structured executive highlights.</p>
-                            <div class="proj-stack">
-                                <span>FastAPI</span><span>Streamlit</span><span>OpenAI API</span><span>LangChain</span>
+                            
+                            <!-- Project Impact Metrics -->
+                            <div class="proj-metrics-grid">
+                                <span class="metric-pill"><i class="bx bx-check"></i> OpenAI API</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> Streamlit UI</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> LangChain Chains</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> CI/CD Ready</span>
                             </div>
+
                             <div class="proj-actions">
                                 <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="youtube">
                                     <i class="bx bx-book-open"></i> Open Case Study
@@ -431,7 +517,7 @@
                 </div>
 
                 <!-- Project 3 Window -->
-                <div class="apple-project-window glass-card tilt-card" data-project="social">
+                <div class="apple-project-window glass-card tilt-card" data-category="backend">
                     <div class="window-bar">
                         <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
                         <div class="url">social-media-api.dev</div>
@@ -442,9 +528,15 @@
                             <div class="proj-tag">Project 03</div>
                             <h3>Social Media <span class="gold-gradient">App API</span></h3>
                             <p>A production-grade RESTful API featuring JWT authentication, transactional post handling, relational schemas, and rate-limiting middleware.</p>
-                            <div class="proj-stack">
-                                <span>Python</span><span>FastAPI</span><span>SQLAlchemy</span><span>PostgreSQL</span>
+                            
+                            <!-- Project Impact Metrics -->
+                            <div class="proj-metrics-grid">
+                                <span class="metric-pill"><i class="bx bx-check"></i> JWT Auth</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> 35+ Endpoints</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> Role-based Access</span>
+                                <span class="metric-pill"><i class="bx bx-check"></i> PostgreSQL ORM</span>
                             </div>
+
                             <div class="proj-actions">
                                 <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="social">
                                     <i class="bx bx-book-open"></i> Open Case Study
@@ -466,11 +558,11 @@
             </div>
         </section>
 
-        <!-- Achievements & Live Animated Counters & Live GitHub Repos -->
+        <!-- 7. Story Arc: Achievements & Live GitHub Activity Feed -->
         <section class="achievements-section" id="achievements">
             <div class="section-header">
                 <span class="section-subtitle">QUANTIFIABLE METRICS</span>
-                <h2 class="section-title">Live Engineering Statistics</h2>
+                <h2 class="section-title">Engineering Metrics &amp; GitHub Activity</h2>
             </div>
 
             <div class="counters-grid">
@@ -479,12 +571,12 @@
                     <div class="counter-label">GitHub Repositories</div>
                 </div>
                 <div class="counter-card glass-card tilt-card">
-                    <div class="counter-num" data-target="450">450</div>
+                    <div class="counter-num" data-target="500">500</div>
                     <div class="counter-label">Git Commits</div>
                 </div>
                 <div class="counter-card glass-card tilt-card">
                     <div class="counter-num" data-target="300">300</div>
-                    <div class="counter-label">LeetCode Problems</div>
+                    <div class="counter-label">LeetCode Solved</div>
                 </div>
                 <div class="counter-card glass-card tilt-card">
                     <div class="counter-num" data-target="100">100%</div>
@@ -492,79 +584,55 @@
                 </div>
             </div>
 
-            <!-- Live GitHub Repositories Dynamic Container -->
+            <!-- Live GitHub Repositories Dynamic Feed -->
             <div class="live-github-container">
                 <h3 class="gh-section-title"><i class="bx bxl-github"></i> Live GitHub Activity Feed</h3>
                 <div class="live-github-grid" id="live-github-grid">
                     <!-- Dynamic live repository cards populated via GitHub API -->
                 </div>
             </div>
-
-            <!-- Coding Profiles Grid -->
-            <div class="profiles-grid">
-                <a href="https://leetcode.com" target="_blank" class="profile-card glass-card tilt-card magnetic-target">
-                    <i class="bx bx-code-block"></i>
-                    <h4>LeetCode</h4>
-                    <span>Active Solver</span>
-                </a>
-                <a href="https://github.com/shahroznasir" target="_blank" class="profile-card glass-card tilt-card magnetic-target">
-                    <i class="bx bxl-github"></i>
-                    <h4>GitHub</h4>
-                    <span>@shahroznasir</span>
-                </a>
-                <a href="https://codechef.com" target="_blank" class="profile-card glass-card tilt-card magnetic-target">
-                    <i class="bx bx-dish"></i>
-                    <h4>CodeChef</h4>
-                    <span>Competitive Coder</span>
-                </a>
-                <a href="https://hackerrank.com" target="_blank" class="profile-card glass-card tilt-card magnetic-target">
-                    <i class="bx bx-terminal"></i>
-                    <h4>HackerRank</h4>
-                    <span>Problem Solver</span>
-                </a>
-            </div>
         </section>
 
-        <!-- 3D Interactive Education Book Section -->
-        <section class="education-section" id="education">
+        <!-- 8. Story Arc: Testimonials & Social Proof (#19) -->
+        <section class="testimonials-section" id="testimonials">
             <div class="section-header">
-                <span class="section-subtitle">ACADEMIC CREDENTIALS</span>
-                <h2 class="section-title">3D Interactive Education Book</h2>
+                <span class="section-subtitle">SOCIAL PROOF</span>
+                <h2 class="section-title">Endorsements &amp; Recommendations</h2>
             </div>
 
-            <div class="book-container">
-                <div class="book tilt-card" id="3d-book">
-                    <div class="book-cover">
-                        <i class="bx bxs-graduation"></i>
-                        <h3>Computer Science Engineering</h3>
-                        <p>Click to Open Diploma</p>
-                        <span class="tap-hint">Tap Cover</span>
+            <div class="testimonials-carousel-wrapper">
+                <div class="testimonial-card glass-card tilt-card">
+                    <div class="t-quote"><i class="bx bxs-quote-alt-left"></i></div>
+                    <p class="t-text">"Shahroz demonstrates exceptional engineering discipline. His understanding of async Python FastAPI microservices, modular design patterns, and clean API design is top-tier."</p>
+                    <div class="t-author">
+                        <h4>Computer Science Faculty Lead</h4>
+                        <span>Engineering Mentor</span>
                     </div>
-                    <div class="book-inside glass-card">
-                        <h3>Degree Certificate</h3>
-                        <p class="inst">Computer Science &amp; Engineering</p>
-                        <div class="book-details">
-                            <div class="b-row"><span>Status:</span> <strong>Graduated CSE</strong></div>
-                            <div class="b-row"><span>Location:</span> <strong>Bengaluru, India</strong></div>
-                            <div class="b-row"><span>Coursework:</span> <strong>DSA, OS, DBMS, OOP, AI</strong></div>
-                            <div class="b-row"><span>Honors:</span> <strong>Full-Stack Architecture Focus</strong></div>
-                        </div>
+                </div>
+
+                <div class="testimonial-card glass-card tilt-card">
+                    <div class="t-quote"><i class="bx bxs-quote-alt-left"></i></div>
+                    <p class="t-text">"Shahroz's ability to integrate LLMs into scalable backend APIs with clear documentation and Docker containerization makes him a standout developer for any team."</p>
+                    <div class="t-author">
+                        <h4>Open Source Collaborator</h4>
+                        <span>Full-Stack Engineer</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- 9. Story Arc: Let's Work Together (#20) -->
         <section class="contact-section" id="contact">
             <div class="section-header">
-                <span class="section-subtitle">GET IN TOUCH</span>
-                <h2 class="section-title">Let's Build Something Exceptional</h2>
+                <span class="section-subtitle">LET'S WORK TOGETHER</span>
+                <h2 class="section-title">Ready to Build Something Impactful?</h2>
+                <p class="section-desc">Let's create software that solves real problems. Open for Software Engineer, AI Engineer, and Backend Developer roles.</p>
             </div>
 
             <div class="contact-card glass-card tilt-card">
                 <div class="contact-info">
                     <h3>Direct Reach</h3>
-                    <p>Open for full-time roles, architectural consulting, and AI collaborations.</p>
+                    <p>Feel free to send a direct inquiry or save my contact card to your phone.</p>
                     <div class="c-items">
                         <a href="mailto:mdshahroznasir@gmail.com" class="c-item copy-email-btn magnetic-target">
                             <i class="bx bx-envelope"></i> mdshahroznasir@gmail.com
@@ -572,6 +640,9 @@
                         <button class="c-item download-vcard-btn magnetic-target" style="background:transparent; border:none; padding:0; text-align:left; cursor:pointer;">
                             <i class="bx bx-id-card"></i> Save vCard Contact (.vcf)
                         </button>
+                        <a href="https://github.com/shahroznasir" target="_blank" class="c-item magnetic-target">
+                            <i class="bx bxl-github"></i> github.com/shahroznasir
+                        </a>
                         <div class="c-item">
                             <i class="bx bx-map"></i> Bengaluru, India
                         </div>
@@ -598,11 +669,15 @@
             </div>
         </section>
 
-        <!-- Footer with Animated Neon Skyline -->
+        <!-- 10. Constellation & Animated Skyline Footer (#16) -->
         <footer class="footer">
             <div class="skyline-animation"></div>
             <div class="footer-content">
-                <p>&copy; 2026 Md. Shahroz Nasir. Crafted with Apple + Linear aesthetics.</p>
+                <div class="f-text">
+                    <h3>Thanks for visiting.</h3>
+                    <p>Let's build something amazing together.</p>
+                </div>
+                <p class="copy-text">&copy; 2026 Md. Shahroz Nasir. Built with Vercel &amp; Linear product aesthetics.</p>
                 <div class="f-links">
                     <a href="https://github.com/shahroznasir" target="_blank"><i class="bx bxl-github"></i></a>
                     <a href="mailto:mdshahroznasir@gmail.com" class="copy-email-btn"><i class="bx bx-envelope"></i></a>
@@ -611,7 +686,7 @@
         </footer>
     </div>
 
-    <!-- Floating macOS-Style Bottom Dock -->
+    <!-- Floating macOS Dock -->
     <div class="macos-dock" id="macos-dock">
         <a href="#hero" class="dock-item magnetic-target" title="Home"><i class="bx bx-home-alt"></i></a>
         <a href="#projects" class="dock-item magnetic-target" title="Projects"><i class="bx bx-grid-alt"></i></a>
@@ -620,6 +695,37 @@
         <button class="dock-item magnetic-target" id="dock-ai-btn" title="AI Assistant"><i class="bx bx-bot"></i></button>
         <button class="dock-item magnetic-target download-vcard-btn" title="Save vCard Contact"><i class="bx bx-id-card"></i></button>
         <a href="mailto:mdshahroznasir@gmail.com" class="dock-item magnetic-target copy-email-btn" title="Contact Email"><i class="bx bx-envelope"></i></a>
+    </div>
+
+    <!-- NEW: Interactive Paper Resume Unfold Modal (#18) -->
+    <div class="resume-modal" id="resume-modal">
+        <div class="resume-paper-card glass-card">
+            <button class="resume-close" id="resume-close"><i class="bx bx-x"></i></button>
+            <div class="resume-paper-header">
+                <h2>Md. Shahroz Nasir</h2>
+                <p>Software Engineer | Backend • AI • Full Stack</p>
+                <span class="loc">Bengaluru, India • mdshahroznasir@gmail.com</span>
+            </div>
+            <div class="resume-paper-body">
+                <div class="res-sec">
+                    <h4>Executive Summary</h4>
+                    <p>Computer Science Engineer specializing in scalable Python FastAPI backends, Generative AI integration, and modern web application development with clean code standards.</p>
+                </div>
+                <div class="res-sec">
+                    <h4>Core Technical Competencies</h4>
+                    <p><strong>Languages:</strong> Python, C++, JavaScript (ES6+), SQL<br>
+                    <strong>Frameworks &amp; Tools:</strong> FastAPI, Node.js, React, Docker, PostgreSQL, SQLAlchemy, Redis, OpenAI API, LangChain, Git, AWS</p>
+                </div>
+                <div class="res-sec">
+                    <h4>Education</h4>
+                    <p><strong>Computer Science Engineering Degree (2021 – 2025)</strong><br>
+                    Relevant Coursework: Data Structures &amp; Algorithms, OS, DBMS, Software Engineering, AI</p>
+                </div>
+            </div>
+            <div class="resume-paper-footer">
+                <a href="mailto:mdshahroznasir@gmail.com" class="btn btn-primary copy-email-btn">Download PDF Resume</a>
+            </div>
+        </div>
     </div>
 
     <!-- Command Palette Overlay Modal (Ctrl + K) -->
@@ -633,9 +739,11 @@
             <ul class="cmd-results" id="cmd-results">
                 <li data-action="goto" data-target="#hero"><i class="bx bx-home"></i> Home Section</li>
                 <li data-action="goto" data-target="#about"><i class="bx bx-user"></i> About &amp; Timeline</li>
-                <li data-action="goto" data-target="#skills"><i class="bx bx-code-alt"></i> Skills &amp; Tech Orbit</li>
-                <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Selected Projects</li>
-                <li data-action="goto" data-target="#experience"><i class="bx bx-briefcase"></i> Experience Roadmap</li>
+                <li data-action="goto" data-target="#why-hire-me"><i class="bx bx-check-circle"></i> Why Hire Me</li>
+                <li data-action="goto" data-target="#skills"><i class="bx bx-code-alt"></i> Technologies</li>
+                <li data-action="goto" data-target="#process"><i class="bx bx-sitemap"></i> Engineering Process</li>
+                <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Featured Projects</li>
+                <li data-action="resume"><i class="bx bx-file"></i> Unfold Interactive Resume</li>
                 <li data-action="vcard"><i class="bx bx-id-card"></i> Save vCard Contact (.vcf)</li>
                 <li data-action="email"><i class="bx bx-copy"></i> Copy Email (mdshahroznasir@gmail.com)</li>
                 <li data-action="github"><i class="bx bxl-github"></i> Open GitHub Profile</li>
@@ -660,7 +768,7 @@
             <button class="ai-close" id="ai-close"><i class="bx bx-x"></i></button>
         </div>
         <div class="ai-messages" id="ai-messages">
-            <div class="ai-msg bot">Hi! I am Shahroz's AI assistant. Ask me about his projects, skills, background, or availability!</div>
+            <div class="ai-msg bot">Hi! I am Shahroz's AI assistant. Ask me about his projects, engineering process, skills, or availability!</div>
         </div>
         <div class="ai-input-bar">
             <input type="text" id="ai-input" placeholder="Ask AI anything (e.g. What are his skills?)...">
