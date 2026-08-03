@@ -75,51 +75,50 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Floating Reference Mockup Exact Navbar Header -->
-        <header id="main-header">
-            <div class="header-inner">
-                <!-- Left: SN Glass Logo Box with Top-Right Neon Dot -->
+        <!-- Extraordinary Apple Dynamic Island Glass Capsule Header -->
+        <header id="main-header" class="extraordinary-header">
+            <div class="header-inner glass-capsule-island">
+                <!-- Left: SN Glass Logo Box with Sparkle -->
                 <a class="logo-box magnetic-target" href="#hero" aria-label="Shahroz Nasir Home">
-                    <span class="logo-text">SN</span>
-                    <span class="logo-dot"></span>
+                    <span class="logo-text">SN <span class="sparkle-icon">✦</span></span>
                 </a>
 
-                <!-- Center: 7 Exact Navigation Links & Centered Active Blue Dot -->
+                <!-- Center: Streamlined 5 Navigation Links & Dynamic Sliding Liquid Pill -->
                 <nav class="nav-center">
+                    <div class="sliding-pill-indicator" id="sliding-pill-indicator"></div>
                     <ul class="nav-links">
                         <li><a href="#hero" class="nav-link active">Home</a></li>
                         <li><a href="#about" class="nav-link">About</a></li>
                         <li><a href="#skills" class="nav-link">Skills</a></li>
                         <li><a href="#projects" class="nav-link">Projects</a></li>
-                        <li><a href="#process" class="nav-link">Experience</a></li>
-                        <li><a href="#achievements" class="nav-link">Achievements</a></li>
                         <li><a href="#contact" class="nav-link">Contact</a></li>
                     </ul>
-                    <span class="active-blue-dot" id="active-blue-dot"></span>
                 </nav>
 
-                <!-- Right: Action Buttons Sequence -->
+                <!-- Right: Action Cluster -->
                 <div class="header-actions">
-                    <!-- Subtle Status Text 🟢 Open to work -->
-                    <div class="status-text">
-                        <span class="status-dot"></span> Open to work
+                    <!-- Neon Status Pulse -->
+                    <div class="status-live-pulse" title="Available for Full-Time Roles">
+                        <span class="pulse-ring"></span>
+                        <span class="status-dot"></span>
+                        <span class="status-text-label">Open for Work</span>
                     </div>
 
-                    <!-- Resume ↗ Button (Single Accent CTA) -->
+                    <!-- Resume ↗ Button -->
                     <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav" aria-label="Open Resume Options">
                         Resume <i class="bx bx-up-arrow-alt"></i>
                     </button>
 
-                    <!-- Collapsed 3-Dot Overflow Menu Button & Dropdown -->
-                    <div class="more-menu-wrapper">
-                        <button class="icon-round-btn magnetic-target" id="more-menu-btn" aria-label="More options" title="More Options">
-                            <i class="bx bx-dots-vertical-rounded"></i>
+                    <!-- ⌘ Ctrl K Command Badge -->
+                    <button class="cmd-pill-btn magnetic-target" id="cmd-trigger" aria-label="Open Command Palette" title="Command Palette (Ctrl + K)">
+                        <i class="bx bx-command"></i> <span>Ctrl K</span>
+                    </button>
+
+                    <!-- Theme Switcher Toggle -->
+                    <div class="theme-menu-wrapper">
+                        <button class="icon-round-btn magnetic-target" id="theme-toggle" aria-label="Switch Theme" title="Switch Theme">
+                            <i class="bx bx-moon"></i>
                         </button>
-                        <div class="more-dropdown" id="more-dropdown">
-                            <button id="theme-toggle" aria-label="Switch Theme"><i class="bx bx-moon"></i> Theme</button>
-                            <button id="sound-toggle" aria-label="Toggle sound effects"><i class="bx bx-volume-full"></i> Sound FX</button>
-                            <button id="cmd-trigger" aria-label="Open command palette"><i class="bx bx-command"></i> Command palette <span class="kbd">Ctrl K</span></button>
-                        </div>
                         <div class="theme-dropdown" id="theme-dropdown">
                             <button class="theme-option active" data-theme="dark"><span class="t-color dark"></span> Dark</button>
                             <button class="theme-option" data-theme="midnight"><span class="t-color midnight"></span> Midnight</button>
@@ -128,6 +127,11 @@
                             <button class="theme-option" data-theme="aurora"><span class="t-color aurora"></span> Aurora</button>
                         </div>
                     </div>
+
+                    <!-- Sound FX Button -->
+                    <button class="icon-round-btn magnetic-target" id="sound-toggle" aria-label="Toggle Sound Effects" title="Toggle Sound FX">
+                        <i class="bx bx-volume-full"></i>
+                    </button>
 
                     <!-- Mobile Menu Icon -->
                     <div class="menu-icon" id="mobile-menu-toggle" aria-label="Toggle Mobile Navigation Menu">
@@ -147,8 +151,6 @@
                 <li><a href="#about" class="sidebar-link">About</a></li>
                 <li><a href="#skills" class="sidebar-link">Skills</a></li>
                 <li><a href="#projects" class="sidebar-link">Projects</a></li>
-                <li><a href="#process" class="sidebar-link">Experience</a></li>
-                <li><a href="#achievements" class="sidebar-link">Achievements</a></li>
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
             </ul>
         </div>
@@ -773,7 +775,6 @@
                 <li data-action="goto" data-target="#about"><i class="bx bx-user"></i> About &amp; Timeline</li>
                 <li data-action="goto" data-target="#skills"><i class="bx bx-code-alt"></i> Skills</li>
                 <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Projects</li>
-                <li data-action="goto" data-target="#process"><i class="bx bx-sitemap"></i> Experience &amp; Process</li>
                 <li data-action="goto" data-target="#achievements"><i class="bx bx-award"></i> Achievements</li>
                 <li data-action="resume"><i class="bx bx-file"></i> Unfold Interactive Resume</li>
                 <li data-action="vcard"><i class="bx bx-id-card"></i> Save vCard Contact (.vcf)</li>

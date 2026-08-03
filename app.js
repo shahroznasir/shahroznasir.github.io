@@ -1,6 +1,6 @@
 /**
- * Md. Shahroz Nasir — Pixel-Exact Reference Image Navbar & Motion Engine
- * Features 7-Link ScrollSpy, Centered Active Blue Dot (•), 60fps Lenis Scroll, Lazy Three.js 3D Canvas, & Web Audio Synthesizer
+ * Md. Shahroz Nasir — Extraordinary Apple Dynamic Island Navbar & Motion Engine
+ * Features 5-Link ScrollSpy, Dynamic Sliding Liquid Pill, 60fps Lenis Scroll, Lazy Three.js 3D Canvas, & Web Audio Synthesizer
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,32 +24,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       2. Active Blue Dot Centered Positioning & ScrollSpy Engine (7 Links)
+       2. Dynamic Sliding Liquid Pill Indicator & ScrollSpy Engine (5 Links)
        ========================================================================== */
     const navLinks = document.querySelectorAll('header nav ul a');
-    const activeDot = document.getElementById('active-blue-dot');
+    const slidingPill = document.getElementById('sliding-pill-indicator');
 
-    const updateActiveBlueDot = (activeLink) => {
-        if (!activeLink || !activeDot) return;
-        const linkRect = activeLink.getBoundingClientRect();
-        const navRect = activeLink.closest('nav').getBoundingClientRect();
+    const updateSlidingPill = (targetLink) => {
+        if (!targetLink || !slidingPill) return;
+        const linkRect = targetLink.getBoundingClientRect();
+        const navRect = targetLink.closest('nav').getBoundingClientRect();
 
-        const centeredLeft = (linkRect.left - navRect.left) + (linkRect.width / 2) - 2.5;
-        activeDot.style.left = `${centeredLeft}px`;
-        activeDot.style.opacity = '1';
+        const offsetLeft = linkRect.left - navRect.left;
+        const width = linkRect.width;
+
+        slidingPill.style.left = `${offsetLeft}px`;
+        slidingPill.style.width = `${width}px`;
+        slidingPill.style.opacity = '1';
     };
 
     const initialActive = document.querySelector('header nav ul a.active');
     if (initialActive) {
-        setTimeout(() => updateActiveBlueDot(initialActive), 100);
+        setTimeout(() => updateSlidingPill(initialActive), 120);
     }
 
     navLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => updateActiveBlueDot(link));
+        link.addEventListener('mouseenter', () => updateSlidingPill(link));
         link.addEventListener('click', () => {
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-            updateActiveBlueDot(link);
+            updateSlidingPill(link);
         });
     });
 
@@ -57,11 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navContainer) {
         navContainer.addEventListener('mouseleave', () => {
             const currentActive = document.querySelector('header nav ul a.active');
-            if (currentActive) updateActiveBlueDot(currentActive);
+            if (currentActive) updateSlidingPill(currentActive);
         });
     }
 
-    // ScrollSpy auto-tracker for 7 sections
+    // ScrollSpy auto-tracker for 5 sections
     const sections = document.querySelectorAll('section[id]');
     window.addEventListener('scroll', () => {
         let currentSectionId = '';
@@ -79,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (href === currentSectionId) {
                     navLinks.forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
-                    updateActiveBlueDot(link);
+                    updateSlidingPill(link);
                 }
             });
         }
@@ -130,12 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
             soundEnabled = !soundEnabled;
             if (soundEnabled) {
                 soundToggleBtn.classList.remove('muted');
-                soundToggleBtn.innerHTML = '<i class="bx bx-volume-full"></i> Sound FX';
+                soundToggleBtn.innerHTML = '<i class="bx bx-volume-full"></i>';
                 playBeep(880, 0.1);
                 showToast("Sound FX Enabled");
             } else {
                 soundToggleBtn.classList.add('muted');
-                soundToggleBtn.innerHTML = '<i class="bx bx-volume-mute"></i> Sound FX (Muted)';
+                soundToggleBtn.innerHTML = '<i class="bx bx-volume-mute"></i>';
                 showToast("Sound FX Muted");
             }
         });
@@ -593,26 +596,9 @@ END:VCARD`;
     };
 
     /* ==========================================================================
-       14. Overflow 3-Dot Dropdown Menu & Command Palette (Ctrl + K)
+       14. Command Palette (Ctrl + K) & Theme Switcher
        ========================================================================== */
-    const moreMenuBtn = document.getElementById('more-menu-btn');
-    const moreDropdown = document.getElementById('more-dropdown');
     const themeDropdown = document.getElementById('theme-dropdown');
-
-    if (moreMenuBtn && moreDropdown) {
-        moreMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (themeDropdown) themeDropdown.classList.remove('show');
-            moreDropdown.classList.toggle('open');
-            playBeep(700, 0.05);
-        });
-
-        window.addEventListener('click', () => {
-            moreDropdown.classList.remove('open');
-            if (themeDropdown) themeDropdown.classList.remove('show');
-        });
-    }
-
     const cmdModal = document.getElementById('cmd-modal');
     const cmdTrigger = document.getElementById('cmd-trigger');
     const dockCmdBtn = document.getElementById('dock-cmd-btn');
@@ -622,7 +608,6 @@ END:VCARD`;
     const openCmd = () => {
         if (cmdModal) cmdModal.classList.add('show');
         if (cmdInput) cmdInput.focus();
-        if (moreDropdown) moreDropdown.classList.remove('open');
         playBeep(900, 0.08);
     };
 
@@ -808,8 +793,11 @@ END:VCARD`;
     if (themeBtn && themeDropdown) {
         themeBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (moreDropdown) moreDropdown.classList.remove('open');
             themeDropdown.classList.toggle('show');
+        });
+
+        window.addEventListener('click', () => {
+            if (themeDropdown) themeDropdown.classList.remove('show');
         });
 
         themeOptions.forEach(opt => {
