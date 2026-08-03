@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Md. Shahroz Nasir — Senior Product Designer Tier (Vercel / Linear) Architecture
+   Md. Shahroz Nasir — Vercel / Apple / Linear Redesigned Header Architecture
    ========================================================================== */
 
 :root {
@@ -19,7 +19,7 @@
     --font-heading: 'Syne', 'Outfit', sans-serif;
     --font-body: 'Outfit', -apple-system, sans-serif;
     --font-code: 'Fira Code', monospace;
-    --glass-blur: 24px;
+    --glass-blur: 25px;
     --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -198,76 +198,92 @@ body {
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-/* Floating Header */
+/* ==========================================================================
+   Vercel / Apple / Linear Redesigned Header Styles (Height 56px)
+   ========================================================================== */
 header {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 35px; height: 75px; position: fixed;
-    top: 20px; left: 40px; right: 40px; max-width: 1220px;
-    margin: 0 auto; background: rgba(5, 8, 22, 0.75);
-    backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--border-card); border-radius: 40px;
-    z-index: 1000; transition: var(--transition-smooth);
+    padding: 0 24px; height: 56px; position: fixed;
+    top: 16px; left: 40px; right: 40px; max-width: 1220px;
+    margin: 0 auto; background: rgba(15, 20, 35, 0.65);
+    backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 35px;
+    z-index: 1000; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+    transition: var(--transition-smooth);
 }
 
 header.scrolled {
-    top: 10px; height: 65px; background: rgba(5, 8, 22, 0.9);
-    border-color: rgba(91, 140, 255, 0.3); box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    top: 8px; height: 52px; background: rgba(11, 17, 32, 0.88);
+    border-color: rgba(91, 140, 255, 0.3); box-shadow: 0 12px 45px rgba(0,0,0,0.6);
 }
 
-.header-left { display: flex; align-items: center; gap: 20px; }
-.logo { font-family: var(--font-heading); font-size: 22px; font-weight: 800; color: var(--text-main); text-decoration: none; }
-.logo span { color: var(--primary); }
+.header-left { display: flex; align-items: center; gap: 14px; }
 
-.status-badge {
+/* Glass Emblem Logo [ SN ] */
+.logo-emblem {
+    font-family: var(--font-heading); font-size: 13px; font-weight: 800;
+    color: var(--text-main); text-decoration: none; padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px; letter-spacing: 1px; transition: var(--transition-smooth);
+}
+.logo-emblem:hover { border-color: var(--primary); background: rgba(91, 140, 255, 0.15); box-shadow: 0 0 12px rgba(91, 140, 255, 0.3); }
+
+/* Compact Status Pill 🟢 Open to Work */
+.status-pill {
     font-size: 11px; color: var(--secondary); background: rgba(0, 229, 168, 0.08);
-    border: 1px solid rgba(0, 229, 168, 0.2); padding: 4px 12px; border-radius: 20px;
-    display: flex; align-items: center; gap: 6px;
+    border: 1px solid rgba(0, 229, 168, 0.2); padding: 3px 10px; border-radius: 16px;
+    display: flex; align-items: center; gap: 6px; font-weight: 500;
 }
 .status-dot { width: 6px; height: 6px; background: var(--secondary); border-radius: 50%; box-shadow: 0 0 8px var(--secondary); }
 
-header nav ul { display: flex; gap: 20px; list-style: none; }
-header nav ul a { text-decoration: none; color: var(--text-sub); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; transition: var(--transition-smooth); }
-header nav ul a:hover, header nav ul a.active { color: var(--primary); }
+/* Sliding Active Pill Center Navigation */
+.nav-center { position: relative; display: flex; align-items: center; }
 
-.header-actions { display: flex; align-items: center; gap: 12px; }
+.nav-active-pill {
+    position: absolute; height: 30px; background: rgba(91, 140, 255, 0.15);
+    border: 1px solid rgba(91, 140, 255, 0.3); border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;
+    z-index: 1; opacity: 0;
+}
 
-.sound-btn, .theme-btn {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: rgba(255,255,255,0.04); border: 1px solid var(--border-card);
-    color: var(--text-main); font-size: 16px; display: flex;
-    align-items: center; justify-content: center; transition: var(--transition-smooth);
-}
-.sound-btn:hover, .theme-btn:hover { border-color: var(--primary); color: var(--secondary); }
-.sound-btn.muted { color: var(--text-sub); opacity: 0.6; }
+header nav ul { display: flex; gap: 6px; list-style: none; position: relative; z-index: 2; }
 
-.cmd-btn {
-    background: rgba(255,255,255,0.04); border: 1px solid var(--border-card);
-    color: var(--text-sub); padding: 6px 14px; border-radius: 20px;
-    font-size: 12px; display: flex; align-items: center; gap: 8px;
+header nav ul a {
+    text-decoration: none; color: var(--text-sub); font-size: 12.5px;
+    font-weight: 500; padding: 6px 14px; border-radius: 16px;
+    transition: var(--transition-smooth); display: inline-block;
 }
-.cmd-btn:hover { border-color: var(--primary); color: var(--text-main); }
-.cmd-key { font-family: var(--font-code); font-size: 10px; background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; }
 
-.theme-menu-wrapper { position: relative; }
-.theme-dropdown {
-    position: absolute; top: 48px; right: 0; width: 150px;
-    background: rgba(11, 17, 32, 0.95); backdrop-filter: blur(20px);
-    border: 1px solid var(--border-card); border-radius: 12px; padding: 8px;
-    display: none; flex-direction: column; gap: 4px; z-index: 1001;
+header nav ul a:hover {
+    color: var(--text-main); transform: translateY(-2px);
+    letter-spacing: 0.02em; text-shadow: 0 0 8px rgba(91, 140, 255, 0.4);
 }
-.theme-dropdown.show { display: flex; }
-.theme-option {
-    background: transparent; border: none; color: var(--text-sub);
-    padding: 8px 12px; border-radius: 6px; font-size: 12px;
-    display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+
+header nav ul a.active { color: var(--primary); font-weight: 600; }
+
+/* Grouped Action Cluster (🔊 🌙 ⌘K Resume ↗) */
+.action-cluster {
+    display: flex; align-items: center; gap: 6px; padding: 3px 6px;
+    border-radius: 20px; background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
-.theme-option:hover, .theme-option.active { color: var(--text-main); background: rgba(255,255,255,0.08); }
-.t-color { width: 10px; height: 10px; border-radius: 50%; }
-.t-color.dark { background: #5B8CFF; }
-.t-color.midnight { background: #38BDF8; }
-.t-color.cyberpunk { background: #FF007F; }
-.t-color.ocean { background: #00B4D8; }
-.t-color.aurora { background: #50E3C2; }
+
+.nav-resume-btn {
+    background: var(--primary); color: #FFF; border: none;
+    padding: 4px 12px; border-radius: 14px; font-size: 11.5px;
+    font-weight: 600; display: flex; align-items: center; gap: 4px;
+    cursor: pointer; transition: var(--transition-smooth);
+}
+.nav-resume-btn:hover { background: #4777EA; box-shadow: 0 0 12px rgba(91, 140, 255, 0.5); }
+
+.action-icon-btn {
+    width: 28px; height: 28px; border-radius: 50%; background: transparent;
+    border: none; color: var(--text-sub); font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: var(--transition-smooth);
+}
+.action-icon-btn:hover { color: var(--text-main); background: rgba(255,255,255,0.08); }
+.cmd-badge { font-family: var(--font-code); font-size: 10px; font-weight: 600; color: var(--text-sub); }
 
 .menu-icon { display: none; font-size: 26px; color: var(--text-main); }
 
@@ -305,7 +321,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
     box-shadow: 0 6px 20px rgba(0, 229, 168, 0.25);
 }
 
-/* 1. Hero Section (Split 2-Halves Layout #1) */
+/* 1. Hero Section */
 .hero {
     min-height: 100vh; padding-top: 150px;
     display: grid; grid-template-columns: 1.15fr 0.85fr;
@@ -324,9 +340,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
     line-height: 1.08; color: var(--text-main); letter-spacing: -0.02em; margin-bottom: 6px;
 }
 
-.hero-role-title {
-    font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 12px;
-}
+.hero-role-title { font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
 
 .hero-subhead-tags {
     font-size: 14px; text-transform: uppercase; letter-spacing: 0.15em;
@@ -335,9 +349,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
     border-radius: 20px; margin-bottom: 20px; display: inline-block;
 }
 
-.hero-typewriter-box {
-    font-size: 20px; font-weight: 500; margin-bottom: 20px; display: flex; align-items: center;
-}
+.hero-typewriter-box { font-size: 20px; font-weight: 500; margin-bottom: 20px; display: flex; align-items: center; }
 
 .hero-lead-desc {
     font-size: 17px; color: var(--text-sub); max-width: 540px;
@@ -378,9 +390,8 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 
 .about-section, .why-hire-section, .skills-section, .process-section, .projects-section, .achievements-section, .testimonials-section, .contact-section { padding: 110px 0; }
 
-/* Why Hire Me Recruiter Evaluation Matrix (#24) */
+/* Why Hire Me Recruiter Matrix */
 .why-hire-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-
 .why-card { padding: 35px; }
 .why-icon i { font-size: 36px; color: var(--secondary); margin-bottom: 16px; display: block; }
 .why-card h3 { font-size: 20px; color: var(--text-main); margin-bottom: 10px; }
@@ -402,7 +413,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 .timeline-content p { font-size: 14.5px; color: var(--text-sub); font-weight: 300; }
 .glowing-card { border-color: rgba(0, 229, 168, 0.4); box-shadow: 0 0 25px rgba(0, 229, 168, 0.15); }
 
-/* Orbit System & Skill Expanders (NO PROGRESS BARS!) */
+/* Orbit System & Skill Expanders */
 .orbit-wrapper {
     position: relative; width: 450px; height: 450px; margin: 0 auto 80px auto;
     display: flex; justify-content: center; align-items: center;
@@ -438,9 +449,8 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 
 @keyframes spinOrbit { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* Expandable Skill Category Cards (No Progress Bars) */
+/* Expandable Skill Cards */
 .skills-expanders-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-
 .skill-expander-card { padding: 35px; cursor: pointer; }
 .expander-header { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 20px; }
 .expander-header i { font-size: 28px; color: var(--primary); }
@@ -458,9 +468,8 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 .skill-badge-pill i { color: var(--secondary); font-size: 16px; }
 .skill-badge-pill:hover { border-color: var(--primary); background: rgba(91, 140, 255, 0.1); transform: translateY(-2px); }
 
-/* Engineering Process Maturity Section (NEW! #15) */
+/* Process Section */
 .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-
 .process-card { padding: 35px; position: relative; overflow: hidden; }
 .step-num {
     position: absolute; top: 20px; right: 25px;
@@ -471,7 +480,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 .process-card h3 { font-size: 20px; color: var(--text-main); margin-bottom: 12px; }
 .process-card p { font-size: 14px; color: var(--text-sub); line-height: 1.6; font-weight: 300; }
 
-/* Project Category Filter Pills */
+/* Filter Pills */
 .project-filter-pills { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
 .filter-pill {
     padding: 10px 24px; border-radius: 30px; background: rgba(255,255,255,0.04);
@@ -480,7 +489,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 }
 .filter-pill:hover, .filter-pill.active { background: var(--primary); border-color: var(--primary); color: #FFF; box-shadow: 0 4px 20px rgba(91, 140, 255, 0.3); }
 
-/* Projects & Impact Metrics Badges (#7, #8) */
+/* Projects */
 .projects-wrapper { display: flex; flex-direction: column; gap: 60px; }
 .apple-project-window { overflow: hidden; border-radius: 20px; transition: var(--transition-smooth); }
 .apple-project-window.hide { display: none; }
@@ -538,7 +547,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 .gh-repo-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-sub); }
 .gh-repo-meta span { display: flex; align-items: center; gap: 4px; }
 
-/* Testimonials Carousel (#19) */
+/* Testimonials Carousel */
 .testimonials-carousel-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 .testimonial-card { padding: 40px; position: relative; }
 .t-quote i { font-size: 32px; color: var(--primary); margin-bottom: 15px; opacity: 0.6; }
@@ -546,7 +555,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 .t-author h4 { font-size: 16px; color: var(--text-main); font-weight: 600; }
 .t-author span { font-size: 12.5px; color: var(--secondary); }
 
-/* Contact Section (#20) */
+/* Contact Section */
 .contact-card { display: grid; grid-template-columns: 1fr 1fr; padding: 50px; gap: 50px; }
 .contact-info h3 { font-size: 28px; margin-bottom: 16px; }
 .contact-info p { font-size: 15px; color: var(--text-sub); margin-bottom: 30px; }
@@ -563,7 +572,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 }
 .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(91, 140, 255, 0.2); }
 
-/* Footer Constellation & Skyline (#16) */
+/* Footer */
 .footer { border-top: 1px solid var(--border-card); padding: 50px 0; margin-top: 60px; position: relative; }
 .footer-content { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; color: var(--text-sub); }
 .f-text h3 { font-size: 22px; color: var(--text-main); margin-bottom: 4px; }
@@ -589,7 +598,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 }
 .dock-item:hover { transform: scale(1.35) translateY(-8px); background: var(--primary); color: #FFF; box-shadow: 0 10px 20px rgba(91, 140, 255, 0.4); }
 
-/* NEW: Interactive Paper Resume Unfold Modal (#18) */
+/* Paper Resume Unfold Modal */
 .resume-modal {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     background: rgba(0,0,0,0.8); backdrop-filter: blur(20px);
@@ -702,7 +711,7 @@ header nav ul a:hover, header nav ul a.active { color: var(--primary); }
 }
 
 @media (max-width: 768px) {
-    header nav ul, header .cmd-btn, .status-badge { display: none; }
+    header nav ul, .status-pill { display: none; }
     .menu-icon { display: block; }
     .hero-name-title { font-size: 34px; }
     .hero-role-title { font-size: 20px; }

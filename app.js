@@ -1,6 +1,6 @@
 /**
- * Md. Shahroz Nasir — Senior Product Designer Tier (Vercel / Linear) Interactive Motion Engine
- * Powered by Lenis (60fps Inertia Scroll), Three.js (3D Workspace Canvas), Web Audio API Synthesizer, & GitHub Live API
+ * Md. Shahroz Nasir — Vercel / Apple Tier Navigation & Motion Engine
+ * Features 6-Link ScrollSpy, Sliding Active Pill Indicator, 60fps Lenis Scroll, Three.js 3D Canvas, & Web Audio Synthesizer
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,7 +24,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       2. Synthesized Web Audio API Sci-Fi Sound Engine
+       2. Sliding Active Pill & ScrollSpy Engine (6 Links)
+       ========================================================================== */
+    const navLinks = document.querySelectorAll('header nav ul a');
+    const activePill = document.getElementById('nav-active-pill');
+
+    const updateActivePill = (activeLink) => {
+        if (!activeLink || !activePill) return;
+        const linkRect = activeLink.getBoundingClientRect();
+        const navRect = activeLink.closest('nav').getBoundingClientRect();
+
+        activePill.style.width = `${linkRect.width}px`;
+        activePill.style.left = `${linkRect.left - navRect.left}px`;
+        activePill.style.opacity = '1';
+    };
+
+    const initialActive = document.querySelector('header nav ul a.active');
+    if (initialActive) {
+        setTimeout(() => updateActivePill(initialActive), 100);
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => updateActivePill(link));
+        link.addEventListener('click', () => {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            updateActivePill(link);
+        });
+    });
+
+    const navContainer = document.querySelector('header nav');
+    if (navContainer) {
+        navContainer.addEventListener('mouseleave', () => {
+            const currentActive = document.querySelector('header nav ul a.active');
+            if (currentActive) updateActivePill(currentActive);
+        });
+    }
+
+    // ScrollSpy auto-tracker for 6 sections
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+        let currentSectionId = '';
+        const scrollPos = window.scrollY + 200;
+
+        sections.forEach(sec => {
+            if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+                currentSectionId = sec.getAttribute('id');
+            }
+        });
+
+        if (currentSectionId) {
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href').substring(1);
+                if (href === currentSectionId) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    updateActivePill(link);
+                }
+            });
+        }
+    });
+
+    /* ==========================================================================
+       3. Synthesized Web Audio API Sci-Fi Sound Engine
        ========================================================================== */
     let soundEnabled = true;
     let audioCtx = null;
@@ -85,18 +147,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       3. NEW: Interactive Paper Resume Unfold Modal Handler (#18)
+       4. Interactive Paper Resume Unfold Modal Handlers
        ========================================================================== */
     const resumeModal = document.getElementById('resume-modal');
     const openResumeBtn = document.getElementById('open-resume-btn');
+    const openResumeBtnNav = document.getElementById('open-resume-btn-nav');
     const resumeClose = document.getElementById('resume-close');
 
-    if (openResumeBtn && resumeModal) {
-        openResumeBtn.addEventListener('click', () => {
+    const openResume = () => {
+        if (resumeModal) {
             resumeModal.classList.add('show');
             playBeep(900, 0.08);
-        });
-    }
+        }
+    };
+
+    if (openResumeBtn) openResumeBtn.addEventListener('click', openResume);
+    if (openResumeBtnNav) openResumeBtnNav.addEventListener('click', openResume);
+
     if (resumeClose && resumeModal) {
         resumeClose.addEventListener('click', () => {
             resumeModal.classList.remove('show');
@@ -104,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       4. NEW: Project Category Filter Engine (#18, #23)
+       5. Project Category Filter Engine
        ========================================================================== */
     const filterPills = document.querySelectorAll('.filter-pill');
     const projectWindows = document.querySelectorAll('.apple-project-window');
@@ -129,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       5. Interactive Skill Category Expanders (No Progress Bars!)
+       6. Interactive Skill Category Expanders
        ========================================================================== */
     const expanderCards = document.querySelectorAll('.skill-expander-card');
     expanderCards.forEach(card => {
@@ -140,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       6. Terminal Boot Loader Sequence
+       7. Terminal Boot Loader Sequence
        ========================================================================== */
     const bootScreen = document.getElementById('boot-screen');
     const bootFill = document.getElementById('boot-fill');
@@ -170,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       7. Custom Dual-Ring Cursor
+       8. Custom Dual-Ring Cursor
        ========================================================================== */
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
@@ -202,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       8. Three.js 3D Holographic Developer Workspace Scene
+       9. Three.js 3D Holographic Developer Workspace Scene
        ========================================================================== */
     const container3D = document.getElementById('three-canvas-container');
 
@@ -276,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       9. Interactive Background Particle Canvas
+       10. Interactive Background Particle Canvas
        ========================================================================== */
     const bgCanvas = document.getElementById('bg-particle-canvas');
     if (bgCanvas) {
@@ -325,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       10. Live GitHub API Integration
+       11. Live GitHub API Integration
        ========================================================================== */
     const ghContainer = document.getElementById('live-github-grid');
     const repoCounter = document.getElementById('repo-counter');
@@ -372,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubData();
 
     /* ==========================================================================
-       11. 1-Click Mobile vCard (.vcf) Generator
+       12. 1-Click Mobile vCard (.vcf) Generator
        ========================================================================== */
     const downloadVCard = () => {
         const vcardData = `BEGIN:VCARD
@@ -404,7 +471,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       12. Hero Typewriter Role Morphing Engine (#1)
+       13. Hero Typewriter Role Morphing Engine
        ========================================================================== */
     const roleEl = document.getElementById('role-typewriter');
     const roles = ["Software Engineer", "Backend Developer", "AI Enthusiast", "Open Source Contributor", "Problem Solver"];
@@ -453,7 +520,7 @@ END:VCARD`;
     };
 
     /* ==========================================================================
-       13. WOW Module: Command Palette (Ctrl + K)
+       14. Command Palette (Ctrl + K)
        ========================================================================== */
     const cmdModal = document.getElementById('cmd-modal');
     const cmdTrigger = document.getElementById('cmd-trigger');
@@ -505,7 +572,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       14. WOW Module: Hacker Terminal ($ CLI)
+       15. Hacker Terminal ($ CLI)
        ========================================================================== */
     const termModal = document.getElementById('hacker-term-modal');
     const dockTermBtn = document.getElementById('dock-term-btn');
@@ -572,7 +639,7 @@ END:VCARD`;
     }
 
     /* ==========================================================================
-       15. WOW Module: AI Assistant Chatbot
+       16. AI Assistant Chatbot
        ========================================================================== */
     const aiDrawer = document.getElementById('ai-drawer');
     const dockAiBtn = document.getElementById('dock-ai-btn');
@@ -621,7 +688,7 @@ END:VCARD`;
     if (aiInput) aiInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleAiSend(); });
 
     /* ==========================================================================
-       16. WOW Module: Konami Code Easter Egg (↑ ↑ ↓ ↓ ← → ← → B A)
+       17. Konami Code Easter Egg (↑ ↑ ↓ ↓ ← → ← → B A)
        ========================================================================== */
     const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     let konamiIdx = 0;
@@ -641,7 +708,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       17. WOW Module: 5-Theme Engine Switcher
+       18. 5-Theme Engine Switcher
        ========================================================================== */
     const themeBtn = document.getElementById('theme-toggle');
     const themeDropdown = document.getElementById('theme-dropdown');
@@ -668,7 +735,7 @@ END:VCARD`;
     }
 
     /* ==========================================================================
-       18. WOW Module: Apple Fullscreen Case Study Modal
+       19. Apple Fullscreen Case Study Modal
        ========================================================================== */
     const casestudyModal = document.getElementById('casestudy-modal');
     const casestudyClose = document.getElementById('casestudy-close');
@@ -740,7 +807,7 @@ END:VCARD`;
     if (casestudyClose) casestudyClose.addEventListener('click', () => casestudyModal.classList.remove('show'));
 
     /* ==========================================================================
-       19. 1-Click Copy Email & Toast Notification
+       20. 1-Click Copy Email & Toast Notification
        ========================================================================== */
     const targetEmail = "mdshahroznasir@gmail.com";
     const toast = document.getElementById('toast');
@@ -769,7 +836,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       20. 3D Card Tilt Physics & Mobile Navigation
+       21. 3D Card Tilt Physics & Mobile Navigation
        ========================================================================== */
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {

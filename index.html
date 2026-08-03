@@ -75,47 +75,50 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Floating Glass Header Navigation -->
+        <!-- Floating Vercel / Apple / Linear Tier Glass Header Navigation -->
         <header id="main-header">
             <div class="header-left">
-                <a class="logo" href="#hero">S<span>.</span>N<span>.</span></a>
-                <span class="status-badge"><span class="status-dot"></span> Open for Opportunities</span>
+                <a class="logo-emblem" href="#hero">SN</a>
+                <span class="status-pill"><span class="status-dot"></span> Open to Work</span>
             </div>
 
-            <nav>
+            <nav class="nav-center">
+                <div class="nav-active-pill" id="nav-active-pill"></div>
                 <ul class="nav-links">
                     <li><a href="#hero" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#why-hire-me" class="nav-link">Why Hire Me</a></li>
-                    <li><a href="#skills" class="nav-link">Technologies</a></li>
-                    <li><a href="#process" class="nav-link">Process</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#achievements" class="nav-link">Metrics</a></li>
-                    <li><a href="#testimonials" class="nav-link">Social Proof</a></li>
+                    <li><a href="#process" class="nav-link">Experience</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <button class="sound-btn magnetic-target" id="sound-toggle" title="Toggle Sound FX">
-                    <i class="bx bx-volume-full"></i>
-                </button>
-
-                <button class="cmd-btn magnetic-target" id="cmd-trigger" title="Command Palette (Ctrl + K)">
-                    <i class="bx bx-command"></i> <span class="cmd-key">Ctrl K</span>
-                </button>
-                
-                <div class="theme-menu-wrapper">
-                    <button class="theme-btn magnetic-target" id="theme-toggle" title="Switch Theme">
-                        <i class="bx bx-palette"></i>
+                <div class="action-cluster glass-card">
+                    <button class="nav-resume-btn magnetic-target" id="open-resume-btn-nav">
+                        Resume <i class="bx bx-up-arrow-alt"></i>
                     </button>
-                    <div class="theme-dropdown" id="theme-dropdown">
-                        <button class="theme-option active" data-theme="dark"><span class="t-color dark"></span> Dark</button>
-                        <button class="theme-option" data-theme="midnight"><span class="t-color midnight"></span> Midnight</button>
-                        <button class="theme-option" data-theme="cyberpunk"><span class="t-color cyberpunk"></span> Cyberpunk</button>
-                        <button class="theme-option" data-theme="ocean"><span class="t-color ocean"></span> Ocean</button>
-                        <button class="theme-option" data-theme="aurora"><span class="t-color aurora"></span> Aurora</button>
+                    <button class="action-icon-btn magnetic-target" id="sound-toggle" title="Toggle Sound FX">
+                        <i class="bx bx-volume-full"></i>
+                    </button>
+                    
+                    <div class="theme-menu-wrapper">
+                        <button class="action-icon-btn magnetic-target" id="theme-toggle" title="Switch Theme">
+                            <i class="bx bx-moon"></i>
+                        </button>
+                        <div class="theme-dropdown" id="theme-dropdown">
+                            <button class="theme-option active" data-theme="dark"><span class="t-color dark"></span> Dark</button>
+                            <button class="theme-option" data-theme="midnight"><span class="t-color midnight"></span> Midnight</button>
+                            <button class="theme-option" data-theme="cyberpunk"><span class="t-color cyberpunk"></span> Cyberpunk</button>
+                            <button class="theme-option" data-theme="ocean"><span class="t-color ocean"></span> Ocean</button>
+                            <button class="theme-option" data-theme="aurora"><span class="t-color aurora"></span> Aurora</button>
+                        </div>
                     </div>
+
+                    <button class="action-icon-btn magnetic-target" id="cmd-trigger" title="Command Palette (Ctrl + K)">
+                        <span class="cmd-badge">⌘K</span>
+                    </button>
                 </div>
 
                 <div class="menu-icon" id="mobile-menu-toggle">
@@ -132,17 +135,14 @@
             <ul class="sidebar-links">
                 <li><a href="#hero" class="sidebar-link">Home</a></li>
                 <li><a href="#about" class="sidebar-link">About</a></li>
-                <li><a href="#why-hire-me" class="sidebar-link">Why Hire Me</a></li>
-                <li><a href="#skills" class="sidebar-link">Technologies</a></li>
-                <li><a href="#process" class="sidebar-link">Process</a></li>
                 <li><a href="#projects" class="sidebar-link">Projects</a></li>
-                <li><a href="#achievements" class="sidebar-link">Metrics</a></li>
-                <li><a href="#testimonials" class="sidebar-link">Social Proof</a></li>
+                <li><a href="#process" class="sidebar-link">Experience</a></li>
+                <li><a href="#skills" class="sidebar-link">Skills</a></li>
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
             </ul>
         </div>
 
-        <!-- 1. Hero Section (Vercel & Senior Designer Split Layout #1) -->
+        <!-- 1. Hero Section -->
         <section class="hero" id="hero">
             <div class="hero-backdrop-card glass-card"></div>
             
@@ -249,7 +249,7 @@
             </div>
         </section>
 
-        <!-- 3. NEW: Why Hire Me? Recruiter Evaluation Matrix (#24) -->
+        <!-- 3. Why Hire Me? Recruiter Evaluation Matrix -->
         <section class="why-hire-section" id="why-hire-me">
             <div class="section-header">
                 <span class="section-subtitle">VALUE PROPOSITION</span>
@@ -291,7 +291,7 @@
             </div>
         </section>
 
-        <!-- 4. Story Arc: Technologies & Interactive Skills (No Progress Bars!) -->
+        <!-- 4. Story Arc: Technologies & Interactive Skills -->
         <section class="skills-section" id="skills">
             <div class="section-header">
                 <span class="section-subtitle">WHAT I USE</span>
@@ -320,7 +320,7 @@
                 </div>
             </div>
 
-            <!-- Interactive Skill Category Expanders (No Progress Bars) -->
+            <!-- Interactive Skill Category Expanders -->
             <div class="skills-expanders-grid">
                 <div class="skill-expander-card glass-card tilt-card active" data-category="backend">
                     <div class="expander-header">
@@ -371,7 +371,7 @@
             </div>
         </section>
 
-        <!-- 5. Story Arc: 6-Stage Engineering Process Section (#15) -->
+        <!-- 5. Story Arc: 6-Stage Engineering Process Section -->
         <section class="process-section" id="process">
             <div class="section-header">
                 <span class="section-subtitle">HOW I BUILD SOFTWARE</span>
@@ -418,7 +418,7 @@
             </div>
         </section>
 
-        <!-- 6. Story Arc: Featured Projects Showcase with Filters (#10, #18, #23) -->
+        <!-- 6. Story Arc: Featured Projects Showcase with Filters -->
         <section class="projects-section" id="projects">
             <div class="section-header">
                 <span class="section-subtitle">WHAT I BUILD</span>
@@ -593,7 +593,7 @@
             </div>
         </section>
 
-        <!-- 8. Story Arc: Testimonials & Social Proof (#19) -->
+        <!-- 8. Story Arc: Testimonials & Social Proof -->
         <section class="testimonials-section" id="testimonials">
             <div class="section-header">
                 <span class="section-subtitle">SOCIAL PROOF</span>
@@ -621,7 +621,7 @@
             </div>
         </section>
 
-        <!-- 9. Story Arc: Let's Work Together (#20) -->
+        <!-- 9. Story Arc: Let's Work Together -->
         <section class="contact-section" id="contact">
             <div class="section-header">
                 <span class="section-subtitle">LET'S WORK TOGETHER</span>
@@ -669,7 +669,7 @@
             </div>
         </section>
 
-        <!-- 10. Constellation & Animated Skyline Footer (#16) -->
+        <!-- 10. Constellation & Animated Skyline Footer -->
         <footer class="footer">
             <div class="skyline-animation"></div>
             <div class="footer-content">
@@ -697,7 +697,7 @@
         <a href="mailto:mdshahroznasir@gmail.com" class="dock-item magnetic-target copy-email-btn" title="Contact Email"><i class="bx bx-envelope"></i></a>
     </div>
 
-    <!-- NEW: Interactive Paper Resume Unfold Modal (#18) -->
+    <!-- Interactive Paper Resume Unfold Modal -->
     <div class="resume-modal" id="resume-modal">
         <div class="resume-paper-card glass-card">
             <button class="resume-close" id="resume-close"><i class="bx bx-x"></i></button>
@@ -741,7 +741,7 @@
                 <li data-action="goto" data-target="#about"><i class="bx bx-user"></i> About &amp; Timeline</li>
                 <li data-action="goto" data-target="#why-hire-me"><i class="bx bx-check-circle"></i> Why Hire Me</li>
                 <li data-action="goto" data-target="#skills"><i class="bx bx-code-alt"></i> Technologies</li>
-                <li data-action="goto" data-target="#process"><i class="bx bx-sitemap"></i> Engineering Process</li>
+                <li data-action="goto" data-target="#process"><i class="bx bx-sitemap"></i> Experience &amp; Process</li>
                 <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Featured Projects</li>
                 <li data-action="resume"><i class="bx bx-file"></i> Unfold Interactive Resume</li>
                 <li data-action="vcard"><i class="bx bx-id-card"></i> Save vCard Contact (.vcf)</li>
