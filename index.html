@@ -25,7 +25,7 @@
     <!-- Google Fonts: Syne, Outfit, Playfair Display, Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- Boxicons CDN -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!-- Lenis Smooth Scroll CDN (with defer) -->
@@ -78,34 +78,36 @@
         <!-- Terminal-Prompt Navbar Header -->
         <header id="main-header">
             <div class="header-inner" style="font-family: 'Fira Code', monospace;">
-                <!-- Left Shell Prompt -->
+                <!-- Left Shell Prompt with Dynamic Path Morphing -->
                 <div class="term-prompt">
-                    <span style="color: #3ddc84;">shahroz@dev</span>
-                    <span style="color: rgba(255, 255, 255, 0.3);">~/portfolio</span>
-                    <span style="color: #4d8dff;">$</span>
+                    <span style="color: #3ddc84; font-weight: 600;">shahroz@dev</span>
+                    <span style="color: rgba(255, 255, 255, 0.4); transition: color 0.2s;" id="term-path-span">~/portfolio</span>
+                    <span style="color: #4d8dff; font-weight: 600;">$</span>
                     <span class="term-cursor"></span>
                 </div>
 
                 <!-- Center Monospace CLI Navigation Links -->
                 <nav class="nav-center">
-                    <ul class="nav-links" style="display: flex; gap: 22px;">
-                        <li><a href="#hero" class="term-nav-item active">home</a></li>
-                        <li><a href="#about" class="term-nav-item">about</a></li>
-                        <li><a href="#skills" class="term-nav-item">skills</a></li>
-                        <li><a href="#projects" class="term-nav-item">projects</a></li>
-                        <li><a href="#process" class="term-nav-item">experience</a></li>
-                        <li><a href="#contact" class="term-nav-item">contact</a></li>
+                    <ul class="nav-links" style="display: flex; gap: 20px;">
+                        <li><a href="#hero" class="term-nav-item active" data-path="~/portfolio">home</a></li>
+                        <li><a href="#about" class="term-nav-item" data-path="~/portfolio/about">about</a></li>
+                        <li><a href="#skills" class="term-nav-item" data-path="~/portfolio/skills">skills</a></li>
+                        <li><a href="#projects" class="term-nav-item" data-path="~/portfolio/projects">projects</a></li>
+                        <li><a href="#process" class="term-nav-item" data-path="~/portfolio/exp">experience</a></li>
+                        <li><a href="#contact" class="term-nav-item" data-path="~/portfolio/contact">contact</a></li>
                     </ul>
                 </nav>
 
                 <!-- Right Executable Actions -->
                 <div class="header-actions">
-                    <button class="btn-run-resume magnetic-target" id="open-resume-btn-nav" aria-label="Download or View Resume">./resume --get</button>
+                    <button class="btn-run-resume magnetic-target" id="open-resume-btn-nav" aria-label="Execute ./resume --get command">
+                        <span id="resume-btn-text">./resume --get</span>
+                    </button>
                     
                     <div class="more-menu-wrapper">
-                        <button class="icon-round-btn magnetic-target" id="more-menu-btn" aria-label="More options" title="More Options">::</button>
+                        <button class="icon-round-btn magnetic-target" id="more-menu-btn" aria-label="More options" title="Terminal Settings &amp; Options">::</button>
                         <div class="more-dropdown" id="more-dropdown">
-                            <button id="theme-toggle" aria-label="Switch Theme"><i class="bx bx-moon"></i> Theme</button>
+                            <button id="theme-toggle" aria-label="Switch Theme"><i class="bx bx-moon"></i> Theme Mode</button>
                             <button id="sound-toggle" aria-label="Toggle sound effects"><i class="bx bx-volume-full"></i> Sound FX</button>
                             <button id="cmd-trigger" aria-label="Open command palette"><i class="bx bx-command"></i> Command palette <span class="kbd">Ctrl K</span></button>
                         </div>

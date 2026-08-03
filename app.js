@@ -1,6 +1,6 @@
 /**
- * Md. Shahroz Nasir — Terminal-Prompt Navbar & Motion Engine
- * Features Terminal ScrollSpy, Collapsed :: Options Menu, 60fps Lenis Scroll, Lazy Three.js 3D Canvas, & Web Audio Synthesizer
+ * Md. Shahroz Nasir — 10/10 Terminal-Prompt Navbar & Motion Engine
+ * Features Dynamic Path Morphing, CRT Phosphor Glow, Command Execution Feedback, Mechanical Keypress Web Audio, & 60fps Inertia Scroll
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,10 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       2. Terminal-Prompt Navbar ScrollSpy Engine & More Menu Toggle
+       2. Terminal-Prompt Navbar Dynamic Path Morphing & ScrollSpy Engine
        ========================================================================== */
     const navLinks = document.querySelectorAll('.term-nav-item');
     const sections = document.querySelectorAll('section[id]');
+    const termPathSpan = document.getElementById('term-path-span');
+
+    const updateTerminalPath = (path) => {
+        if (termPathSpan && path) {
+            termPathSpan.textContent = path;
+            termPathSpan.style.color = '#3ddc84';
+            setTimeout(() => {
+                termPathSpan.style.color = 'rgba(255, 255, 255, 0.4)';
+            }, 300);
+        }
+    };
 
     const moreMenuBtn = document.getElementById('more-menu-btn');
     const moreDropdown = document.getElementById('more-dropdown');
@@ -45,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ScrollSpy active link swap
+    // ScrollSpy active link & path swap
     window.addEventListener('scroll', () => {
         let currentSectionId = '';
         const scrollPos = window.scrollY + 220;
@@ -62,20 +73,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (href === currentSectionId) {
                     navLinks.forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
+                    const path = link.getAttribute('data-path');
+                    updateTerminalPath(path);
                 }
             });
         }
     });
 
     navLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            const path = link.getAttribute('data-path');
+            updateTerminalPath(path);
+        });
+
         link.addEventListener('click', () => {
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
+            const path = link.getAttribute('data-path');
+            updateTerminalPath(path);
         });
     });
 
     /* ==========================================================================
-       3. Synthesized Web Audio API Sci-Fi Sound Engine
+       3. Synthesized Mechanical Terminal Audio Feedback Engine
        ========================================================================== */
     let soundEnabled = true;
     let audioCtx = null;
@@ -87,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const playBeep = (freq = 600, duration = 0.06, type = 'sine') => {
+    const playBeep = (freq = 600, duration = 0.05, type = 'sine') => {
         if (!soundEnabled) return;
         try {
             initAudio();
@@ -130,25 +150,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const soundTargets = document.querySelectorAll('button, a, .magnetic-target, .dock-item, .tilt-card, .skill-expander-card, .filter-pill');
+    const soundTargets = document.querySelectorAll('button, a, .magnetic-target, .dock-item, .tilt-card, .skill-expander-card, .filter-pill, .term-nav-item');
     soundTargets.forEach(target => {
-        target.addEventListener('mouseenter', () => playBeep(520, 0.03));
-        target.addEventListener('click', () => playBeep(840, 0.08));
+        target.addEventListener('mouseenter', () => playBeep(520, 0.03, 'square'));
+        target.addEventListener('click', () => playBeep(840, 0.07, 'triangle'));
     });
 
     /* ==========================================================================
-       4. Interactive Paper Resume Unfold Modal Handlers & File Check
+       4. Interactive Paper Resume Unfold Modal Handlers & Execution Feedback
        ========================================================================== */
     const resumeModal = document.getElementById('resume-modal');
     const openResumeBtn = document.getElementById('open-resume-btn');
     const openResumeBtnNav = document.getElementById('open-resume-btn-nav');
+    const resumeBtnText = document.getElementById('resume-btn-text');
     const resumeClose = document.getElementById('resume-close');
 
     const openResume = () => {
-        if (resumeModal) {
-            resumeModal.classList.add('show');
-            playBeep(900, 0.08);
+        if (resumeBtnText) {
+            resumeBtnText.textContent = "$ exec ./resume";
         }
+        playBeep(950, 0.1, 'sawtooth');
+
+        setTimeout(() => {
+            if (resumeModal) resumeModal.classList.add('show');
+            if (resumeBtnText) resumeBtnText.textContent = "./resume --get";
+        }, 220);
     };
 
     if (openResumeBtn) openResumeBtn.addEventListener('click', openResume);
@@ -318,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         renderRing();
 
-        const targets = document.querySelectorAll('a, button, .magnetic-target, .tilt-card, .dock-item, .skill-expander-card, .filter-pill');
+        const targets = document.querySelectorAll('a, button, .magnetic-target, .tilt-card, .dock-item, .skill-expander-card, .filter-pill, .term-nav-item');
         targets.forEach(t => {
             t.addEventListener('mouseenter', () => cursorRing.classList.add('active'));
             t.addEventListener('mouseleave', () => cursorRing.classList.remove('active'));
