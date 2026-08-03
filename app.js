@@ -1,6 +1,6 @@
 /**
  * Md. Shahroz Nasir — Pixel-Exact Reference Image Navbar & Motion Engine
- * Includes Dual Resume Download/Print System, Mailto Pre-fill Contact Engine + Formspree Upgrade Comment Snippet, 7-Link ScrollSpy, Centered Active Blue Dot (•), 60fps Lenis Scroll, Three.js 3D Canvas, & Web Audio Synthesizer
+ * Features 7-Link ScrollSpy, Centered Active Blue Dot (•), 60fps Lenis Scroll, Three.js 3D Canvas, & Web Audio Synthesizer
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -86,68 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       3. Pre-filled Mailto Contact Form Handler + Formspree Upgrade Snippet
-       ========================================================================== */
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('contact-form-status');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('contact-name').value;
-            const email = document.getElementById('contact-email').value;
-            const message = document.getElementById('contact-message').value;
-
-            /* --------------------------------------------------------------------------
-               Formspree upgrade:
-               To make form submissions land directly in your inbox without opening the user's
-               email client, sign up free at formspree.io, obtain your Form ID, and uncomment below:
-
-               // fetch("https://formspree.io/f/YOUR_FORMSPREE_ID", {
-               //   method: "POST",
-               //   body: new FormData(contactForm),
-               //   headers: { 'Accept': 'application/json' }
-               // }).then(res => { if(res.ok) showStatus("Message sent!"); });
-               -------------------------------------------------------------------------- */
-
-            // Default Zero-Setup Pre-filled Mailto Action
-            window.location.href = `mailto:mdshahroznasir@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
-
-            if (formStatus) {
-                formStatus.style.color = '#00E5A8';
-                formStatus.textContent = 'Opening email client...';
-            }
-            showToast("Opening Email Client...");
-            playBeep(1000, 0.15);
-        });
-    }
-
-    /* ==========================================================================
-       4. Dual Resume System: PDF Download Check & Print Dialog Trigger
-       ========================================================================== */
-    const resumeDownloadBtn = document.getElementById('resume-download-btn');
-    const resumePrintBtn = document.getElementById('resume-print-btn');
-
-    // JS Availability Check for assets/Md_Shahroz_Nasir_Resume.pdf
-    if (resumeDownloadBtn) {
-        fetch('assets/Md_Shahroz_Nasir_Resume.pdf', { method: 'HEAD' }).then(res => {
-            if (!res.ok) {
-                resumeDownloadBtn.style.display = 'none';
-            }
-        }).catch(() => {
-            // Keep button visible for static PDF download link
-        });
-    }
-
-    if (resumePrintBtn) {
-        resumePrintBtn.addEventListener('click', () => {
-            window.print();
-        });
-    }
-
-    /* ==========================================================================
-       5. Synthesized Web Audio API Sci-Fi Sound Engine
+       3. Synthesized Web Audio API Sci-Fi Sound Engine
        ========================================================================== */
     let soundEnabled = true;
     let audioCtx = null;
@@ -208,7 +147,101 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       6. Project Category Filter Engine
+       4. Interactive Paper Resume Unfold Modal Handlers
+       ========================================================================== */
+    const resumeModal = document.getElementById('resume-modal');
+    const openResumeBtn = document.getElementById('open-resume-btn');
+    const openResumeBtnNav = document.getElementById('open-resume-btn-nav');
+    const resumeClose = document.getElementById('resume-close');
+
+    const openResume = () => {
+        if (resumeModal) {
+            resumeModal.classList.add('show');
+            playBeep(900, 0.08);
+        }
+    };
+
+    if (openResumeBtn) openResumeBtn.addEventListener('click', openResume);
+    if (openResumeBtnNav) openResumeBtnNav.addEventListener('click', openResume);
+
+    if (resumeClose && resumeModal) {
+        resumeClose.addEventListener('click', () => {
+            resumeModal.classList.remove('show');
+        });
+    }
+
+    // Resume PDF: only show the direct-download button if the file actually
+    // exists at /assets/. Until you upload the real PDF, this hides the
+    // button so visitors never hit a dead link — "Print / Save as PDF"
+    // still works for everyone via the browser's print dialog.
+    const resumeDownloadBtn = document.getElementById('resume-download-btn');
+    if (resumeDownloadBtn) {
+        fetch(resumeDownloadBtn.getAttribute('href'), { method: 'HEAD' })
+            .then(res => {
+                if (!res.ok) resumeDownloadBtn.style.display = 'none';
+            })
+            .catch(() => { resumeDownloadBtn.style.display = 'none'; });
+    }
+
+    const resumePrintBtn = document.getElementById('resume-print-btn');
+    if (resumePrintBtn) {
+        resumePrintBtn.addEventListener('click', () => {
+            window.print();
+        });
+    }
+
+    /* ==========================================================================
+       4b. Contact Form — mailto fallback (no backend/signup required)
+       ========================================================================== */
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+            const statusEl = document.getElementById('contact-form-status');
+            const submitBtn = document.getElementById('contact-submit-btn');
+
+            const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+            const body = encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            );
+
+            // Opens the visitor's own email client with everything pre-filled.
+            // Recommended upgrade: swap this for a Formspree/EmailJS POST so
+            // messages land in your inbox without the visitor needing to hit
+            // "send" themselves. See comment block below for a drop-in version.
+            window.location.href = `mailto:mdshahroznasir@gmail.com?subject=${subject}&body=${body}`;
+
+            if (statusEl) {
+                statusEl.textContent = "Opening your email app to send this message…";
+                statusEl.classList.add('show');
+            }
+            if (submitBtn) showToast("Opening email client…");
+
+            /* ---- Formspree upgrade (uncomment once you have an endpoint) ----
+            fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(contactForm)
+            }).then(res => {
+                if (res.ok) {
+                    statusEl.textContent = "Message sent — thanks for reaching out!";
+                    contactForm.reset();
+                } else {
+                    statusEl.textContent = "Something went wrong — please email me directly.";
+                }
+            }).catch(() => {
+                statusEl.textContent = "Something went wrong — please email me directly.";
+            });
+            ------------------------------------------------------------------ */
+        });
+    }
+
+    /* ==========================================================================
+       5. Project Category Filter Engine
        ========================================================================== */
     const filterPills = document.querySelectorAll('.filter-pill');
     const projectWindows = document.querySelectorAll('.apple-project-window');
@@ -233,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       7. Interactive Skill Category Expanders
+       6. Interactive Skill Category Expanders
        ========================================================================== */
     const expanderCards = document.querySelectorAll('.skill-expander-card');
     expanderCards.forEach(card => {
@@ -244,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       8. Terminal Boot Loader Sequence
+       7. Terminal Boot Loader Sequence
        ========================================================================== */
     const bootScreen = document.getElementById('boot-screen');
     const bootFill = document.getElementById('boot-fill');
@@ -274,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       9. Custom Dual-Ring Cursor
+       8. Custom Dual-Ring Cursor
        ========================================================================== */
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
@@ -306,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       10. Three.js 3D Holographic Developer Workspace Scene
+       9. Three.js 3D Holographic Developer Workspace Scene
        ========================================================================== */
     const container3D = document.getElementById('three-canvas-container');
 
@@ -380,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       11. Interactive Background Particle Canvas
+       10. Interactive Background Particle Canvas
        ========================================================================== */
     const bgCanvas = document.getElementById('bg-particle-canvas');
     if (bgCanvas) {
@@ -429,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       12. Live GitHub API Integration
+       11. Live GitHub API Integration
        ========================================================================== */
     const ghContainer = document.getElementById('live-github-grid');
     const repoCounter = document.getElementById('repo-counter');
@@ -476,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubData();
 
     /* ==========================================================================
-       13. 1-Click Mobile vCard (.vcf) Generator
+       12. 1-Click Mobile vCard (.vcf) Generator
        ========================================================================== */
     const downloadVCard = () => {
         const vcardData = `BEGIN:VCARD
@@ -508,7 +541,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       14. Hero Typewriter Role Morphing Engine
+       13. Hero Typewriter Role Morphing Engine
        ========================================================================== */
     const roleEl = document.getElementById('role-typewriter');
     const roles = ["Software Engineer", "Backend Developer", "AI Enthusiast", "Open Source Contributor", "Problem Solver"];
@@ -557,28 +590,7 @@ END:VCARD`;
     };
 
     /* ==========================================================================
-       15. Resume Modal Handler
-       ========================================================================== */
-    const resumeModal = document.getElementById('resume-modal');
-    const openResumeBtn = document.getElementById('open-resume-btn');
-    const openResumeBtnNav = document.getElementById('open-resume-btn-nav');
-    const resumeClose = document.getElementById('resume-close');
-
-    const openResume = () => {
-        if (resumeModal) resumeModal.classList.add('show');
-        playBeep(900, 0.08);
-    };
-
-    const closeResume = () => {
-        if (resumeModal) resumeModal.classList.remove('show');
-    };
-
-    if (openResumeBtn) openResumeBtn.addEventListener('click', openResume);
-    if (openResumeBtnNav) openResumeBtnNav.addEventListener('click', openResume);
-    if (resumeClose) resumeClose.addEventListener('click', closeResume);
-
-    /* ==========================================================================
-       16. Command Palette (Ctrl + K)
+       14. Command Palette (Ctrl + K)
        ========================================================================== */
     const cmdModal = document.getElementById('cmd-modal');
     const cmdTrigger = document.getElementById('cmd-trigger');
@@ -605,10 +617,7 @@ END:VCARD`;
             if (cmdModal.classList.contains('show')) closeCmd();
             else openCmd();
         }
-        if (e.key === 'Escape') {
-            closeCmd();
-            closeResume();
-        }
+        if (e.key === 'Escape') closeCmd();
     });
 
     cmdResults.forEach(item => {
@@ -620,7 +629,7 @@ END:VCARD`;
                 const el = document.querySelector(target);
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
             } else if (action === 'resume') {
-                openResume();
+                if (resumeModal) resumeModal.classList.add('show');
             } else if (action === 'vcard') {
                 downloadVCard();
             } else if (action === 'email') {
@@ -633,7 +642,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       17. Hacker Terminal ($ CLI)
+       15. Hacker Terminal ($ CLI)
        ========================================================================== */
     const termModal = document.getElementById('hacker-term-modal');
     const dockTermBtn = document.getElementById('dock-term-btn');
@@ -675,8 +684,8 @@ END:VCARD`;
                         res.textContent = "Process: Planning -> Architecture -> Development -> Testing -> Deployment -> Monitoring.";
                         break;
                     case 'resume':
-                        openResume();
-                        res.textContent = "Opening Resume Options Modal...";
+                        if (resumeModal) resumeModal.classList.add('show');
+                        res.textContent = "Unfolding interactive paper resume...";
                         break;
                     case 'contact':
                         res.textContent = "Email: mdshahroznasir@gmail.com | Location: Bengaluru, India";
@@ -700,7 +709,7 @@ END:VCARD`;
     }
 
     /* ==========================================================================
-       18. AI Assistant Chatbot
+       16. AI Assistant Chatbot
        ========================================================================== */
     const aiDrawer = document.getElementById('ai-drawer');
     const dockAiBtn = document.getElementById('dock-ai-btn');
@@ -749,7 +758,27 @@ END:VCARD`;
     if (aiInput) aiInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleAiSend(); });
 
     /* ==========================================================================
-       19. 5-Theme Engine Switcher
+       17. Konami Code Easter Egg (↑ ↑ ↓ ↓ ← → ← → B A)
+       ========================================================================== */
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIdx = 0;
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === konamiCode[konamiIdx]) {
+            konamiIdx++;
+            if (konamiIdx === konamiCode.length) {
+                document.documentElement.setAttribute('data-theme', 'cyberpunk');
+                showToast("KONAMI CODE DETECTED: CYBERPUNK MATRIX MODE ACTIVATED!");
+                playBeep(1200, 0.2, 'sawtooth');
+                konamiIdx = 0;
+            }
+        } else {
+            konamiIdx = 0;
+        }
+    });
+
+    /* ==========================================================================
+       18. 5-Theme Engine Switcher
        ========================================================================== */
     const themeBtn = document.getElementById('theme-toggle');
     const themeDropdown = document.getElementById('theme-dropdown');
@@ -776,7 +805,7 @@ END:VCARD`;
     }
 
     /* ==========================================================================
-       20. Apple Fullscreen Case Study Modal with Live Demos
+       19. Apple Fullscreen Case Study Modal
        ========================================================================== */
     const casestudyModal = document.getElementById('casestudy-modal');
     const casestudyClose = document.getElementById('casestudy-close');
@@ -798,10 +827,7 @@ END:VCARD`;
                     <p style="font-size: 13.5px; color: var(--text-sub);">Integrated LLMs to query card data dynamically, returning structured JSON metrics and personalized reward recommendations.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 15px;">
-                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary"><i class="bx bx-rocket"></i> Live Demo ↗</a>
-                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-outline"><i class="bx bxl-github"></i> GitHub Repo</a>
-            </div>
+            <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary">View GitHub Repository</a>
         `,
         youtube: `
             <span class="proj-tag">CASE STUDY</span>
@@ -817,10 +843,7 @@ END:VCARD`;
                     <p style="font-size: 13.5px; color: var(--text-sub);">Built FastAPI + Streamlit service that auto-transcribes video IDs and generates timestamped bullet summaries.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 15px;">
-                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary"><i class="bx bx-rocket"></i> Live Demo ↗</a>
-                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-outline"><i class="bx bxl-github"></i> GitHub Repo</a>
-            </div>
+            <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary">View GitHub Repository</a>
         `,
         social: `
             <span class="proj-tag">CASE STUDY</span>
@@ -836,10 +859,7 @@ END:VCARD`;
                     <p style="font-size: 13.5px; color: var(--text-sub);">Sub-50ms endpoint response latencies, robust password hashing, and clean architectural separation of concerns.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 15px;">
-                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary"><i class="bx bx-rocket"></i> Live Demo ↗ (API Specs)</a>
-                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-outline"><i class="bx bxl-github"></i> GitHub Repo</a>
-            </div>
+            <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary">View GitHub Repository</a>
         `
     };
 
@@ -857,7 +877,7 @@ END:VCARD`;
     if (casestudyClose) casestudyClose.addEventListener('click', () => casestudyModal.classList.remove('show'));
 
     /* ==========================================================================
-       21. 1-Click Copy Email & Toast Notification
+       20. 1-Click Copy Email & Toast Notification
        ========================================================================== */
     const targetEmail = "mdshahroznasir@gmail.com";
     const toast = document.getElementById('toast');
@@ -886,7 +906,7 @@ END:VCARD`;
     });
 
     /* ==========================================================================
-       22. 3D Card Tilt Physics & Mobile Navigation
+       21. 3D Card Tilt Physics & Mobile Navigation
        ========================================================================== */
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
