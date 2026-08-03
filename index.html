@@ -105,10 +105,10 @@
                         <span class="status-dot"></span> Open to Work
                     </div>
 
-                    <!-- Resume ↗ Pill Button (Direct PDF Download) -->
-                    <a href="Shahroz_Nasir_Resume.pdf" download="Shahroz_Nasir_Resume.pdf" class="btn-resume-glow magnetic-target" id="open-resume-btn-nav" title="Download Shahroz Nasir PDF Resume">
+                    <!-- Resume ↗ Button -->
+                    <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav" title="View Resume Options">
                         Resume <i class="bx bx-up-arrow-alt"></i>
-                    </a>
+                    </button>
 
                     <!-- Moon Theme Toggle Button -->
                     <div class="theme-menu-wrapper">
@@ -180,9 +180,9 @@
                 </p>
 
                 <div class="hero-buttons">
-                    <a href="Shahroz_Nasir_Resume.pdf" download="Shahroz_Nasir_Resume.pdf" class="btn btn-primary magnetic-target" id="open-resume-btn">
-                        <i class="bx bx-download"></i> Download Resume
-                    </a>
+                    <button class="btn btn-primary magnetic-target" id="open-resume-btn">
+                        <i class="bx bx-file"></i> View Resume
+                    </button>
                     <a href="#projects" class="btn btn-secondary magnetic-target">
                         <i class="bx bx-grid-alt"></i> View Projects
                     </a>
@@ -646,7 +646,7 @@
             </div>
         </section>
 
-        <!-- 9. Story Arc: Real Formspree Contact Form Submission -->
+        <!-- 9. Story Arc: Direct Pre-filled Mailto Contact Form -->
         <section class="contact-section" id="contact">
             <div class="section-header">
                 <span class="section-subtitle">LET'S WORK TOGETHER</span>
@@ -674,8 +674,8 @@
                     </div>
                 </div>
 
-                <!-- Formspree / AJAX Contact Form -->
-                <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdshahroznasir" method="POST">
+                <!-- Pre-filled Mailto / Formspree Contact Form -->
+                <form class="contact-form" id="contact-form" action="mailto:mdshahroznasir@gmail.com" method="GET">
                     <div class="form-group">
                         <label>Your Name</label>
                         <input type="text" name="name" id="form-name" placeholder="John Doe" required>
@@ -696,8 +696,8 @@
                 <!-- Animated Success Message Card -->
                 <div class="form-success-card glass-card" id="form-success-card" style="display:none;">
                     <i class="bx bx-check-circle success-icon"></i>
-                    <h3>Message Delivered!</h3>
-                    <p>Thank you for reaching out. Shahroz has received your message and will respond directly to your email shortly.</p>
+                    <h3>Opening Email Client...</h3>
+                    <p>Your message has been pre-filled into your mail application. Click send to deliver directly to mdshahroznasir@gmail.com!</p>
                 </div>
             </div>
         </section>
@@ -730,14 +730,14 @@
         <a href="mailto:mdshahroznasir@gmail.com" class="dock-item magnetic-target copy-email-btn" title="Contact Email"><i class="bx bx-envelope"></i></a>
     </div>
 
-    <!-- Interactive Paper Resume Unfold Modal -->
+    <!-- Interactive Paper Resume Unfold Modal with Dual Resume Options -->
     <div class="resume-modal" id="resume-modal">
-        <div class="resume-paper-card glass-card">
+        <div class="resume-paper-card glass-card" id="printable-resume-card">
             <button class="resume-close" id="resume-close"><i class="bx bx-x"></i></button>
             <div class="resume-paper-header">
                 <h2>Md. Shahroz Nasir</h2>
                 <p>Software Engineer | Backend • AI • Full Stack</p>
-                <span class="loc">Bengaluru, India • mdshahroznasir@gmail.com</span>
+                <span class="loc">Bengaluru, India • mdshahroznasir@gmail.com • github.com/shahroznasir</span>
             </div>
             <div class="resume-paper-body">
                 <div class="res-sec">
@@ -750,15 +750,24 @@
                     <strong>Frameworks &amp; Tools:</strong> FastAPI, Node.js, React, Docker, PostgreSQL, SQLAlchemy, Redis, OpenAI API, LangChain, Git, AWS</p>
                 </div>
                 <div class="res-sec">
+                    <h4>Featured Engineering Projects</h4>
+                    <p><strong>ADCB Card AI Platform:</strong> Intelligent credit profiling engine with RAG LLM query analyzer.<br>
+                    <strong>YouTube Video Summarizer:</strong> Automated video transcript extraction and executive summary pipeline.<br>
+                    <strong>Social Media Scalable REST API:</strong> Production-grade FastAPI microservices with JWT auth and ORM schemas.</p>
+                </div>
+                <div class="res-sec">
                     <h4>Education</h4>
-                    <p><strong>Computer Science Engineering Degree (2021 – 2025)</strong><br>
-                    Relevant Coursework: Data Structures &amp; Algorithms, OS, DBMS, Software Engineering, AI</p>
+                    <p><strong>Bachelor of Technology in Computer Science Engineering (2021 – 2025)</strong><br>
+                    Relevant Coursework: Data Structures &amp; Algorithms, OS, DBMS, Software Engineering, AI/ML</p>
                 </div>
             </div>
-            <div class="resume-paper-footer">
-                <a href="Shahroz_Nasir_Resume.pdf" download="Shahroz_Nasir_Resume.pdf" class="btn btn-primary">
+            <div class="resume-paper-footer" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="assets/Md_Shahroz_Nasir_Resume.pdf" download="Md_Shahroz_Nasir_Resume.pdf" class="btn btn-primary" id="pdf-download-link">
                     <i class="bx bx-download"></i> Download PDF Resume
                 </a>
+                <button class="btn btn-secondary" id="print-resume-btn">
+                    <i class="bx bx-printer"></i> Print / Save as PDF
+                </button>
             </div>
         </div>
     </div>
