@@ -47,14 +47,18 @@ document.addEventListener('DOMContentLoaded', () => {
         moreMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             moreDropdown.classList.toggle('open');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!moreMenuBtn.contains(e.target) && !moreDropdown.contains(e.target)) {
-                moreDropdown.classList.remove('open');
-            }
+            if (themeDropdown) themeDropdown.classList.remove('show');
         });
     }
+
+    document.addEventListener('click', (e) => {
+        if (moreMenuBtn && moreDropdown && !moreMenuBtn.contains(e.target) && !moreDropdown.contains(e.target)) {
+            moreDropdown.classList.remove('open');
+        }
+        if (themeToggleBtn && themeDropdown && !themeToggleBtn.contains(e.target) && !themeDropdown.contains(e.target)) {
+            themeDropdown.classList.remove('show');
+        }
+    });
 
     // ScrollSpy active link & path swap
     window.addEventListener('scroll', () => {
@@ -622,6 +626,7 @@ END:VCARD`;
         themeToggleBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             themeDropdown.classList.toggle('show');
+            if (moreDropdown) moreDropdown.classList.remove('open');
         });
     }
 
@@ -810,13 +815,18 @@ END:VCARD`;
     const themeOptions = document.querySelectorAll('.theme-option');
 
     themeOptions.forEach(opt => {
-        opt.addEventListener('click', () => {
+        opt.addEventListener('click', (e) => {
+            e.stopPropagation();
             themeOptions.forEach(o => o.classList.remove('active'));
             opt.classList.add('active');
             const themeName = opt.getAttribute('data-theme');
             document.documentElement.setAttribute('data-theme', themeName);
             showToast(`Switched theme to ${themeName.toUpperCase()}`);
             playBeep(1050, 0.08);
+
+            // Hide popups!
+            if (themeDropdown) themeDropdown.classList.remove('show');
+            if (moreDropdown) moreDropdown.classList.remove('open');
         });
     });
 
