@@ -105,8 +105,8 @@
                         <span class="status-dot"></span> Open to Work
                     </div>
 
-                    <!-- Resume ↗ Button -->
-                    <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav" title="View Resume Options">
+                    <!-- Resume ↗ Pill Button -->
+                    <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav">
                         Resume <i class="bx bx-up-arrow-alt"></i>
                     </button>
 
@@ -181,7 +181,7 @@
 
                 <div class="hero-buttons">
                     <button class="btn btn-primary magnetic-target" id="open-resume-btn">
-                        <i class="bx bx-file"></i> View Resume
+                        <i class="bx bx-file"></i> Resume
                     </button>
                     <a href="#projects" class="btn btn-secondary magnetic-target">
                         <i class="bx bx-grid-alt"></i> View Projects
@@ -434,7 +434,7 @@
             </div>
         </section>
 
-        <!-- 6. Story Arc: Featured Projects Showcase with Live Demo ↗ Links -->
+        <!-- 6. Story Arc: Featured Projects Showcase with Filters -->
         <section class="projects-section" id="projects">
             <div class="section-header">
                 <span class="section-subtitle">WHAT I BUILD</span>
@@ -471,11 +471,8 @@
                             </div>
 
                             <div class="proj-actions">
-                                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bx-rocket"></i> Live Demo ↗
-                                </a>
-                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="adcb">
-                                    <i class="bx bx-book-open"></i> Case Study
+                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="adcb">
+                                    <i class="bx bx-book-open"></i> Open Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -516,11 +513,8 @@
                             </div>
 
                             <div class="proj-actions">
-                                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bx-rocket"></i> Live Demo ↗
-                                </a>
-                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="youtube">
-                                    <i class="bx bx-book-open"></i> Case Study
+                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="youtube">
+                                    <i class="bx bx-book-open"></i> Open Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -560,11 +554,8 @@
                             </div>
 
                             <div class="proj-actions">
-                                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bx-rocket"></i> Live Demo ↗ (API Docs)
-                                </a>
-                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="social">
-                                    <i class="bx bx-book-open"></i> Case Study
+                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="social">
+                                    <i class="bx bx-book-open"></i> Open Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -646,7 +637,7 @@
             </div>
         </section>
 
-        <!-- 9. Story Arc: Direct Pre-filled Mailto Contact Form -->
+        <!-- 9. Story Arc: Let's Work Together -->
         <section class="contact-section" id="contact">
             <div class="section-header">
                 <span class="section-subtitle">LET'S WORK TOGETHER</span>
@@ -674,31 +665,24 @@
                     </div>
                 </div>
 
-                <!-- Pre-filled Mailto / Formspree Contact Form -->
-                <form class="contact-form" id="contact-form" action="mailto:mdshahroznasir@gmail.com" method="GET">
+                <form class="contact-form" id="contact-form">
                     <div class="form-group">
                         <label>Your Name</label>
-                        <input type="text" name="name" id="form-name" placeholder="John Doe" required>
+                        <input type="text" id="contact-name" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" name="email" id="form-email" placeholder="john@example.com" required>
+                        <input type="email" id="contact-email" name="email" placeholder="john@example.com" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea name="message" id="form-message" rows="4" placeholder="Tell me about your product or engineering goals..." required></textarea>
+                        <textarea rows="4" id="contact-message" name="message" placeholder="Tell me about your product or engineering goals..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-liquid magnetic-target" id="submit-btn">
-                        <span id="submit-text">Send Message</span> <i class="bx bx-paper-plane" id="submit-icon"></i>
+                    <button type="submit" class="btn btn-liquid magnetic-target" id="contact-submit-btn">
+                        Send Message <i class="bx bx-paper-plane"></i>
                     </button>
+                    <p class="form-status" id="contact-form-status" aria-live="polite"></p>
                 </form>
-
-                <!-- Animated Success Message Card -->
-                <div class="form-success-card glass-card" id="form-success-card" style="display:none;">
-                    <i class="bx bx-check-circle success-icon"></i>
-                    <h3>Opening Email Client...</h3>
-                    <p>Your message has been pre-filled into your mail application. Click send to deliver directly to mdshahroznasir@gmail.com!</p>
-                </div>
             </div>
         </section>
 
@@ -730,14 +714,14 @@
         <a href="mailto:mdshahroznasir@gmail.com" class="dock-item magnetic-target copy-email-btn" title="Contact Email"><i class="bx bx-envelope"></i></a>
     </div>
 
-    <!-- Interactive Paper Resume Unfold Modal with Dual Resume Options -->
+    <!-- Interactive Paper Resume Unfold Modal -->
     <div class="resume-modal" id="resume-modal">
-        <div class="resume-paper-card glass-card" id="printable-resume-card">
+        <div class="resume-paper-card glass-card">
             <button class="resume-close" id="resume-close"><i class="bx bx-x"></i></button>
             <div class="resume-paper-header">
                 <h2>Md. Shahroz Nasir</h2>
                 <p>Software Engineer | Backend • AI • Full Stack</p>
-                <span class="loc">Bengaluru, India • mdshahroznasir@gmail.com • github.com/shahroznasir</span>
+                <span class="loc">Bengaluru, India • mdshahroznasir@gmail.com</span>
             </div>
             <div class="resume-paper-body">
                 <div class="res-sec">
@@ -750,24 +734,14 @@
                     <strong>Frameworks &amp; Tools:</strong> FastAPI, Node.js, React, Docker, PostgreSQL, SQLAlchemy, Redis, OpenAI API, LangChain, Git, AWS</p>
                 </div>
                 <div class="res-sec">
-                    <h4>Featured Engineering Projects</h4>
-                    <p><strong>ADCB Card AI Platform:</strong> Intelligent credit profiling engine with RAG LLM query analyzer.<br>
-                    <strong>YouTube Video Summarizer:</strong> Automated video transcript extraction and executive summary pipeline.<br>
-                    <strong>Social Media Scalable REST API:</strong> Production-grade FastAPI microservices with JWT auth and ORM schemas.</p>
-                </div>
-                <div class="res-sec">
                     <h4>Education</h4>
-                    <p><strong>Bachelor of Technology in Computer Science Engineering (2021 – 2025)</strong><br>
-                    Relevant Coursework: Data Structures &amp; Algorithms, OS, DBMS, Software Engineering, AI/ML</p>
+                    <p><strong>Computer Science Engineering Degree (2021 – 2025)</strong><br>
+                    Relevant Coursework: Data Structures &amp; Algorithms, OS, DBMS, Software Engineering, AI</p>
                 </div>
             </div>
-            <div class="resume-paper-footer" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="assets/Md_Shahroz_Nasir_Resume.pdf" download="Md_Shahroz_Nasir_Resume.pdf" class="btn btn-primary" id="pdf-download-link">
-                    <i class="bx bx-download"></i> Download PDF Resume
-                </a>
-                <button class="btn btn-secondary" id="print-resume-btn">
-                    <i class="bx bx-printer"></i> Print / Save as PDF
-                </button>
+            <div class="resume-paper-footer">
+                <a href="assets/Md_Shahroz_Nasir_Resume.pdf" download class="btn btn-primary" id="resume-download-btn">Download PDF Resume</a>
+                <button class="btn btn-outline" id="resume-print-btn" type="button">Print / Save as PDF</button>
             </div>
         </div>
     </div>
@@ -787,7 +761,7 @@
                 <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Projects</li>
                 <li data-action="goto" data-target="#process"><i class="bx bx-sitemap"></i> Experience &amp; Process</li>
                 <li data-action="goto" data-target="#achievements"><i class="bx bx-award"></i> Achievements</li>
-                <li data-action="resume"><i class="bx bx-download"></i> Download PDF Resume</li>
+                <li data-action="resume"><i class="bx bx-file"></i> Unfold Interactive Resume</li>
                 <li data-action="vcard"><i class="bx bx-id-card"></i> Save vCard Contact (.vcf)</li>
                 <li data-action="email"><i class="bx bx-copy"></i> Copy Email (mdshahroznasir@gmail.com)</li>
                 <li data-action="github"><i class="bx bxl-github"></i> Open GitHub Profile</li>

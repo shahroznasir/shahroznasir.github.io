@@ -89,15 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
        3. Pre-filled Mailto Contact Form Handler + Formspree Upgrade Snippet
        ========================================================================== */
     const contactForm = document.getElementById('contact-form');
-    const formSuccessCard = document.getElementById('form-success-card');
+    const formStatus = document.getElementById('contact-form-status');
 
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const message = document.getElementById('form-message').value;
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
 
             /* --------------------------------------------------------------------------
                Formspree upgrade:
@@ -108,14 +108,16 @@ document.addEventListener('DOMContentLoaded', () => {
                //   method: "POST",
                //   body: new FormData(contactForm),
                //   headers: { 'Accept': 'application/json' }
-               // }).then(res => { if(res.ok) showSuccessUI(); });
+               // }).then(res => { if(res.ok) showStatus("Message sent!"); });
                -------------------------------------------------------------------------- */
 
             // Default Zero-Setup Pre-filled Mailto Action
             window.location.href = `mailto:mdshahroznasir@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}%0A%0AFrom: ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
 
-            if (contactForm) contactForm.style.display = 'none';
-            if (formSuccessCard) formSuccessCard.style.display = 'flex';
+            if (formStatus) {
+                formStatus.style.color = '#00E5A8';
+                formStatus.textContent = 'Opening email client...';
+            }
             showToast("Opening Email Client...");
             playBeep(1000, 0.15);
         });
@@ -124,22 +126,22 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        4. Dual Resume System: PDF Download Check & Print Dialog Trigger
        ========================================================================== */
-    const pdfDownloadLink = document.getElementById('pdf-download-link');
-    const printResumeBtn = document.getElementById('print-resume-btn');
+    const resumeDownloadBtn = document.getElementById('resume-download-btn');
+    const resumePrintBtn = document.getElementById('resume-print-btn');
 
     // JS Availability Check for assets/Md_Shahroz_Nasir_Resume.pdf
-    if (pdfDownloadLink) {
+    if (resumeDownloadBtn) {
         fetch('assets/Md_Shahroz_Nasir_Resume.pdf', { method: 'HEAD' }).then(res => {
             if (!res.ok) {
-                pdfDownloadLink.style.display = 'none';
+                resumeDownloadBtn.style.display = 'none';
             }
         }).catch(() => {
             // Keep button visible for static PDF download link
         });
     }
 
-    if (printResumeBtn) {
-        printResumeBtn.addEventListener('click', () => {
+    if (resumePrintBtn) {
+        resumePrintBtn.addEventListener('click', () => {
             window.print();
         });
     }
