@@ -214,10 +214,10 @@ body {
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-/* Floating Header */
+/* Floating Header with Expanded Spacing */
 header {
     position: fixed; top: 16px; left: 20px; right: 20px;
-    max-width: 1260px; height: 54px; margin: 0 auto;
+    max-width: 1260px; height: 58px; margin: 0 auto;
     z-index: 1000; transition: var(--transition-smooth);
 }
 
@@ -227,8 +227,8 @@ header {
     backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
     border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(91, 140, 255, 0.15);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px; gap: 32px;
 }
 
 /* Left: Glass Logo Box [ SN 🟢 ] */
@@ -272,15 +272,17 @@ header nav ul a.active {
 }
 
 /* Right: Actions */
-.header-actions { display: flex; align-items: center; gap: 10px; }
+.header-actions { display: flex; align-items: center; gap: 14px; }
 
-.status-pill {
-    font-size: 11.5px; color: #00E5A8; background: rgba(0, 229, 168, 0.08);
-    border: 1px solid rgba(0, 229, 168, 0.25); padding: 4px 14px;
-    border-radius: 20px; display: flex; align-items: center; gap: 6px;
-    font-weight: 500; white-space: nowrap;
+.status-text {
+    display: flex; align-items: center; gap: 6px;
+    color: rgba(255, 255, 255, 0.5); font-size: 13px; font-weight: 400;
+    white-space: nowrap;
 }
-.status-dot { width: 6px; height: 6px; background: #00E5A8; border-radius: 50%; box-shadow: 0 0 8px #00E5A8; }
+.status-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #3ddc84; box-shadow: 0 0 8px #3ddc84;
+}
 
 .btn-resume-glow {
     background: linear-gradient(135deg, #4A7BFF 0%, #2B5CFF 100%);
@@ -294,29 +296,42 @@ header nav ul a.active {
     box-shadow: 0 6px 20px rgba(59, 102, 255, 0.6); transform: translateY(-2px);
 }
 
-.theme-menu-wrapper { position: relative; }
+/* More 3-Dot Overflow Menu Wrapper */
+.more-menu-wrapper { position: relative; }
 .icon-round-btn {
     width: 32px; height: 32px; border-radius: 50%;
     background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.8); font-size: 14px; display: flex;
+    color: rgba(255, 255, 255, 0.8); font-size: 16px; display: flex;
     align-items: center; justify-content: center; cursor: pointer;
     transition: var(--transition-smooth);
 }
 .icon-round-btn:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.1); border-color: rgba(91, 140, 255, 0.3); }
 
-.cmd-pill-btn {
-    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.8); padding: 5px 12px; border-radius: 16px;
-    font-size: 11px; display: flex; align-items: center; gap: 5px;
-    cursor: pointer; transition: var(--transition-smooth); font-family: var(--font-code);
+.more-dropdown {
+    display: none; position: absolute; top: 100%; right: 0; margin-top: 10px;
+    background: #0a0f1e; border: 0.5px solid rgba(255, 255, 255, 0.1); border-radius: 10px;
+    padding: 6px; min-width: 190px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    z-index: 1002;
 }
-.cmd-pill-btn:hover { color: #FFFFFF; border-color: rgba(91, 140, 255, 0.3); background: rgba(255, 255, 255, 0.1); }
+.more-dropdown.open { display: block; }
+.more-dropdown button {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+    padding: 8px 10px; background: none; border: none; color: rgba(255, 255, 255, 0.8);
+    font-size: 13px; text-align: left; cursor: pointer; border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+.more-dropdown button:hover { background: rgba(255, 255, 255, 0.06); color: #FFFFFF; }
+.more-dropdown button i { font-size: 16px; color: var(--primary); }
+.more-dropdown .kbd {
+    margin-left: auto; font-family: var(--font-code); font-size: 10px;
+    background: rgba(255, 255, 255, 0.1); padding: 2px 6px; border-radius: 4px; color: var(--text-sub);
+}
 
 .theme-dropdown {
     position: absolute; top: 44px; right: 0; width: 150px;
     background: rgba(11, 17, 32, 0.95); backdrop-filter: blur(20px);
     border: 1px solid var(--border-card); border-radius: 12px; padding: 8px;
-    display: none; flex-direction: column; gap: 4px; z-index: 1001;
+    display: none; flex-direction: column; gap: 4px; z-index: 1003;
 }
 .theme-dropdown.show { display: flex; }
 .theme-option {
@@ -799,13 +814,12 @@ header nav ul a.active {
 @media (max-width: 1100px) {
     header nav ul { gap: 14px; }
     header nav ul a { font-size: 12px; }
-    .status-pill { display: none; }
+    .status-text { display: none; }
 }
 
 @media (max-width: 900px) {
     header nav ul { display: none; }
     .active-blue-dot { display: none; }
-    .cmd-pill-btn { display: none; }
     .menu-icon { display: block; }
     .hero { grid-template-columns: 1fr; text-align: center; padding-top: 130px; gap: 30px; }
     .hero-left { align-items: center; }

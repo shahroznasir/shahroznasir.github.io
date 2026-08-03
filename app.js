@@ -125,16 +125,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const soundToggleBtn = document.getElementById('sound-toggle');
     if (soundToggleBtn) {
-        soundToggleBtn.addEventListener('click', () => {
+        soundToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             soundEnabled = !soundEnabled;
             if (soundEnabled) {
                 soundToggleBtn.classList.remove('muted');
-                soundToggleBtn.innerHTML = '<i class="bx bx-volume-full"></i>';
+                soundToggleBtn.innerHTML = '<i class="bx bx-volume-full"></i> Sound FX';
                 playBeep(880, 0.1);
                 showToast("Sound FX Enabled");
             } else {
                 soundToggleBtn.classList.add('muted');
-                soundToggleBtn.innerHTML = '<i class="bx bx-volume-mute"></i>';
+                soundToggleBtn.innerHTML = '<i class="bx bx-volume-mute"></i> Sound FX (Muted)';
                 showToast("Sound FX Muted");
             }
         });
@@ -221,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     showToast("Message Sent Successfully!");
                     playBeep(1000, 0.15);
                 } else {
-                    // Pre-filled mailto fallback if Formspree unconfigured
                     triggerMailtoFallback(name, email, message);
                 }
             } catch (err) {
@@ -593,8 +593,26 @@ END:VCARD`;
     };
 
     /* ==========================================================================
-       14. Command Palette (Ctrl + K)
+       14. Overflow 3-Dot Dropdown Menu & Command Palette (Ctrl + K)
        ========================================================================== */
+    const moreMenuBtn = document.getElementById('more-menu-btn');
+    const moreDropdown = document.getElementById('more-dropdown');
+    const themeDropdown = document.getElementById('theme-dropdown');
+
+    if (moreMenuBtn && moreDropdown) {
+        moreMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (themeDropdown) themeDropdown.classList.remove('show');
+            moreDropdown.classList.toggle('open');
+            playBeep(700, 0.05);
+        });
+
+        window.addEventListener('click', () => {
+            moreDropdown.classList.remove('open');
+            if (themeDropdown) themeDropdown.classList.remove('show');
+        });
+    }
+
     const cmdModal = document.getElementById('cmd-modal');
     const cmdTrigger = document.getElementById('cmd-trigger');
     const dockCmdBtn = document.getElementById('dock-cmd-btn');
@@ -604,6 +622,7 @@ END:VCARD`;
     const openCmd = () => {
         if (cmdModal) cmdModal.classList.add('show');
         if (cmdInput) cmdInput.focus();
+        if (moreDropdown) moreDropdown.classList.remove('open');
         playBeep(900, 0.08);
     };
 
@@ -611,7 +630,7 @@ END:VCARD`;
         if (cmdModal) cmdModal.classList.remove('show');
     };
 
-    if (cmdTrigger) cmdTrigger.addEventListener('click', openCmd);
+    if (cmdTrigger) cmdTrigger.addEventListener('click', (e) => { e.stopPropagation(); openCmd(); });
     if (dockCmdBtn) dockCmdBtn.addEventListener('click', openCmd);
 
     window.addEventListener('keydown', (e) => {
@@ -784,16 +803,14 @@ END:VCARD`;
        18. 5-Theme Engine Switcher
        ========================================================================== */
     const themeBtn = document.getElementById('theme-toggle');
-    const themeDropdown = document.getElementById('theme-dropdown');
     const themeOptions = document.querySelectorAll('.theme-option');
 
     if (themeBtn && themeDropdown) {
         themeBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            if (moreDropdown) moreDropdown.classList.remove('open');
             themeDropdown.classList.toggle('show');
         });
-
-        window.addEventListener('click', () => themeDropdown.classList.remove('show'));
 
         themeOptions.forEach(opt => {
             opt.addEventListener('click', () => {

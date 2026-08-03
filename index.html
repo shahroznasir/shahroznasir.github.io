@@ -100,21 +100,26 @@
 
                 <!-- Right: Action Buttons Sequence -->
                 <div class="header-actions">
-                    <!-- Status Pill 🟢 Open to Work -->
-                    <div class="status-pill">
-                        <span class="status-dot"></span> Open to Work
+                    <!-- Subtle Status Text 🟢 Open to work -->
+                    <div class="status-text">
+                        <span class="status-dot"></span> Open to work
                     </div>
 
-                    <!-- Resume ↗ Button -->
+                    <!-- Resume ↗ Button (Single Accent CTA) -->
                     <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav" aria-label="Open Resume Options">
                         Resume <i class="bx bx-up-arrow-alt"></i>
                     </button>
 
-                    <!-- Moon Theme Toggle Button -->
-                    <div class="theme-menu-wrapper">
-                        <button class="icon-round-btn magnetic-target" id="theme-toggle" aria-label="Switch Theme" title="Switch Theme">
-                            <i class="bx bx-moon"></i>
+                    <!-- Collapsed 3-Dot Overflow Menu Button & Dropdown -->
+                    <div class="more-menu-wrapper">
+                        <button class="icon-round-btn magnetic-target" id="more-menu-btn" aria-label="More options" title="More Options">
+                            <i class="bx bx-dots-vertical-rounded"></i>
                         </button>
+                        <div class="more-dropdown" id="more-dropdown">
+                            <button id="theme-toggle" aria-label="Switch Theme"><i class="bx bx-moon"></i> Theme</button>
+                            <button id="sound-toggle" aria-label="Toggle sound effects"><i class="bx bx-volume-full"></i> Sound FX</button>
+                            <button id="cmd-trigger" aria-label="Open command palette"><i class="bx bx-command"></i> Command palette <span class="kbd">Ctrl K</span></button>
+                        </div>
                         <div class="theme-dropdown" id="theme-dropdown">
                             <button class="theme-option active" data-theme="dark"><span class="t-color dark"></span> Dark</button>
                             <button class="theme-option" data-theme="midnight"><span class="t-color midnight"></span> Midnight</button>
@@ -123,16 +128,6 @@
                             <button class="theme-option" data-theme="aurora"><span class="t-color aurora"></span> Aurora</button>
                         </div>
                     </div>
-
-                    <!-- Speaker Sound Toggle Button -->
-                    <button class="icon-round-btn magnetic-target" id="sound-toggle" aria-label="Toggle Sound Effects" title="Toggle Sound FX">
-                        <i class="bx bx-volume-full"></i>
-                    </button>
-
-                    <!-- ⌘ Ctrl K Command Palette Badge Button -->
-                    <button class="cmd-pill-btn magnetic-target" id="cmd-trigger" aria-label="Open Command Palette" title="Command Palette (Ctrl + K)">
-                        <i class="bx bx-command"></i> <span>Ctrl K</span>
-                    </button>
 
                     <!-- Mobile Menu Icon -->
                     <div class="menu-icon" id="mobile-menu-toggle" aria-label="Toggle Mobile Navigation Menu">
