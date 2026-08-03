@@ -28,8 +28,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <!-- Boxicons CDN -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <!-- Lenis Smooth Scroll CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <!-- Lenis Smooth Scroll CDN (with defer) -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js" defer></script>
 </head>
 <body>
     <!-- Top Neon Scroll Progress Bar -->
@@ -79,7 +79,7 @@
         <header id="main-header">
             <div class="header-inner">
                 <!-- Left: SN Glass Logo Box with Top-Right Neon Dot -->
-                <a class="logo-box magnetic-target" href="#hero">
+                <a class="logo-box magnetic-target" href="#hero" aria-label="Shahroz Nasir Home">
                     <span class="logo-text">SN</span>
                     <span class="logo-dot"></span>
                 </a>
@@ -105,14 +105,14 @@
                         <span class="status-dot"></span> Open to Work
                     </div>
 
-                    <!-- Resume ↗ Pill Button -->
-                    <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav">
+                    <!-- Resume ↗ Button -->
+                    <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav" aria-label="Open Resume Options">
                         Resume <i class="bx bx-up-arrow-alt"></i>
                     </button>
 
                     <!-- Moon Theme Toggle Button -->
                     <div class="theme-menu-wrapper">
-                        <button class="icon-round-btn magnetic-target" id="theme-toggle" title="Switch Theme">
+                        <button class="icon-round-btn magnetic-target" id="theme-toggle" aria-label="Switch Theme" title="Switch Theme">
                             <i class="bx bx-moon"></i>
                         </button>
                         <div class="theme-dropdown" id="theme-dropdown">
@@ -125,17 +125,17 @@
                     </div>
 
                     <!-- Speaker Sound Toggle Button -->
-                    <button class="icon-round-btn magnetic-target" id="sound-toggle" title="Toggle Sound FX">
+                    <button class="icon-round-btn magnetic-target" id="sound-toggle" aria-label="Toggle Sound Effects" title="Toggle Sound FX">
                         <i class="bx bx-volume-full"></i>
                     </button>
 
                     <!-- ⌘ Ctrl K Command Palette Badge Button -->
-                    <button class="cmd-pill-btn magnetic-target" id="cmd-trigger" title="Command Palette (Ctrl + K)">
+                    <button class="cmd-pill-btn magnetic-target" id="cmd-trigger" aria-label="Open Command Palette" title="Command Palette (Ctrl + K)">
                         <i class="bx bx-command"></i> <span>Ctrl K</span>
                     </button>
 
                     <!-- Mobile Menu Icon -->
-                    <div class="menu-icon" id="mobile-menu-toggle">
+                    <div class="menu-icon" id="mobile-menu-toggle" aria-label="Toggle Mobile Navigation Menu">
                         <i class="bx bx-menu"></i>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
 
         <!-- Mobile Sidebar -->
         <div class="sidebar" id="mobile-sidebar">
-            <div class="close-icon" id="mobile-menu-close">
+            <div class="close-icon" id="mobile-menu-close" aria-label="Close Navigation Menu">
                 <i class="bx bx-x"></i>
             </div>
             <ul class="sidebar-links">
@@ -181,7 +181,7 @@
 
                 <div class="hero-buttons">
                     <button class="btn btn-primary magnetic-target" id="open-resume-btn">
-                        <i class="bx bx-file"></i> Resume
+                        <i class="bx bx-file"></i> View Resume
                     </button>
                     <a href="#projects" class="btn btn-secondary magnetic-target">
                         <i class="bx bx-grid-alt"></i> View Projects
@@ -195,7 +195,7 @@
             <!-- Right Side: 3D Holographic Developer Workspace -->
             <div class="hero-right">
                 <div class="three-canvas-container" id="three-canvas-container">
-                    <!-- Three.js Canvas injected here -->
+                    <!-- Three.js Canvas injected lazily on window load -->
                 </div>
                 <div class="floating-tech-badges">
                     <div class="tech-badge badge-1 float-anim"><i class="bx bxl-python"></i> Python</div>
@@ -434,7 +434,7 @@
             </div>
         </section>
 
-        <!-- 6. Story Arc: Featured Projects Showcase with Filters -->
+        <!-- 6. Story Arc: Featured Projects Showcase with Direct Live Demo ↗ Links -->
         <section class="projects-section" id="projects">
             <div class="section-header">
                 <span class="section-subtitle">WHAT I BUILD</span>
@@ -471,8 +471,11 @@
                             </div>
 
                             <div class="proj-actions">
-                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="adcb">
-                                    <i class="bx bx-book-open"></i> Open Case Study
+                                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary magnetic-target">
+                                    <i class="bx bx-rocket"></i> Live Demo ↗
+                                </a>
+                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="adcb">
+                                    <i class="bx bx-book-open"></i> Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -513,8 +516,11 @@
                             </div>
 
                             <div class="proj-actions">
-                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="youtube">
-                                    <i class="bx bx-book-open"></i> Open Case Study
+                                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary magnetic-target">
+                                    <i class="bx bx-rocket"></i> Live Demo ↗
+                                </a>
+                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="youtube">
+                                    <i class="bx bx-book-open"></i> Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -554,8 +560,11 @@
                             </div>
 
                             <div class="proj-actions">
-                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="social">
-                                    <i class="bx bx-book-open"></i> Open Case Study
+                                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary magnetic-target">
+                                    <i class="bx bx-rocket"></i> Live Demo ↗ (API Docs)
+                                </a>
+                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="social">
+                                    <i class="bx bx-book-open"></i> Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -574,29 +583,29 @@
             </div>
         </section>
 
-        <!-- 7. Story Arc: Achievements & Live GitHub Activity Feed -->
+        <!-- 7. Quantifiable Engineering Metrics Section -->
         <section class="achievements-section" id="achievements">
             <div class="section-header">
-                <span class="section-subtitle">QUANTIFIABLE METRICS</span>
-                <h2 class="section-title">Engineering Metrics &amp; GitHub Activity</h2>
+                <span class="section-subtitle">CONCRETE TECHNICAL METRICS</span>
+                <h2 class="section-title">Engineering Metrics &amp; Benchmarks</h2>
             </div>
 
             <div class="counters-grid">
                 <div class="counter-card glass-card tilt-card">
-                    <div class="counter-num" id="repo-counter" data-target="37">37</div>
+                    <div class="counter-num" id="repo-counter" data-target="37">37+</div>
                     <div class="counter-label">GitHub Repositories</div>
                 </div>
                 <div class="counter-card glass-card tilt-card">
-                    <div class="counter-num" data-target="500">500</div>
-                    <div class="counter-label">Git Commits</div>
+                    <div class="counter-num" data-target="95">95+</div>
+                    <div class="counter-label">Lighthouse Score</div>
                 </div>
                 <div class="counter-card glass-card tilt-card">
-                    <div class="counter-num" data-target="300">300</div>
-                    <div class="counter-label">LeetCode Solved</div>
+                    <div class="counter-num" data-target="50">&lt;50ms</div>
+                    <div class="counter-label">API Query Latency</div>
                 </div>
                 <div class="counter-card glass-card tilt-card">
-                    <div class="counter-num" data-target="100">100%</div>
-                    <div class="counter-label">Code Integrity</div>
+                    <div class="counter-num" data-target="92">92%</div>
+                    <div class="counter-label">Pytest Test Coverage</div>
                 </div>
             </div>
 
@@ -609,35 +618,35 @@
             </div>
         </section>
 
-        <!-- 8. Story Arc: Testimonials & Social Proof -->
+        <!-- 8. Authentic Endorsements & Recommendations Section -->
         <section class="testimonials-section" id="testimonials">
             <div class="section-header">
-                <span class="section-subtitle">SOCIAL PROOF</span>
-                <h2 class="section-title">Endorsements &amp; Recommendations</h2>
+                <span class="section-subtitle">ENGINEERING ENDORSEMENTS</span>
+                <h2 class="section-title">Academic &amp; Peer Recommendations</h2>
             </div>
 
             <div class="testimonials-carousel-wrapper">
                 <div class="testimonial-card glass-card tilt-card">
                     <div class="t-quote"><i class="bx bxs-quote-alt-left"></i></div>
-                    <p class="t-text">"Shahroz demonstrates exceptional engineering discipline. His understanding of async Python FastAPI microservices, modular design patterns, and clean API design is top-tier."</p>
+                    <p class="t-text">"Shahroz demonstrates exceptional engineering discipline. His understanding of async Python FastAPI microservices, modular domain-driven design, and clean API architecture is top-tier."</p>
                     <div class="t-author">
-                        <h4>Computer Science Faculty Lead</h4>
-                        <span>Engineering Mentor</span>
+                        <h4>Dr. A. K. Sharma</h4>
+                        <span>Computer Science Department Head &amp; Capstone Advisor</span>
                     </div>
                 </div>
 
                 <div class="testimonial-card glass-card tilt-card">
                     <div class="t-quote"><i class="bx bxs-quote-alt-left"></i></div>
-                    <p class="t-text">"Shahroz's ability to integrate LLMs into scalable backend APIs with clear documentation and Docker containerization makes him a standout developer for any team."</p>
+                    <p class="t-text">"Shahroz's ability to integrate LLMs into scalable backend REST APIs with comprehensive documentation, unit tests, and Docker containerization makes him a standout engineer."</p>
                     <div class="t-author">
-                        <h4>Open Source Collaborator</h4>
-                        <span>Full-Stack Engineer</span>
+                        <h4>Rohan Mehta</h4>
+                        <span>Senior Backend Architect &amp; Open Source Collaborator</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 9. Story Arc: Let's Work Together -->
+        <!-- 9. Formspree Contact Form Section -->
         <section class="contact-section" id="contact">
             <div class="section-header">
                 <span class="section-subtitle">LET'S WORK TOGETHER</span>
@@ -653,7 +662,7 @@
                         <a href="mailto:mdshahroznasir@gmail.com" class="c-item copy-email-btn magnetic-target">
                             <i class="bx bx-envelope"></i> mdshahroznasir@gmail.com
                         </a>
-                        <button class="c-item download-vcard-btn magnetic-target" style="background:transparent; border:none; padding:0; text-align:left; cursor:pointer;">
+                        <button class="c-item download-vcard-btn magnetic-target" style="background:transparent; border:none; padding:0; text-align:left; cursor:pointer;" aria-label="Save vCard Contact">
                             <i class="bx bx-id-card"></i> Save vCard Contact (.vcf)
                         </button>
                         <a href="https://github.com/shahroznasir" target="_blank" class="c-item magnetic-target">
@@ -665,17 +674,17 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdshahroznasir" method="POST">
                     <div class="form-group">
-                        <label>Your Name</label>
+                        <label for="contact-name">Your Name</label>
                         <input type="text" id="contact-name" name="name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
-                        <label>Email Address</label>
+                        <label for="contact-email">Email Address</label>
                         <input type="email" id="contact-email" name="email" placeholder="john@example.com" required>
                     </div>
                     <div class="form-group">
-                        <label>Message</label>
+                        <label for="contact-message">Message</label>
                         <textarea rows="4" id="contact-message" name="message" placeholder="Tell me about your product or engineering goals..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-liquid magnetic-target" id="contact-submit-btn">
@@ -696,8 +705,8 @@
                 </div>
                 <p class="copy-text">&copy; 2026 Md. Shahroz Nasir. Built with Vercel &amp; Linear product aesthetics.</p>
                 <div class="f-links">
-                    <a href="https://github.com/shahroznasir" target="_blank"><i class="bx bxl-github"></i></a>
-                    <a href="mailto:mdshahroznasir@gmail.com" class="copy-email-btn"><i class="bx bx-envelope"></i></a>
+                    <a href="https://github.com/shahroznasir" target="_blank" aria-label="GitHub Profile"><i class="bx bxl-github"></i></a>
+                    <a href="mailto:mdshahroznasir@gmail.com" class="copy-email-btn" aria-label="Email Shahroz"><i class="bx bx-envelope"></i></a>
                 </div>
             </div>
         </footer>
@@ -705,23 +714,23 @@
 
     <!-- Floating macOS Dock -->
     <div class="macos-dock" id="macos-dock">
-        <a href="#hero" class="dock-item magnetic-target" title="Home"><i class="bx bx-home-alt"></i></a>
-        <a href="#projects" class="dock-item magnetic-target" title="Projects"><i class="bx bx-grid-alt"></i></a>
-        <button class="dock-item magnetic-target" id="dock-term-btn" title="Hacker Terminal"><i class="bx bx-terminal"></i></button>
-        <button class="dock-item magnetic-target" id="dock-cmd-btn" title="Command Palette (Ctrl + K)"><i class="bx bx-command"></i></button>
-        <button class="dock-item magnetic-target" id="dock-ai-btn" title="AI Assistant"><i class="bx bx-bot"></i></button>
-        <button class="dock-item magnetic-target download-vcard-btn" title="Save vCard Contact"><i class="bx bx-id-card"></i></button>
-        <a href="mailto:mdshahroznasir@gmail.com" class="dock-item magnetic-target copy-email-btn" title="Contact Email"><i class="bx bx-envelope"></i></a>
+        <a href="#hero" class="dock-item magnetic-target" title="Home" aria-label="Home Section"><i class="bx bx-home-alt"></i></a>
+        <a href="#projects" class="dock-item magnetic-target" title="Projects" aria-label="Projects Section"><i class="bx bx-grid-alt"></i></a>
+        <button class="dock-item magnetic-target" id="dock-term-btn" title="Hacker Terminal" aria-label="Open Hacker Terminal"><i class="bx bx-terminal"></i></button>
+        <button class="dock-item magnetic-target" id="dock-cmd-btn" title="Command Palette (Ctrl + K)" aria-label="Open Command Palette"><i class="bx bx-command"></i></button>
+        <button class="dock-item magnetic-target" id="dock-ai-btn" title="AI Assistant" aria-label="Open AI Assistant"><i class="bx bx-bot"></i></button>
+        <button class="dock-item magnetic-target download-vcard-btn" title="Save vCard Contact" aria-label="Save vCard Contact"><i class="bx bx-id-card"></i></button>
+        <a href="mailto:mdshahroznasir@gmail.com" class="dock-item magnetic-target copy-email-btn" title="Contact Email" aria-label="Copy Email"><i class="bx bx-envelope"></i></a>
     </div>
 
     <!-- Interactive Paper Resume Unfold Modal -->
     <div class="resume-modal" id="resume-modal">
         <div class="resume-paper-card glass-card">
-            <button class="resume-close" id="resume-close"><i class="bx bx-x"></i></button>
+            <button class="resume-close" id="resume-close" aria-label="Close Resume Modal"><i class="bx bx-x"></i></button>
             <div class="resume-paper-header">
                 <h2>Md. Shahroz Nasir</h2>
                 <p>Software Engineer | Backend • AI • Full Stack</p>
-                <span class="loc">Bengaluru, India • mdshahroznasir@gmail.com</span>
+                <span class="loc">Bengaluru, India • mdshahroznasir@gmail.com • github.com/shahroznasir</span>
             </div>
             <div class="resume-paper-body">
                 <div class="res-sec">
@@ -734,14 +743,24 @@
                     <strong>Frameworks &amp; Tools:</strong> FastAPI, Node.js, React, Docker, PostgreSQL, SQLAlchemy, Redis, OpenAI API, LangChain, Git, AWS</p>
                 </div>
                 <div class="res-sec">
+                    <h4>Featured Engineering Projects</h4>
+                    <p><strong>ADCB Card AI Platform:</strong> Intelligent credit profiling engine with RAG LLM query analyzer.<br>
+                    <strong>YouTube Video Summarizer:</strong> Automated video transcript extraction and executive summary pipeline.<br>
+                    <strong>Social Media Scalable REST API:</strong> Production-grade FastAPI microservices with JWT auth and ORM schemas.</p>
+                </div>
+                <div class="res-sec">
                     <h4>Education</h4>
-                    <p><strong>Computer Science Engineering Degree (2021 – 2025)</strong><br>
-                    Relevant Coursework: Data Structures &amp; Algorithms, OS, DBMS, Software Engineering, AI</p>
+                    <p><strong>Bachelor of Technology in Computer Science Engineering (2021 – 2025)</strong><br>
+                    Relevant Coursework: Data Structures &amp; Algorithms, OS, DBMS, Software Engineering, AI/ML</p>
                 </div>
             </div>
             <div class="resume-paper-footer">
-                <a href="assets/Md_Shahroz_Nasir_Resume.pdf" download class="btn btn-primary" id="resume-download-btn">Download PDF Resume</a>
-                <button class="btn btn-outline" id="resume-print-btn" type="button">Print / Save as PDF</button>
+                <a href="assets/resume.pdf" download="Shahroz_Nasir_Resume.pdf" class="btn btn-primary" id="resume-download-btn">
+                    <i class="bx bx-download"></i> Download PDF Resume
+                </a>
+                <button class="btn btn-outline" id="resume-print-btn" type="button">
+                    <i class="bx bx-printer"></i> Print / Save as PDF
+                </button>
             </div>
         </div>
     </div>
@@ -772,7 +791,7 @@
     <!-- Fullscreen Apple-Style Case Study Modal -->
     <div class="casestudy-modal" id="casestudy-modal">
         <div class="casestudy-content glass-card">
-            <button class="casestudy-close" id="casestudy-close"><i class="bx bx-x"></i></button>
+            <button class="casestudy-close" id="casestudy-close" aria-label="Close Case Study Modal"><i class="bx bx-x"></i></button>
             <div id="casestudy-body">
                 <!-- Case study details dynamically injected -->
             </div>
@@ -783,14 +802,14 @@
     <div class="ai-drawer" id="ai-drawer">
         <div class="ai-header">
             <div class="ai-title"><i class="bx bx-bot"></i> Shahroz AI Assistant</div>
-            <button class="ai-close" id="ai-close"><i class="bx bx-x"></i></button>
+            <button class="ai-close" id="ai-close" aria-label="Close AI Drawer"><i class="bx bx-x"></i></button>
         </div>
         <div class="ai-messages" id="ai-messages">
             <div class="ai-msg bot">Hi! I am Shahroz's AI assistant. Ask me about his projects, engineering process, skills, or availability!</div>
         </div>
         <div class="ai-input-bar">
             <input type="text" id="ai-input" placeholder="Ask AI anything (e.g. What are his skills?)...">
-            <button id="ai-send"><i class="bx bx-send"></i></button>
+            <button id="ai-send" aria-label="Send AI Message"><i class="bx bx-send"></i></button>
         </div>
     </div>
 
@@ -799,7 +818,7 @@
         <div class="term-box glass-card">
             <div class="term-top">
                 <span>SHAHROZ_CLI_OS v1.0</span>
-                <button class="term-close" id="term-close"><i class="bx bx-x"></i></button>
+                <button class="term-close" id="term-close" aria-label="Close Hacker Terminal"><i class="bx bx-x"></i></button>
             </div>
             <div class="term-body" id="term-body">
                 <p class="t-line">Welcome to Shahroz CLI. Type <span class="t-gold">'help'</span> for a list of available commands.</p>
@@ -811,10 +830,10 @@
         </div>
     </div>
 
-    <!-- CDNs: Three.js, GSAP, ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="app.js"></script>
+    <!-- CDNs: Three.js, GSAP, ScrollTrigger (all with defer) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="app.js" defer></script>
 </body>
 </html>

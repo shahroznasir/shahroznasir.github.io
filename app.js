@@ -1,6 +1,6 @@
 /**
  * Md. Shahroz Nasir — Pixel-Exact Reference Image Navbar & Motion Engine
- * Features 7-Link ScrollSpy, Centered Active Blue Dot (•), 60fps Lenis Scroll, Three.js 3D Canvas, & Web Audio Synthesizer
+ * Features 7-Link ScrollSpy, Centered Active Blue Dot (•), 60fps Lenis Scroll, Lazy Three.js 3D Canvas, & Web Audio Synthesizer
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       4. Interactive Paper Resume Unfold Modal Handlers
+       4. Interactive Paper Resume Unfold Modal Handlers & File Check
        ========================================================================== */
     const resumeModal = document.getElementById('resume-modal');
     const openResumeBtn = document.getElementById('open-resume-btn');
@@ -170,17 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Resume PDF: only show the direct-download button if the file actually
-    // exists at /assets/. Until you upload the real PDF, this hides the
-    // button so visitors never hit a dead link — "Print / Save as PDF"
-    // still works for everyone via the browser's print dialog.
+    // Resume PDF check
     const resumeDownloadBtn = document.getElementById('resume-download-btn');
     if (resumeDownloadBtn) {
         fetch(resumeDownloadBtn.getAttribute('href'), { method: 'HEAD' })
             .then(res => {
                 if (!res.ok) resumeDownloadBtn.style.display = 'none';
             })
-            .catch(() => { resumeDownloadBtn.style.display = 'none'; });
+            .catch(() => {
+                // Keep visible for static PDF asset download
+            });
     }
 
     const resumePrintBtn = document.getElementById('resume-print-btn');
@@ -191,54 +190,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       4b. Contact Form — mailto fallback (no backend/signup required)
+       4b. Formspree Contact Form Submission Handler
        ========================================================================== */
     const contactForm = document.getElementById('contact-form');
+    const statusEl = document.getElementById('contact-form-status');
+
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const name = document.getElementById('contact-name').value.trim();
             const email = document.getElementById('contact-email').value.trim();
             const message = document.getElementById('contact-message').value.trim();
-            const statusEl = document.getElementById('contact-form-status');
-            const submitBtn = document.getElementById('contact-submit-btn');
-
-            const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-            const body = encodeURIComponent(
-                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-            );
-
-            // Opens the visitor's own email client with everything pre-filled.
-            // Recommended upgrade: swap this for a Formspree/EmailJS POST so
-            // messages land in your inbox without the visitor needing to hit
-            // "send" themselves. See comment block below for a drop-in version.
-            window.location.href = `mailto:mdshahroznasir@gmail.com?subject=${subject}&body=${body}`;
 
             if (statusEl) {
-                statusEl.textContent = "Opening your email app to send this message…";
+                statusEl.textContent = "Sending your message via Formspree...";
                 statusEl.classList.add('show');
             }
-            if (submitBtn) showToast("Opening email client…");
 
-            /* ---- Formspree upgrade (uncomment once you have an endpoint) ----
-            fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                method: 'POST',
-                headers: { 'Accept': 'application/json' },
-                body: new FormData(contactForm)
-            }).then(res => {
-                if (res.ok) {
-                    statusEl.textContent = "Message sent — thanks for reaching out!";
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    if (statusEl) statusEl.textContent = "Message sent successfully — thanks for reaching out!";
                     contactForm.reset();
+                    showToast("Message Sent Successfully!");
+                    playBeep(1000, 0.15);
                 } else {
-                    statusEl.textContent = "Something went wrong — please email me directly.";
+                    // Pre-filled mailto fallback if Formspree unconfigured
+                    triggerMailtoFallback(name, email, message);
                 }
-            }).catch(() => {
-                statusEl.textContent = "Something went wrong — please email me directly.";
-            });
-            ------------------------------------------------------------------ */
+            } catch (err) {
+                triggerMailtoFallback(name, email, message);
+            }
         });
     }
+
+    const triggerMailtoFallback = (name, email, message) => {
+        const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        window.location.href = `mailto:mdshahroznasir@gmail.com?subject=${subject}&body=${body}`;
+        if (statusEl) statusEl.textContent = "Opening your email app to deliver this message...";
+        showToast("Opening Email Client...");
+    };
 
     /* ==========================================================================
        5. Project Category Filter Engine
@@ -339,78 +337,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       9. Three.js 3D Holographic Developer Workspace Scene
+       9. Lazy-Initialized Three.js 3D Holographic Developer Workspace Scene
        ========================================================================== */
-    const container3D = document.getElementById('three-canvas-container');
+    const initThreeScene = () => {
+        const container3D = document.getElementById('three-canvas-container');
 
-    if (container3D && typeof Three !== 'undefined') {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, container3D.clientWidth / container3D.clientHeight, 0.1, 1000);
-        camera.position.set(0, 1.5, window.innerWidth < 768 ? 7.5 : 6);
+        if (container3D && typeof THREE !== 'undefined') {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(45, container3D.clientWidth / container3D.clientHeight, 0.1, 1000);
+            camera.position.set(0, 1.5, window.innerWidth < 768 ? 7.5 : 6);
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(container3D.clientWidth, container3D.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container3D.appendChild(renderer.domElement);
-
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        scene.add(ambientLight);
-
-        const pointLight1 = new THREE.PointLight(0x5B8CFF, 2, 10);
-        pointLight1.position.set(2, 3, 2);
-        scene.add(pointLight1);
-
-        const pointLight2 = new THREE.PointLight(0x00E5A8, 2, 10);
-        pointLight2.position.set(-2, -1, 2);
-        scene.add(pointLight2);
-
-        const laptopGroup = new THREE.Group();
-        const baseGeo = new THREE.BoxGeometry(2.4, 0.1, 1.6);
-        const baseMat = new THREE.MeshStandardMaterial({ color: 0x0F172A, roughness: 0.2, metalness: 0.8 });
-        const baseMesh = new THREE.Mesh(baseGeo, baseMat);
-        laptopGroup.add(baseMesh);
-
-        const screenGroup = new THREE.Group();
-        screenGroup.position.set(0, 0.05, -0.8);
-
-        const lidGeo = new THREE.BoxGeometry(2.4, 1.5, 0.06);
-        const lidMesh = new THREE.Mesh(lidGeo, baseMat);
-        lidMesh.position.set(0, 0.75, 0);
-        screenGroup.add(lidMesh);
-
-        const displayGeo = new THREE.PlaneGeometry(2.2, 1.3);
-        const displayMat = new THREE.MeshBasicMaterial({ color: 0x050816 });
-        const displayMesh = new THREE.Mesh(displayGeo, displayMat);
-        displayMesh.position.set(0, 0.75, 0.035);
-        screenGroup.add(displayMesh);
-
-        screenGroup.rotation.x = Math.PI * 0.1;
-        laptopGroup.add(screenGroup);
-        scene.add(laptopGroup);
-
-        let targetRotX = 0, targetRotY = 0;
-        window.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) - 0.5;
-            const y = (e.clientY / window.innerHeight) - 0.5;
-            targetRotY = x * 0.6;
-            targetRotX = y * 0.4;
-        });
-
-        const animateThree = () => {
-            laptopGroup.rotation.y += (targetRotY - laptopGroup.rotation.y) * 0.05;
-            laptopGroup.rotation.x += (targetRotX - laptopGroup.rotation.x) * 0.05;
-            laptopGroup.position.y = Math.sin(Date.now() * 0.0015) * 0.1;
-            renderer.render(scene, camera);
-            requestAnimationFrame(animateThree);
-        };
-        animateThree();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = container3D.clientWidth / container3D.clientHeight;
-            camera.updateProjectionMatrix();
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
             renderer.setSize(container3D.clientWidth, container3D.clientHeight);
-        });
-    }
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container3D.appendChild(renderer.domElement);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const pointLight1 = new THREE.PointLight(0x5B8CFF, 2, 10);
+            pointLight1.position.set(2, 3, 2);
+            scene.add(pointLight1);
+
+            const pointLight2 = new THREE.PointLight(0x00E5A8, 2, 10);
+            pointLight2.position.set(-2, -1, 2);
+            scene.add(pointLight2);
+
+            const laptopGroup = new THREE.Group();
+            const baseGeo = new THREE.BoxGeometry(2.4, 0.1, 1.6);
+            const baseMat = new THREE.MeshStandardMaterial({ color: 0x0F172A, roughness: 0.2, metalness: 0.8 });
+            const baseMesh = new THREE.Mesh(baseGeo, baseMat);
+            laptopGroup.add(baseMesh);
+
+            const screenGroup = new THREE.Group();
+            screenGroup.position.set(0, 0.05, -0.8);
+
+            const lidGeo = new THREE.BoxGeometry(2.4, 1.5, 0.06);
+            const lidMesh = new THREE.Mesh(lidGeo, baseMat);
+            lidMesh.position.set(0, 0.75, 0);
+            screenGroup.add(lidMesh);
+
+            const displayGeo = new THREE.PlaneGeometry(2.2, 1.3);
+            const displayMat = new THREE.MeshBasicMaterial({ color: 0x050816 });
+            const displayMesh = new THREE.Mesh(displayGeo, displayMat);
+            displayMesh.position.set(0, 0.75, 0.035);
+            screenGroup.add(displayMesh);
+
+            screenGroup.rotation.x = Math.PI * 0.1;
+            laptopGroup.add(screenGroup);
+            scene.add(laptopGroup);
+
+            let targetRotX = 0, targetRotY = 0;
+            window.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth) - 0.5;
+                const y = (e.clientY / window.innerHeight) - 0.5;
+                targetRotY = x * 0.6;
+                targetRotX = y * 0.4;
+            });
+
+            const animateThree = () => {
+                laptopGroup.rotation.y += (targetRotY - laptopGroup.rotation.y) * 0.05;
+                laptopGroup.rotation.x += (targetRotX - laptopGroup.rotation.x) * 0.05;
+                laptopGroup.position.y = Math.sin(Date.now() * 0.0015) * 0.1;
+                renderer.render(scene, camera);
+                requestAnimationFrame(animateThree);
+            };
+            animateThree();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = container3D.clientWidth / container3D.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container3D.clientWidth, container3D.clientHeight);
+            });
+        }
+    };
+
+    // Lazy load Three.js canvas after full window load
+    window.addEventListener('load', initThreeScene);
 
     /* ==========================================================================
        10. Interactive Background Particle Canvas
@@ -473,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (userRes.ok) {
                 const userData = await userRes.json();
                 if (repoCounter && userData.public_repos) {
-                    repoCounter.textContent = userData.public_repos;
+                    repoCounter.textContent = `${userData.public_repos}+`;
                 }
             }
 
@@ -827,7 +830,10 @@ END:VCARD`;
                     <p style="font-size: 13.5px; color: var(--text-sub);">Integrated LLMs to query card data dynamically, returning structured JSON metrics and personalized reward recommendations.</p>
                 </div>
             </div>
-            <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary">View GitHub Repository</a>
+            <div style="display: flex; gap: 15px;">
+                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary"><i class="bx bx-rocket"></i> Live Demo ↗</a>
+                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-outline"><i class="bx bxl-github"></i> GitHub Repo</a>
+            </div>
         `,
         youtube: `
             <span class="proj-tag">CASE STUDY</span>
@@ -843,7 +849,10 @@ END:VCARD`;
                     <p style="font-size: 13.5px; color: var(--text-sub);">Built FastAPI + Streamlit service that auto-transcribes video IDs and generates timestamped bullet summaries.</p>
                 </div>
             </div>
-            <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary">View GitHub Repository</a>
+            <div style="display: flex; gap: 15px;">
+                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary"><i class="bx bx-rocket"></i> Live Demo ↗</a>
+                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-outline"><i class="bx bxl-github"></i> GitHub Repo</a>
+            </div>
         `,
         social: `
             <span class="proj-tag">CASE STUDY</span>
@@ -859,7 +868,10 @@ END:VCARD`;
                     <p style="font-size: 13.5px; color: var(--text-sub);">Sub-50ms endpoint response latencies, robust password hashing, and clean architectural separation of concerns.</p>
                 </div>
             </div>
-            <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary">View GitHub Repository</a>
+            <div style="display: flex; gap: 15px;">
+                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary"><i class="bx bx-rocket"></i> Live Demo ↗ (API Specs)</a>
+                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-outline"><i class="bx bxl-github"></i> GitHub Repo</a>
+            </div>
         `
     };
 

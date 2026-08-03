@@ -85,6 +85,17 @@ body {
     a, button, input, textarea, .magnetic-target, .dock-item, .cmd-btn, .theme-btn, .sound-btn { cursor: none; }
 }
 
+/* Accessibility: Prefers Reduced Motion Rule */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .float-anim, .float-anim-delay, .orbit-ring { animation: none !important; }
+}
+
 /* Top Neon Progress Bar */
 .scroll-progress {
     position: fixed;
@@ -614,7 +625,7 @@ header nav ul a.active {
 }
 .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(91, 140, 255, 0.2); }
 
-.form-status { font-size: 13.5px; color: var(--secondary); font-weight: 500; display: none; }
+.form-status { font-size: 13.5px; color: var(--secondary); font-weight: 500; display: none; margin-top: 10px; }
 .form-status.show { display: block; }
 
 /* Footer */
