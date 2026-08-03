@@ -1,6 +1,6 @@
 /**
- * Md. Shahroz Nasir — Extraordinary Apple Dynamic Island Navbar & Motion Engine
- * Features 5-Link ScrollSpy, Dynamic Sliding Liquid Pill, 60fps Lenis Scroll, Lazy Three.js 3D Canvas, & Web Audio Synthesizer
+ * Md. Shahroz Nasir — Terminal-Prompt Navbar & Motion Engine
+ * Features Terminal ScrollSpy, Collapsed :: Options Menu, 60fps Lenis Scroll, Lazy Three.js 3D Canvas, & Web Audio Synthesizer
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,48 +24,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       2. Dynamic Sliding Liquid Pill Indicator & ScrollSpy Engine (5 Links)
+       2. Terminal-Prompt Navbar ScrollSpy Engine & More Menu Toggle
        ========================================================================== */
-    const navLinks = document.querySelectorAll('header nav ul a');
-    const slidingPill = document.getElementById('sliding-pill-indicator');
-
-    const updateSlidingPill = (targetLink) => {
-        if (!targetLink || !slidingPill) return;
-        const linkRect = targetLink.getBoundingClientRect();
-        const navRect = targetLink.closest('nav').getBoundingClientRect();
-
-        const offsetLeft = linkRect.left - navRect.left;
-        const width = linkRect.width;
-
-        slidingPill.style.left = `${offsetLeft}px`;
-        slidingPill.style.width = `${width}px`;
-        slidingPill.style.opacity = '1';
-    };
-
-    const initialActive = document.querySelector('header nav ul a.active');
-    if (initialActive) {
-        setTimeout(() => updateSlidingPill(initialActive), 120);
-    }
-
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => updateSlidingPill(link));
-        link.addEventListener('click', () => {
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-            updateSlidingPill(link);
-        });
-    });
-
-    const navContainer = document.querySelector('header nav');
-    if (navContainer) {
-        navContainer.addEventListener('mouseleave', () => {
-            const currentActive = document.querySelector('header nav ul a.active');
-            if (currentActive) updateSlidingPill(currentActive);
-        });
-    }
-
-    // ScrollSpy auto-tracker for 5 sections
+    const navLinks = document.querySelectorAll('.term-nav-item');
     const sections = document.querySelectorAll('section[id]');
+
+    const moreMenuBtn = document.getElementById('more-menu-btn');
+    const moreDropdown = document.getElementById('more-dropdown');
+
+    if (moreMenuBtn && moreDropdown) {
+        moreMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            moreDropdown.classList.toggle('open');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!moreMenuBtn.contains(e.target) && !moreDropdown.contains(e.target)) {
+                moreDropdown.classList.remove('open');
+            }
+        });
+    }
+
+    // ScrollSpy active link swap
     window.addEventListener('scroll', () => {
         let currentSectionId = '';
         const scrollPos = window.scrollY + 220;
@@ -82,10 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (href === currentSectionId) {
                     navLinks.forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
-                    updateSlidingPill(link);
                 }
             });
         }
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
     });
 
     /* ==========================================================================
@@ -133,12 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
             soundEnabled = !soundEnabled;
             if (soundEnabled) {
                 soundToggleBtn.classList.remove('muted');
-                soundToggleBtn.innerHTML = '<i class="bx bx-volume-full"></i>';
+                soundToggleBtn.innerHTML = '<i class="bx bx-volume-full"></i> Sound FX';
                 playBeep(880, 0.1);
                 showToast("Sound FX Enabled");
             } else {
                 soundToggleBtn.classList.add('muted');
-                soundToggleBtn.innerHTML = '<i class="bx bx-volume-mute"></i>';
+                soundToggleBtn.innerHTML = '<i class="bx bx-volume-mute"></i> Sound FX (Muted)';
                 showToast("Sound FX Muted");
             }
         });
@@ -599,11 +585,19 @@ END:VCARD`;
        14. Command Palette (Ctrl + K) & Theme Switcher
        ========================================================================== */
     const themeDropdown = document.getElementById('theme-dropdown');
+    const themeToggleBtn = document.getElementById('theme-toggle');
     const cmdModal = document.getElementById('cmd-modal');
     const cmdTrigger = document.getElementById('cmd-trigger');
     const dockCmdBtn = document.getElementById('dock-cmd-btn');
     const cmdInput = document.getElementById('cmd-input');
     const cmdResults = document.querySelectorAll('#cmd-results li');
+
+    if (themeToggleBtn && themeDropdown) {
+        themeToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeDropdown.classList.toggle('show');
+        });
+    }
 
     const openCmd = () => {
         if (cmdModal) cmdModal.classList.add('show');
@@ -787,30 +781,18 @@ END:VCARD`;
     /* ==========================================================================
        18. 5-Theme Engine Switcher
        ========================================================================== */
-    const themeBtn = document.getElementById('theme-toggle');
     const themeOptions = document.querySelectorAll('.theme-option');
 
-    if (themeBtn && themeDropdown) {
-        themeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            themeDropdown.classList.toggle('show');
+    themeOptions.forEach(opt => {
+        opt.addEventListener('click', () => {
+            themeOptions.forEach(o => o.classList.remove('active'));
+            opt.classList.add('active');
+            const themeName = opt.getAttribute('data-theme');
+            document.documentElement.setAttribute('data-theme', themeName);
+            showToast(`Switched theme to ${themeName.toUpperCase()}`);
+            playBeep(1050, 0.08);
         });
-
-        window.addEventListener('click', () => {
-            if (themeDropdown) themeDropdown.classList.remove('show');
-        });
-
-        themeOptions.forEach(opt => {
-            opt.addEventListener('click', () => {
-                themeOptions.forEach(o => o.classList.remove('active'));
-                opt.classList.add('active');
-                const themeName = opt.getAttribute('data-theme');
-                document.documentElement.setAttribute('data-theme', themeName);
-                showToast(`Switched theme to ${themeName.toUpperCase()}`);
-                playBeep(1050, 0.08);
-            });
-        });
-    }
+    });
 
     /* ==========================================================================
        19. Apple Fullscreen Case Study Modal
