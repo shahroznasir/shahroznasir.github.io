@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Md. Shahroz Nasir — Vercel / Apple / Linear Redesigned Header Architecture
+   Md. Shahroz Nasir — Pixel-Exact Reference Image Navbar System
    ========================================================================== */
 
 :root {
@@ -199,91 +199,133 @@ body {
 }
 
 /* ==========================================================================
-   Vercel / Apple / Linear Redesigned Header Styles (Height 56px)
+   Reference Mockup Pixel-Exact Floating Header & Capsule Inset
    ========================================================================== */
 header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px; height: 56px; position: fixed;
-    top: 16px; left: 40px; right: 40px; max-width: 1220px;
-    margin: 0 auto; background: rgba(15, 20, 35, 0.65);
+    position: fixed; top: 16px; left: 20px; right: 20px;
+    max-width: 1260px; height: 54px; margin: 0 auto;
+    z-index: 1000; transition: var(--transition-smooth);
+}
+
+.header-inner {
+    width: 100%; height: 100%;
+    background: rgba(8, 12, 22, 0.88);
     backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 35px;
-    z-index: 1000; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
-    transition: var(--transition-smooth);
+    border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(91, 140, 255, 0.15);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12px;
 }
 
-header.scrolled {
-    top: 8px; height: 52px; background: rgba(11, 17, 32, 0.88);
-    border-color: rgba(91, 140, 255, 0.3); box-shadow: 0 12px 45px rgba(0,0,0,0.6);
+/* Left: Glass Logo Box [ SN 🟢 ] */
+.logo-box {
+    position: relative; width: 38px; height: 38px;
+    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: var(--transition-smooth); flex-shrink: 0;
 }
+.logo-box:hover { border-color: var(--primary); background: rgba(91, 140, 255, 0.15); box-shadow: 0 0 15px rgba(91, 140, 255, 0.3); }
 
-.header-left { display: flex; align-items: center; gap: 14px; }
-
-/* Glass Emblem Logo [ SN ] */
-.logo-emblem {
+.logo-text {
     font-family: var(--font-heading); font-size: 13px; font-weight: 800;
-    color: var(--text-main); text-decoration: none; padding: 4px 10px;
-    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px; letter-spacing: 1px; transition: var(--transition-smooth);
+    color: #FFFFFF; letter-spacing: 1px;
 }
-.logo-emblem:hover { border-color: var(--primary); background: rgba(91, 140, 255, 0.15); box-shadow: 0 0 12px rgba(91, 140, 255, 0.3); }
 
-/* Compact Status Pill 🟢 Open to Work */
-.status-pill {
-    font-size: 11px; color: var(--secondary); background: rgba(0, 229, 168, 0.08);
-    border: 1px solid rgba(0, 229, 168, 0.2); padding: 3px 10px; border-radius: 16px;
-    display: flex; align-items: center; gap: 6px; font-weight: 500;
+.logo-dot {
+    position: absolute; top: 5px; right: 5px; width: 5px; height: 5px;
+    background: #00E5A8; border-radius: 50%; box-shadow: 0 0 8px #00E5A8;
 }
-.status-dot { width: 6px; height: 6px; background: var(--secondary); border-radius: 50%; box-shadow: 0 0 8px var(--secondary); }
 
-/* Sliding Active Pill Center Navigation */
+/* Center: 7 Navigation Links & Active Centered Blue Dot */
 .nav-center { position: relative; display: flex; align-items: center; }
 
-.nav-active-pill {
-    position: absolute; height: 30px; background: rgba(91, 140, 255, 0.15);
-    border: 1px solid rgba(91, 140, 255, 0.3); border-radius: 16px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;
-    z-index: 1; opacity: 0;
-}
-
-header nav ul { display: flex; gap: 6px; list-style: none; position: relative; z-index: 2; }
+header nav ul { display: flex; gap: 22px; list-style: none; }
 
 header nav ul a {
-    text-decoration: none; color: var(--text-sub); font-size: 12.5px;
-    font-weight: 500; padding: 6px 14px; border-radius: 16px;
-    transition: var(--transition-smooth); display: inline-block;
+    text-decoration: none; color: rgba(255, 255, 255, 0.7);
+    font-size: 13px; font-weight: 500; transition: color 0.3s, text-shadow 0.3s;
+    display: inline-block; padding: 4px 0;
 }
 
-header nav ul a:hover {
-    color: var(--text-main); transform: translateY(-2px);
-    letter-spacing: 0.02em; text-shadow: 0 0 8px rgba(91, 140, 255, 0.4);
+header nav ul a:hover { color: #FFFFFF; text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); }
+
+header nav ul a.active {
+    color: #5B8CFF; font-weight: 600;
+    text-shadow: 0 0 12px rgba(91, 140, 255, 0.6);
 }
 
-header nav ul a.active { color: var(--primary); font-weight: 600; }
-
-/* Grouped Action Cluster (🔊 🌙 ⌘K Resume ↗) */
-.action-cluster {
-    display: flex; align-items: center; gap: 6px; padding: 3px 6px;
-    border-radius: 20px; background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+.active-blue-dot {
+    position: absolute; bottom: -8px; width: 5px; height: 5px;
+    background: #5B8CFF; border-radius: 50%; box-shadow: 0 0 10px #5B8CFF;
+    transition: left 0.35s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none;
+    opacity: 0;
 }
 
-.nav-resume-btn {
-    background: var(--primary); color: #FFF; border: none;
-    padding: 4px 12px; border-radius: 14px; font-size: 11.5px;
-    font-weight: 600; display: flex; align-items: center; gap: 4px;
+/* Right: Action Sequence */
+.header-actions { display: flex; align-items: center; gap: 10px; }
+
+/* Status Pill 🟢 Open to Work */
+.status-pill {
+    font-size: 11.5px; color: #00E5A8; background: rgba(0, 229, 168, 0.08);
+    border: 1px solid rgba(0, 229, 168, 0.25); padding: 4px 14px;
+    border-radius: 20px; display: flex; align-items: center; gap: 6px;
+    font-weight: 500; white-space: nowrap;
+}
+.status-dot { width: 6px; height: 6px; background: #00E5A8; border-radius: 50%; box-shadow: 0 0 8px #00E5A8; }
+
+/* Resume ↗ Pill Button */
+.btn-resume-glow {
+    background: linear-gradient(135deg, #4A7BFF 0%, #2B5CFF 100%);
+    color: #FFFFFF; border: none; padding: 7px 18px; border-radius: 20px;
+    font-size: 12.5px; font-weight: 600; display: flex; align-items: center; gap: 5px;
     cursor: pointer; transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(59, 102, 255, 0.4); white-space: nowrap;
 }
-.nav-resume-btn:hover { background: #4777EA; box-shadow: 0 0 12px rgba(91, 140, 255, 0.5); }
+.btn-resume-glow:hover {
+    background: linear-gradient(135deg, #5B8CFF 0%, #3B6CFF 100%);
+    box-shadow: 0 6px 20px rgba(59, 102, 255, 0.6); transform: translateY(-2px);
+}
 
-.action-icon-btn {
-    width: 28px; height: 28px; border-radius: 50%; background: transparent;
-    border: none; color: var(--text-sub); font-size: 14px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: var(--transition-smooth);
+/* Round Icon Buttons (Moon & Speaker) */
+.theme-menu-wrapper { position: relative; }
+
+.icon-round-btn {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8); font-size: 14px; display: flex;
+    align-items: center; justify-content: center; cursor: pointer;
+    transition: var(--transition-smooth);
 }
-.action-icon-btn:hover { color: var(--text-main); background: rgba(255,255,255,0.08); }
-.cmd-badge { font-family: var(--font-code); font-size: 10px; font-weight: 600; color: var(--text-sub); }
+.icon-round-btn:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.1); border-color: rgba(91, 140, 255, 0.3); }
+
+/* ⌘ Ctrl K Command Palette Badge Button */
+.cmd-pill-btn {
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8); padding: 5px 12px; border-radius: 16px;
+    font-size: 11px; display: flex; align-items: center; gap: 5px;
+    cursor: pointer; transition: var(--transition-smooth); font-family: var(--font-code);
+}
+.cmd-pill-btn:hover { color: #FFFFFF; border-color: rgba(91, 140, 255, 0.3); background: rgba(255, 255, 255, 0.1); }
+
+.theme-dropdown {
+    position: absolute; top: 44px; right: 0; width: 150px;
+    background: rgba(11, 17, 32, 0.95); backdrop-filter: blur(20px);
+    border: 1px solid var(--border-card); border-radius: 12px; padding: 8px;
+    display: none; flex-direction: column; gap: 4px; z-index: 1001;
+}
+.theme-dropdown.show { display: flex; }
+.theme-option {
+    background: transparent; border: none; color: var(--text-sub);
+    padding: 8px 12px; border-radius: 6px; font-size: 12px;
+    display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
+}
+.theme-option:hover, .theme-option.active { color: var(--text-main); background: rgba(255,255,255,0.08); }
+.t-color { width: 10px; height: 10px; border-radius: 50%; }
+.t-color.dark { background: #5B8CFF; }
+.t-color.midnight { background: #38BDF8; }
+.t-color.cyberpunk { background: #FF007F; }
+.t-color.ocean { background: #00B4D8; }
+.t-color.aurora { background: #50E3C2; }
 
 .menu-icon { display: none; font-size: 26px; color: var(--text-main); }
 
@@ -698,9 +740,17 @@ header nav ul a.active { color: var(--primary); font-weight: 600; }
 .toast i { color: var(--secondary); font-size: 20px; }
 
 /* Mobile View Responsiveness Rules */
-@media (max-width: 1024px) {
-    .container { padding: 0 24px; }
-    header { left: 20px; right: 20px; padding: 0 20px; }
+@media (max-width: 1100px) {
+    header nav ul { gap: 14px; }
+    header nav ul a { font-size: 12px; }
+    .status-pill { display: none; }
+}
+
+@media (max-width: 900px) {
+    header nav ul { display: none; }
+    .active-blue-dot { display: none; }
+    .cmd-pill-btn { display: none; }
+    .menu-icon { display: block; }
     .hero { grid-template-columns: 1fr; text-align: center; padding-top: 130px; gap: 30px; }
     .hero-left { align-items: center; }
     .hero-name-title { font-size: 44px; }
@@ -711,8 +761,6 @@ header nav ul a.active { color: var(--primary); font-weight: 600; }
 }
 
 @media (max-width: 768px) {
-    header nav ul, .status-pill { display: none; }
-    .menu-icon { display: block; }
     .hero-name-title { font-size: 34px; }
     .hero-role-title { font-size: 20px; }
     .why-hire-grid, .skills-expanders-grid, .process-grid, .testimonials-carousel-wrapper, .counters-grid, .live-github-grid { grid-template-columns: 1fr; }

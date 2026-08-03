@@ -1,6 +1,6 @@
 /**
- * Md. Shahroz Nasir — Vercel / Apple Tier Navigation & Motion Engine
- * Features 6-Link ScrollSpy, Sliding Active Pill Indicator, 60fps Lenis Scroll, Three.js 3D Canvas, & Web Audio Synthesizer
+ * Md. Shahroz Nasir — Pixel-Exact Reference Image Navbar & Motion Engine
+ * Features 7-Link ScrollSpy, Centered Active Blue Dot (•), 60fps Lenis Scroll, Three.js 3D Canvas, & Web Audio Synthesizer
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,32 +24,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       2. Sliding Active Pill & ScrollSpy Engine (6 Links)
+       2. Active Blue Dot Centered Positioning & ScrollSpy Engine (7 Links)
        ========================================================================== */
     const navLinks = document.querySelectorAll('header nav ul a');
-    const activePill = document.getElementById('nav-active-pill');
+    const activeDot = document.getElementById('active-blue-dot');
 
-    const updateActivePill = (activeLink) => {
-        if (!activeLink || !activePill) return;
+    const updateActiveBlueDot = (activeLink) => {
+        if (!activeLink || !activeDot) return;
         const linkRect = activeLink.getBoundingClientRect();
         const navRect = activeLink.closest('nav').getBoundingClientRect();
 
-        activePill.style.width = `${linkRect.width}px`;
-        activePill.style.left = `${linkRect.left - navRect.left}px`;
-        activePill.style.opacity = '1';
+        const centeredLeft = (linkRect.left - navRect.left) + (linkRect.width / 2) - 2.5;
+        activeDot.style.left = `${centeredLeft}px`;
+        activeDot.style.opacity = '1';
     };
 
     const initialActive = document.querySelector('header nav ul a.active');
     if (initialActive) {
-        setTimeout(() => updateActivePill(initialActive), 100);
+        setTimeout(() => updateActiveBlueDot(initialActive), 100);
     }
 
     navLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => updateActivePill(link));
+        link.addEventListener('mouseenter', () => updateActiveBlueDot(link));
         link.addEventListener('click', () => {
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
-            updateActivePill(link);
+            updateActiveBlueDot(link);
         });
     });
 
@@ -57,15 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navContainer) {
         navContainer.addEventListener('mouseleave', () => {
             const currentActive = document.querySelector('header nav ul a.active');
-            if (currentActive) updateActivePill(currentActive);
+            if (currentActive) updateActiveBlueDot(currentActive);
         });
     }
 
-    // ScrollSpy auto-tracker for 6 sections
+    // ScrollSpy auto-tracker for 7 sections
     const sections = document.querySelectorAll('section[id]');
     window.addEventListener('scroll', () => {
         let currentSectionId = '';
-        const scrollPos = window.scrollY + 200;
+        const scrollPos = window.scrollY + 220;
 
         sections.forEach(sec => {
             if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (href === currentSectionId) {
                     navLinks.forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
-                    updateActivePill(link);
+                    updateActiveBlueDot(link);
                 }
             });
         }
@@ -855,12 +855,6 @@ END:VCARD`;
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         });
-    });
-
-    const header = document.getElementById('main-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
     });
 
     const sidebar = document.getElementById('mobile-sidebar');

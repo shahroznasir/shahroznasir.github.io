@@ -75,36 +75,44 @@
 
     <!-- Main Container -->
     <div class="container">
-        <!-- Floating Vercel / Apple / Linear Tier Glass Header Navigation -->
+        <!-- Floating Reference Mockup Exact Navbar Header -->
         <header id="main-header">
-            <div class="header-left">
-                <a class="logo-emblem" href="#hero">SN</a>
-                <span class="status-pill"><span class="status-dot"></span> Open to Work</span>
-            </div>
+            <div class="header-inner">
+                <!-- Left: SN Glass Logo Box with Top-Right Neon Dot -->
+                <a class="logo-box magnetic-target" href="#hero">
+                    <span class="logo-text">SN</span>
+                    <span class="logo-dot"></span>
+                </a>
 
-            <nav class="nav-center">
-                <div class="nav-active-pill" id="nav-active-pill"></div>
-                <ul class="nav-links">
-                    <li><a href="#hero" class="nav-link active">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#process" class="nav-link">Experience</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+                <!-- Center: 7 Exact Navigation Links & Centered Active Blue Dot -->
+                <nav class="nav-center">
+                    <ul class="nav-links">
+                        <li><a href="#hero" class="nav-link active">Home</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#process" class="nav-link">Experience</a></li>
+                        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    <span class="active-blue-dot" id="active-blue-dot"></span>
+                </nav>
 
-            <div class="header-actions">
-                <div class="action-cluster glass-card">
-                    <button class="nav-resume-btn magnetic-target" id="open-resume-btn-nav">
+                <!-- Right: Action Buttons Sequence -->
+                <div class="header-actions">
+                    <!-- Status Pill 🟢 Open to Work -->
+                    <div class="status-pill">
+                        <span class="status-dot"></span> Open to Work
+                    </div>
+
+                    <!-- Resume ↗ Pill Button -->
+                    <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav">
                         Resume <i class="bx bx-up-arrow-alt"></i>
                     </button>
-                    <button class="action-icon-btn magnetic-target" id="sound-toggle" title="Toggle Sound FX">
-                        <i class="bx bx-volume-full"></i>
-                    </button>
-                    
+
+                    <!-- Moon Theme Toggle Button -->
                     <div class="theme-menu-wrapper">
-                        <button class="action-icon-btn magnetic-target" id="theme-toggle" title="Switch Theme">
+                        <button class="icon-round-btn magnetic-target" id="theme-toggle" title="Switch Theme">
                             <i class="bx bx-moon"></i>
                         </button>
                         <div class="theme-dropdown" id="theme-dropdown">
@@ -116,13 +124,20 @@
                         </div>
                     </div>
 
-                    <button class="action-icon-btn magnetic-target" id="cmd-trigger" title="Command Palette (Ctrl + K)">
-                        <span class="cmd-badge">⌘K</span>
+                    <!-- Speaker Sound Toggle Button -->
+                    <button class="icon-round-btn magnetic-target" id="sound-toggle" title="Toggle Sound FX">
+                        <i class="bx bx-volume-full"></i>
                     </button>
-                </div>
 
-                <div class="menu-icon" id="mobile-menu-toggle">
-                    <i class="bx bx-menu"></i>
+                    <!-- ⌘ Ctrl K Command Palette Badge Button -->
+                    <button class="cmd-pill-btn magnetic-target" id="cmd-trigger" title="Command Palette (Ctrl + K)">
+                        <i class="bx bx-command"></i> <span>Ctrl K</span>
+                    </button>
+
+                    <!-- Mobile Menu Icon -->
+                    <div class="menu-icon" id="mobile-menu-toggle">
+                        <i class="bx bx-menu"></i>
+                    </div>
                 </div>
             </div>
         </header>
@@ -135,9 +150,10 @@
             <ul class="sidebar-links">
                 <li><a href="#hero" class="sidebar-link">Home</a></li>
                 <li><a href="#about" class="sidebar-link">About</a></li>
+                <li><a href="#skills" class="sidebar-link">Skills</a></li>
                 <li><a href="#projects" class="sidebar-link">Projects</a></li>
                 <li><a href="#process" class="sidebar-link">Experience</a></li>
-                <li><a href="#skills" class="sidebar-link">Skills</a></li>
+                <li><a href="#achievements" class="sidebar-link">Achievements</a></li>
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
             </ul>
         </div>
@@ -739,10 +755,10 @@
             <ul class="cmd-results" id="cmd-results">
                 <li data-action="goto" data-target="#hero"><i class="bx bx-home"></i> Home Section</li>
                 <li data-action="goto" data-target="#about"><i class="bx bx-user"></i> About &amp; Timeline</li>
-                <li data-action="goto" data-target="#why-hire-me"><i class="bx bx-check-circle"></i> Why Hire Me</li>
-                <li data-action="goto" data-target="#skills"><i class="bx bx-code-alt"></i> Technologies</li>
+                <li data-action="goto" data-target="#skills"><i class="bx bx-code-alt"></i> Skills</li>
+                <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Projects</li>
                 <li data-action="goto" data-target="#process"><i class="bx bx-sitemap"></i> Experience &amp; Process</li>
-                <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Featured Projects</li>
+                <li data-action="goto" data-target="#achievements"><i class="bx bx-award"></i> Achievements</li>
                 <li data-action="resume"><i class="bx bx-file"></i> Unfold Interactive Resume</li>
                 <li data-action="vcard"><i class="bx bx-id-card"></i> Save vCard Contact (.vcf)</li>
                 <li data-action="email"><i class="bx bx-copy"></i> Copy Email (mdshahroznasir@gmail.com)</li>
