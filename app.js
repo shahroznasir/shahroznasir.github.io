@@ -246,29 +246,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('contact-email').value.trim();
             const message = document.getElementById('contact-message').value.trim();
 
-            if (statusEl) {
-                statusEl.textContent = "Sending your message via Formspree...";
-                statusEl.classList.add('show');
-            }
-
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    if (statusEl) statusEl.textContent = "Message sent successfully — thanks for reaching out!";
-                    contactForm.reset();
-                    showToast("Message Sent Successfully!");
-                    playBeep(1000, 0.15);
-                } else {
-                    triggerMailtoFallback(name, email, message);
+            if (contactForm.action.includes('formspree.io/f/') && !contactForm.action.endsWith('YOUR_FORM_ID')) {
+                if (statusEl) {
+                    statusEl.textContent = "Sending your message via Formspree...";
+                    statusEl.classList.add('show');
                 }
-            } catch (err) {
-                triggerMailtoFallback(name, email, message);
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: new FormData(contactForm),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        if (statusEl) statusEl.textContent = "Message sent successfully — thanks for reaching out!";
+                        contactForm.reset();
+                        showToast("Message Sent Successfully!");
+                        playBeep(1000, 0.15);
+                        return;
+                    }
+                } catch (err) {
+                    // Fallback to mailto
+                }
             }
+            triggerMailtoFallback(name, email, message);
         });
     }
 
@@ -951,27 +952,8 @@ END:VCARD`;
     if (casestudyClose) casestudyClose.addEventListener('click', () => casestudyModal.classList.remove('show'));
 
     /* ==========================================================================
-       20. 1-Click Copy Email & Toast Notification
+       20. 1-Click Copy Email & Toast Notification Listeners
        ========================================================================== */
-    const targetEmail = "mdshahroznasir@gmail.com";
-    const toast = document.getElementById('toast');
-    const copyEmail = () => {
-        navigator.clipboard.writeText(targetEmail).then(() => {
-            showToast(`Copied ${targetEmail} to clipboard!`);
-            playBeep(1100, 0.08);
-        }).catch(() => {
-            showToast(`Email: ${targetEmail}`);
-        });
-    };
-
-    const showToast = (msg) => {
-        if (!toast) return;
-        const msgEl = document.getElementById('toast-message');
-        if (msgEl) msgEl.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 3200);
-    };
-
     document.querySelectorAll('.copy-email-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
