@@ -1,215 +1,694 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabish</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Md. Shahroz Nasir — Computer Science Engineer | AI • Backend • Full Stack</title>
+    
+    <!-- Meta & OpenGraph Social Sharing Cards -->
+    <meta name="theme-color" content="#050816">
+    <meta name="author" content="Md. Shahroz Nasir">
+    <meta name="description" content="Md. Shahroz Nasir — Computer Science Engineer | AI • Backend • Full Stack. Building scalable applications that merge clean engineering with exceptional user experience.">
+    <meta name="keywords" content="Md. Shahroz Nasir, Shahroz Nasir, Computer Science Engineer, Backend Developer, AI Engineer, FastAPI, Python, Portfolio, Bengaluru">
+    
+    <meta property="og:title" content="Md. Shahroz Nasir — Computer Science Engineer | AI • Backend • Full Stack">
+    <meta property="og:description" content="Building scalable applications that merge clean engineering with exceptional user experience. Open for AI, Backend, and Full-Stack roles.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shahroznasir.dev">
+    
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Md. Shahroz Nasir — Computer Science Engineer">
+    <meta property="twitter:description" content="Building scalable applications that merge clean engineering with exceptional user experience.">
+
+    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Google Fonts: Syne, Outfit, Playfair Display, Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Boxicons CDN -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
-     <div class="container">
-        <video class="back-vid" loop autoplay muted plays-inline src="videos/galaxy.mp4" type="video/mp4"></video>
+    <!-- Top Neon Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
 
-        <header>
-            <div class="left">
-                <img src="images/cropped_circle_image.png" alt="logo"
-                <h1><span style="color: #72a1dea2;">simply._tabs</span></h1>
+    <!-- Terminal Boot Sequence Loader Screen -->
+    <div class="boot-screen" id="boot-screen">
+        <div class="boot-container">
+            <div class="boot-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="boot-title">TERMINAL BOOTSTRAP v4.2</span>
+            </div>
+            <div class="boot-log" id="boot-log">
+                <p class="log-line">$ Initializing Shahroz Nasir Portfolio OS...</p>
+                <p class="log-line">$ Loading Three.js WebGL 3D Canvas Engine...</p>
+                <p class="log-line">$ Mounting GSAP Motion Controllers &amp; Sound Synthesizer...</p>
+                <p class="log-line">$ Connecting Intelligence &amp; GitHub API...</p>
+                <p class="log-line highlight">$ System Status: OPTIMAL [Press Any Key or Wait]</p>
+            </div>
+            <div class="boot-progress-bar">
+                <div class="boot-fill" id="boot-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Dual-Ring Magnetic Cursor & Trail Container -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Interactive Background Particle & Aurora Canvas -->
+    <canvas id="bg-particle-canvas"></canvas>
+    <div class="aurora-glow-1"></div>
+    <div class="aurora-glow-2"></div>
+    <div class="luxury-grid-overlay"></div>
+
+    <!-- Toast Notification Popup -->
+    <div class="toast" id="toast">
+        <i class="bx bx-check-circle"></i>
+        <span id="toast-message">Copied mdshahroznasir@gmail.com!</span>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Floating Glass Header Navigation -->
+        <header id="main-header">
+            <div class="header-left">
+                <a class="logo" href="#hero">S<span>.</span>N<span>.</span></a>
+                <span class="status-badge"><span class="status-dot"></span> Open for Opportunities</span>
             </div>
 
-            <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Skills</a></li>
-                <li><a href="#">Projects</a></li>
-            </ul>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
 
-            <div class="box-icons">
-                <a><i class='bx bxl-youtube'></i></a>
-                <a><i class='bx bxl-github'></i></a>
-                <a><i class='bx bxl-linkedin-square'></i></a>
+            <div class="header-actions">
+                <button class="sound-btn magnetic-target" id="sound-toggle" title="Toggle Sound FX">
+                    <i class="bx bx-volume-full"></i>
+                </button>
+
+                <button class="cmd-btn magnetic-target" id="cmd-trigger" title="Command Palette (Ctrl + K)">
+                    <i class="bx bx-command"></i> <span class="cmd-key">Ctrl K</span>
+                </button>
+                
+                <div class="theme-menu-wrapper">
+                    <button class="theme-btn magnetic-target" id="theme-toggle" title="Switch Theme">
+                        <i class="bx bx-palette"></i>
+                    </button>
+                    <div class="theme-dropdown" id="theme-dropdown">
+                        <button class="theme-option active" data-theme="dark"><span class="t-color dark"></span> Dark</button>
+                        <button class="theme-option" data-theme="midnight"><span class="t-color midnight"></span> Midnight</button>
+                        <button class="theme-option" data-theme="cyberpunk"><span class="t-color cyberpunk"></span> Cyberpunk</button>
+                        <button class="theme-option" data-theme="ocean"><span class="t-color ocean"></span> Ocean</button>
+                        <button class="theme-option" data-theme="aurora"><span class="t-color aurora"></span> Aurora</button>
+                    </div>
+                </div>
+
+                <div class="menu-icon" id="mobile-menu-toggle">
+                    <i class="bx bx-menu"></i>
+                </div>
             </div>
         </header>
 
-        <div class="blackhole-box">
-            <video loop autoplay muted plays-inline src="videos/blackhole.mp4" type="video/mp4"></video>
+        <!-- Mobile Sidebar -->
+        <div class="sidebar" id="mobile-sidebar">
+            <div class="close-icon" id="mobile-menu-close">
+                <i class="bx bx-x"></i>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="#hero" class="sidebar-link">Home</a></li>
+                <li><a href="#about" class="sidebar-link">About</a></li>
+                <li><a href="#skills" class="sidebar-link">Skills</a></li>
+                <li><a href="#experience" class="sidebar-link">Experience</a></li>
+                <li><a href="#projects" class="sidebar-link">Projects</a></li>
+                <li><a href="#achievements" class="sidebar-link">Achievements</a></li>
+                <li><a href="#contact" class="sidebar-link">Contact</a></li>
+            </ul>
         </div>
 
-        <section class="hero ">
-             <div class="hero-info">
-                <div class="hero-info-title">
-                    <i class='bx bxl-sketch'></i>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-backdrop-card glass-card"></div>
+            
+            <div class="hero-left">
+                <div class="hero-kicker">
+                    <i class="bx bx-code-alt"></i> Computer Science Engineer
                 </div>
 
-                <h1 Providing <span class="gradient">the best</span> Project <span class="gradient">Experience</span></h1>
+                <h1 class="hero-name">Md. Shahroz Nasir</h1>
 
-                <p>I'm a Front-end developer with Experience in website, Mobile and Software Development. Check out my skills</p>
-                <button><i class='bx bx-send' ></i> Contact Me</button>
-             </div>
+                <div class="hero-role-wrapper">
+                    <span class="role-static">Specialized as &nbsp;</span>
+                    <span class="role-typewriter gold-gradient" id="role-typewriter">Backend Developer</span>
+                </div>
 
-              
-            <div class="hero-vid-box " >
-                <video autoplay loop muted plays-inline src="videos/hero-video.mp4" type="video/mp4"></video>
+                <p class="hero-bio">
+                    Building scalable applications that merge clean engineering with exceptional user experience. Open for AI, Backend, and Full-Stack opportunities.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="mailto:mdshahroznasir@gmail.com" class="btn btn-primary magnetic-target copy-email-btn">
+                        <i class="bx bx-paper-plane"></i> Let's Connect
+                    </a>
+                    <button class="btn btn-secondary magnetic-target download-vcard-btn">
+                        <i class="bx bx-id-card"></i> Save vCard
+                    </button>
+                    <a href="#projects" class="btn btn-outline magnetic-target">
+                        <i class="bx bx-grid-alt"></i> View Projects
+                    </a>
+                </div>
             </div>
 
-            <div class="scroll-down"></div>
-        </section>
-
-        <section class="info-section">
-            <h1 class="section-title">Hello,There👋</h1>
-            <div class="info-cards">
-                <div class="card ">
-                    <h1>Hi there, I'm Tabish</h1>
-                    <p>With 4 years of experience, I have honed my skills in both frontend and backend dev, creating dynamic and responsive websites.</p>
-                
-                    <img src="images/grid1.png" alt="card-image">
+            <!-- Right Side: 3D Holographic Developer Workspace -->
+            <div class="hero-right">
+                <div class="three-canvas-container" id="three-canvas-container">
+                    <!-- Three.js Canvas injected here -->
                 </div>
-
-                <div class="card">
-                    <h1>Tech Stack</h1>
-                    <p>I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable applications.</p>
-                
-                    <img src="images/grid2.png" alt="card-image">
-                </div>
-
-                <div class="card">
-                    <h1>I'm very flexible with time zone communications & locations</h1>
-                    <p>I'm based in India and open to remote work worldwide.</p>
-                
-                    <video autoplay loop muted plays-inline src="videos/glob.mp4" type="video/mp4"></video>
-
-                     <button><i class='bx bx-link-external'></i> Contact Me</button>
-                </div>
-
-                <div class="card">
-                    <h1>My Passion for Coding</h1>
-                    <p>I love solving problems and building things through code. Programming isn't just my profession—it's my passion. I enjoy exploring new technologies, and enhancing my skills.</p>
-                
-                    <img src="images/grid4.png" alt="card-image">
+                <div class="floating-tech-badges">
+                    <div class="tech-badge badge-1 float-anim"><i class="bx bxl-python"></i> Python</div>
+                    <div class="tech-badge badge-2 float-anim-delay"><i class="bx bx-bolt-circle"></i> FastAPI</div>
+                    <div class="tech-badge badge-3 float-anim"><i class="bx bxl-docker"></i> Docker</div>
+                    <div class="tech-badge badge-4 float-anim-delay"><i class="bx bxl-aws"></i> AWS</div>
+                    <div class="tech-badge badge-5 float-anim"><i class="bx bxl-react"></i> React</div>
+                    <div class="tech-badge badge-6 float-anim-delay"><i class="bx bxl-git"></i> Git</div>
                 </div>
             </div>
         </section>
 
-        <section class="my-project">
-            <h1 class="section-title autoDisplay">My Projects 👨‍💻</h1>
-            <div class="project-card">
-                <div class="project-vidbox autoBlur" >
-                    <video loop id="projectVideo1" src="videos/project1.mp4"></video>
-                    <div class="hover-sign"></div>
-                </div>
-                <div class="project-info fadein-left">
-                    <h1>Animated <span class="gradient">Gaming</span> Website</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta ipsam excepturi ex in corrupti similique dolor nam, suscipit, odio soluta at recusandae nulla, id fugiat!</p>
-                    <button><i class='bx bx-link-external' ></i> Website</button>
-            </div>
+        <!-- About Timeline Section -->
+        <section class="about-section" id="about">
+            <div class="section-header">
+                <span class="section-subtitle">MILESTONES &amp; JOURNEY</span>
+                <h2 class="section-title">Career &amp; Engineering Timeline</h2>
             </div>
 
-            <div class="project-card">
-                <div class="project-vidbox autoBlur">
-                    <video loop id="projectVideo2" src="videos/project2.mp4"></video>
-                </div>
-                <div class="project-info fadein-left">
-                    <h1> Modern <span class="gradient">Portfolio</span> Website </h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam modi voluptates assumenda omnis impedit ipsa veritatis soluta earum minima consequatur.</p>
-                    <button><i class='bx bx-link-external' ></i> Website</button>
-                </div>
-            </div>
+            <div class="timeline-container">
+                <div class="timeline-line" id="timeline-line"></div>
 
-            <div class="project-card">
-                <div class="project-vidbox autoBlur">
-                    <video loop id="projectVideo3" src="videos/project3.mp4"></video>
-                </div>
-                
-                <div class="project-info fadein-left">
-                    <h1>Movie <span class="gradient">Landing</span>  Page</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores numquam saepe itaque sapiente odit neque necessitatibus explicabo hic laudantium ipsam nesciunt ducimus, cumque ratione esse.</p>
-                    <button><i class='bx bx-link-external' ></i> Website</button>
-                </div>
-            </div>
-        </section>
-
-        
-        <section class="skills-section">
-            <h1 class="section-title autoDisplay">
-                My Skills 💪
-            </h1>
-            <div class="skills-box autoDisplay">
-                <img class="skills-image" src="images/digital brain (2).png" alt="">
-                <div class="Designer">
-                    <h1 class="gradient">Designer <i class='bx bx-laptop'></i></h1>
-                    <p>I have expertise in HTML, CSS, JavaScript, and design tools like Figma and Adobe XD. My strength lies in blending aesthetics with functionality to create seamless user experiences.</p>    
-                </div>
-                
-                <div class="coder">
-                    <h1 class="gradient">Coder <i class='bx bx-code-block' ></i></h1>
-                    <p>I’m skilled in HTML, CSS, JavaScript, and frameworks like React and Node.js. I also have experience with database management using MongoDB and MySQL.</p>
+                <div class="timeline-item tilt-card">
+                    <div class="timeline-node"><i class="bx bx-code"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2021</span>
+                        <h3>Started Programming</h3>
+                        <p>Fell in love with Computer Science fundamentals, algorithm optimization, and data structures in Python and C++.</p>
+                    </div>
                 </div>
 
-                <div class="slider" reverse="true" style="
-                --width: 100px;
-                --height: 100px;
-                --quantity: 9;
-                ">
-                    <div class="list">
-                        <div class="item" style="--position: 1"><img src="images/1.png" alt=""></div>
-                        <div class="item" style="--position: 2"><img src="images/2.png" alt=""></div>
-                        <div class="item" style="--position: 3"><img src="images/3.webp" alt=""></div>
-                        <div class="item" style="--position: 4"><img src="images/4.webp" alt=""></div>
-                        <div class="item" style="--position: 5"><img src="images/5.png" alt=""></div>
-                        <div class="item" style="--position: 6"><img src="images/6.png" alt=""></div>
-                        <div class="item" style="--position: 7"><img src="images/7.png" alt=""></div>
-                        <div class="item" style="--position: 8"><img src="images/8.png" alt=""></div>
-                        <div class="item" style="--position: 9"><img src="images/9.png" alt=""></div>
+                <div class="timeline-item tilt-card">
+                    <div class="timeline-node"><i class="bx bx-rocket"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2022</span>
+                        <h3>Built First Full-Stack Project</h3>
+                        <p>Constructed complete Web applications, learning relational database schemas, REST APIs, and responsive front-end interfaces.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item tilt-card">
+                    <div class="timeline-node"><i class="bx bx-server"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2023</span>
+                        <h3>Mastered Backend Systems</h3>
+                        <p>Deep-dived into Python FastAPI, SQLAlchemy, asynchronous concurrency, rate limiting, and scalable REST microservices.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item tilt-card">
+                    <div class="timeline-node"><i class="bx bx-brain"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2024</span>
+                        <h3>Explored Generative AI</h3>
+                        <p>Engineered LLM pipelines, prompt query analyzers, video transcription summarizers, and AI credit card profiling platforms.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item tilt-card">
+                    <div class="timeline-node"><i class="bx bx-award"></i></div>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-date">2025</span>
+                        <h3>CSE Graduate</h3>
+                        <p>Graduated in Computer Science Engineering with robust expertise across Software Architecture, AI, and Full-Stack Systems.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item highlight-item tilt-card">
+                    <div class="timeline-node active-node"><i class="bx bx-briefcase-alt-2"></i></div>
+                    <div class="timeline-content glass-card glowing-card">
+                        <span class="timeline-date">Present</span>
+                        <h3>Open to Opportunities</h3>
+                        <p>Actively seeking Software Engineer, AI Engineer, and Backend Developer roles in forward-thinking tech organizations.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-       
+        <!-- Tech Orbit & Skills Section -->
+        <section class="skills-section" id="skills">
+            <div class="section-header">
+                <span class="section-subtitle">SKILLS &amp; ARCHITECTURE</span>
+                <h2 class="section-title">Solar Tech Stack Orbit</h2>
+            </div>
 
-        <section class="contact-section ">
-            <h1 class="section-title autoDisplay">Let's talk😊</h1>
-
-            <div class="social-box autoBlur">
-                <a href="#"><i class='bx bxs-phone'></i> +91 9900005254</a>
-                <a href="#"><i class='bx bxl-telegram' ></i> Contact Example.com</a>
-                <a href="#"><i class='bx bxl-linkedin-square' ></i> Contact Example.com</a>
-                <div class="social-icons">
-                    <a href="#"><i class='bx bxl-youtube' ></i></a>
-                    <a href="#"><i class='bx bxl-twitter' ></i></a>
-                    <a href="#"><i class='bx bxl-facebook-circle' ></i></a>
+            <!-- Animated Tech Orbit System -->
+            <div class="orbit-wrapper">
+                <div class="orbit-center-core tilt-card">
+                    <i class="bx bxl-python"></i>
+                    <span>PYTHON CORE</span>
+                </div>
+                <div class="orbit-ring ring-1">
+                    <div class="orbit-planet p1" title="FastAPI"><i class="bx bx-bolt-circle"></i></div>
+                    <div class="orbit-planet p2" title="React"><i class="bx bxl-react"></i></div>
+                    <div class="orbit-planet p3" title="Docker"><i class="bx bxl-docker"></i></div>
+                </div>
+                <div class="orbit-ring ring-2">
+                    <div class="orbit-planet p4" title="PostgreSQL"><i class="bx bxl-postgresql"></i></div>
+                    <div class="orbit-planet p5" title="AWS"><i class="bx bxl-aws"></i></div>
+                    <div class="orbit-planet p6" title="Git"><i class="bx bxl-git"></i></div>
+                </div>
+                <div class="orbit-ring ring-3">
+                    <div class="orbit-planet p7" title="Redis"><i class="bx bx-data"></i></div>
+                    <div class="orbit-planet p8" title="TensorFlow"><i class="bx bx-brain"></i></div>
                 </div>
             </div>
 
-            <div class="contact-box autoBlur">
-                <p>Wheter you're looking to build a new website, improve your existing platform, or bring a unique project to file. i'm here to help.</p>
-            
-                <p>Full Name</p>
-                <input placeholder="Your Full name" type="full name">
+            <!-- Skill Categories Expanders -->
+            <div class="skills-categories-grid">
+                <div class="skill-cat-card glass-card tilt-card">
+                    <div class="cat-icon"><i class="bx bx-server"></i></div>
+                    <h3>Backend Engineering</h3>
+                    <ul class="cat-list">
+                        <li><span>Python / FastAPI</span> <div class="p-bar"><div class="p-fill" style="width: 95%;"></div></div></li>
+                        <li><span>Asynchronous REST APIs</span> <div class="p-bar"><div class="p-fill" style="width: 90%;"></div></div></li>
+                        <li><span>Node.js / Express</span> <div class="p-bar"><div class="p-fill" style="width: 82%;"></div></div></li>
+                        <li><span>System Architecture</span> <div class="p-bar"><div class="p-fill" style="width: 88%;"></div></div></li>
+                    </ul>
+                </div>
 
-                <p>Email Address</p>
-                <input placeholder="Your Email" type="Contact">
+                <div class="skill-cat-card glass-card tilt-card">
+                    <div class="cat-icon"><i class="bx bx-brain"></i></div>
+                    <h3>Artificial Intelligence</h3>
+                    <ul class="cat-list">
+                        <li><span>LLM Prompt Engineering</span> <div class="p-bar"><div class="p-fill" style="width: 92%;"></div></div></li>
+                        <li><span>OpenAI API Integration</span> <div class="p-bar"><div class="p-fill" style="width: 94%;"></div></div></li>
+                        <li><span>LangChain &amp; RAG</span> <div class="p-bar"><div class="p-fill" style="width: 85%;"></div></div></li>
+                        <li><span>Computer Vision / OpenCV</span> <div class="p-bar"><div class="p-fill" style="width: 78%;"></div></div></li>
+                    </ul>
+                </div>
 
-                <p>Your Message</p>
-                <input  class="input-message" type="contact" placeholder="shaire your thoughts...">
-
-                <button>Send Message <i class='bx bx-mail-send'></i></button>
-            </div>
-        
-        </section> 
-
-        <section class="footer">
-            <h1>©️2025, Made with ❤️ by Tabish</h1>
-            <div class="box-icons">
-                <p><i class='bx bxl-youtube'></i></p>
-                <p><i class='bx bxl-github'></i></p>
-                <p><i class='bx bxl-linkedin-square'></i></p>
+                <div class="skill-cat-card glass-card tilt-card">
+                    <div class="cat-icon"><i class="bx bx-data"></i></div>
+                    <h3>Database &amp; Cloud</h3>
+                    <ul class="cat-list">
+                        <li><span>PostgreSQL / SQLAlchemy</span> <div class="p-bar"><div class="p-fill" style="width: 90%;"></div></div></li>
+                        <li><span>Docker &amp; Containers</span> <div class="p-bar"><div class="p-fill" style="width: 85%;"></div></div></li>
+                        <li><span>Redis Caching</span> <div class="p-bar"><div class="p-fill" style="width: 80%;"></div></div></li>
+                        <li><span>AWS Services</span> <div class="p-bar"><div class="p-fill" style="width: 82%;"></div></div></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-     </div>
+        <!-- Experience Roadmap -->
+        <section class="experience-section" id="experience">
+            <div class="section-header">
+                <span class="section-subtitle">CAREER ROADMAP</span>
+                <h2 class="section-title">Engineering Experience</h2>
+            </div>
 
+            <div class="roadmap-grid">
+                <div class="roadmap-card glass-card tilt-card">
+                    <div class="rm-header">
+                        <div class="rm-role">Full-Stack &amp; AI Developer</div>
+                        <span class="rm-time">2024 - Present</span>
+                    </div>
+                    <div class="rm-company">Independent Engineering / Open Source</div>
+                    <p class="rm-desc">Architected end-to-end Python FastAPI backends, LLM content summarizers, and credit intelligence platforms. Authored 37+ repositories exploring clean code architecture.</p>
+                    <div class="rm-tags">
+                        <span>Python</span><span>FastAPI</span><span>GenAI</span><span>Docker</span><span>PostgreSQL</span>
+                    </div>
+                </div>
 
+                <div class="roadmap-card glass-card tilt-card">
+                    <div class="rm-header">
+                        <div class="rm-role">Computer Science Engineering Degree</div>
+                        <span class="rm-time">2021 - 2025</span>
+                    </div>
+                    <div class="rm-company">University Computer Science Department</div>
+                    <p class="rm-desc">Specialized in Data Structures &amp; Algorithms, Object-Oriented Software Design, Database Management Systems, Computer Networks, and Machine Learning.</p>
+                    <div class="rm-tags">
+                        <span>DSA</span><span>DBMS</span><span>Operating Systems</span><span>OOP</span><span>Computer Networks</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase -->
+        <section class="projects-section" id="projects">
+            <div class="section-header">
+                <span class="section-subtitle">FEATURED CASE STUDIES</span>
+                <h2 class="section-title">Selected Projects Showcase</h2>
+            </div>
+
+            <div class="projects-wrapper">
+                <!-- Project 1 Window -->
+                <div class="apple-project-window glass-card tilt-card" data-project="adcb">
+                    <div class="window-bar">
+                        <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                        <div class="url">adcb-card-ai-platform.dev</div>
+                        <span class="badge">AI Intelligence</span>
+                    </div>
+                    <div class="window-body">
+                        <div class="proj-left">
+                            <div class="proj-tag">Project 01</div>
+                            <h3>ADCB Card <span class="gold-gradient">AI Platform</span></h3>
+                            <p>An intelligent credit profiling engine that queries credit card benefits, reward metrics, and approval limits dynamically using LLMs.</p>
+                            <div class="proj-stack">
+                                <span>Python</span><span>GenAI</span><span>LLM Querying</span><span>FastAPI</span>
+                            </div>
+                            <div class="proj-actions">
+                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="adcb">
+                                    <i class="bx bx-book-open"></i> Open Case Study
+                                </button>
+                                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-outline magnetic-target">
+                                    <i class="bx bxl-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <div class="proj-right">
+                            <div class="screen-mockup">
+                                <div class="mockup-line"></div>
+                                <div class="mockup-bars">
+                                    <div class="mb mb-1"></div><div class="mb mb-2"></div><div class="mb mb-3"></div>
+                                </div>
+                                <div class="mockup-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 Window -->
+                <div class="apple-project-window glass-card tilt-card" data-project="youtube">
+                    <div class="window-bar">
+                        <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                        <div class="url">youtube-summarizer.dev</div>
+                        <span class="badge">NLP &amp; Automation</span>
+                    </div>
+                    <div class="window-body">
+                        <div class="proj-left">
+                            <div class="proj-tag">Project 02</div>
+                            <h3>YouTube Video <span class="gold-gradient">Summarizer</span></h3>
+                            <p>An automated transcript processing pipeline that transcribes and summarizes YouTube videos into structured executive highlights.</p>
+                            <div class="proj-stack">
+                                <span>FastAPI</span><span>Streamlit</span><span>OpenAI API</span><span>LangChain</span>
+                            </div>
+                            <div class="proj-actions">
+                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="youtube">
+                                    <i class="bx bx-book-open"></i> Open Case Study
+                                </button>
+                                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-outline magnetic-target">
+                                    <i class="bx bxl-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <div class="proj-right">
+                            <div class="screen-mockup youtube-screen">
+                                <div class="yt-play"><i class="bx bx-play"></i></div>
+                                <div class="yt-lines">
+                                    <div class="yl"></div><div class="yl short"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 Window -->
+                <div class="apple-project-window glass-card tilt-card" data-project="social">
+                    <div class="window-bar">
+                        <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                        <div class="url">social-media-api.dev</div>
+                        <span class="badge">Backend Systems</span>
+                    </div>
+                    <div class="window-body">
+                        <div class="proj-left">
+                            <div class="proj-tag">Project 03</div>
+                            <h3>Social Media <span class="gold-gradient">App API</span></h3>
+                            <p>A production-grade RESTful API featuring JWT authentication, transactional post handling, relational schemas, and rate-limiting middleware.</p>
+                            <div class="proj-stack">
+                                <span>Python</span><span>FastAPI</span><span>SQLAlchemy</span><span>PostgreSQL</span>
+                            </div>
+                            <div class="proj-actions">
+                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="social">
+                                    <i class="bx bx-book-open"></i> Open Case Study
+                                </button>
+                                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-outline magnetic-target">
+                                    <i class="bx bxl-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+                        <div class="proj-right">
+                            <div class="screen-mockup api-screen">
+                                <div class="endpoint-block get"><span>GET</span> /api/v1/posts</div>
+                                <div class="endpoint-block post"><span>POST</span> /api/v1/posts</div>
+                                <div class="endpoint-block delete"><span>DELETE</span> /api/v1/posts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements & Live Animated Counters & Live GitHub Repos -->
+        <section class="achievements-section" id="achievements">
+            <div class="section-header">
+                <span class="section-subtitle">QUANTIFIABLE METRICS</span>
+                <h2 class="section-title">Live Engineering Statistics</h2>
+            </div>
+
+            <div class="counters-grid">
+                <div class="counter-card glass-card tilt-card">
+                    <div class="counter-num" id="repo-counter" data-target="37">37</div>
+                    <div class="counter-label">GitHub Repositories</div>
+                </div>
+                <div class="counter-card glass-card tilt-card">
+                    <div class="counter-num" data-target="450">450</div>
+                    <div class="counter-label">Git Commits</div>
+                </div>
+                <div class="counter-card glass-card tilt-card">
+                    <div class="counter-num" data-target="300">300</div>
+                    <div class="counter-label">LeetCode Problems</div>
+                </div>
+                <div class="counter-card glass-card tilt-card">
+                    <div class="counter-num" data-target="100">100%</div>
+                    <div class="counter-label">Code Integrity</div>
+                </div>
+            </div>
+
+            <!-- Live GitHub Repositories Dynamic Container -->
+            <div class="live-github-container">
+                <h3 class="gh-section-title"><i class="bx bxl-github"></i> Live GitHub Activity Feed</h3>
+                <div class="live-github-grid" id="live-github-grid">
+                    <!-- Dynamic live repository cards populated via GitHub API -->
+                </div>
+            </div>
+
+            <!-- Coding Profiles Grid -->
+            <div class="profiles-grid">
+                <a href="https://leetcode.com" target="_blank" class="profile-card glass-card tilt-card magnetic-target">
+                    <i class="bx bx-code-block"></i>
+                    <h4>LeetCode</h4>
+                    <span>Active Solver</span>
+                </a>
+                <a href="https://github.com/shahroznasir" target="_blank" class="profile-card glass-card tilt-card magnetic-target">
+                    <i class="bx bxl-github"></i>
+                    <h4>GitHub</h4>
+                    <span>@shahroznasir</span>
+                </a>
+                <a href="https://codechef.com" target="_blank" class="profile-card glass-card tilt-card magnetic-target">
+                    <i class="bx bx-dish"></i>
+                    <h4>CodeChef</h4>
+                    <span>Competitive Coder</span>
+                </a>
+                <a href="https://hackerrank.com" target="_blank" class="profile-card glass-card tilt-card magnetic-target">
+                    <i class="bx bx-terminal"></i>
+                    <h4>HackerRank</h4>
+                    <span>Problem Solver</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 3D Interactive Education Book Section -->
+        <section class="education-section" id="education">
+            <div class="section-header">
+                <span class="section-subtitle">ACADEMIC CREDENTIALS</span>
+                <h2 class="section-title">3D Interactive Education Book</h2>
+            </div>
+
+            <div class="book-container">
+                <div class="book tilt-card" id="3d-book">
+                    <div class="book-cover">
+                        <i class="bx bxs-graduation"></i>
+                        <h3>Computer Science Engineering</h3>
+                        <p>Click to Open Diploma</p>
+                        <span class="tap-hint">Tap Cover</span>
+                    </div>
+                    <div class="book-inside glass-card">
+                        <h3>Degree Certificate</h3>
+                        <p class="inst">Computer Science &amp; Engineering</p>
+                        <div class="book-details">
+                            <div class="b-row"><span>Status:</span> <strong>Graduated CSE</strong></div>
+                            <div class="b-row"><span>Location:</span> <strong>Bengaluru, India</strong></div>
+                            <div class="b-row"><span>Coursework:</span> <strong>DSA, OS, DBMS, OOP, AI</strong></div>
+                            <div class="b-row"><span>Honors:</span> <strong>Full-Stack Architecture Focus</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="section-header">
+                <span class="section-subtitle">GET IN TOUCH</span>
+                <h2 class="section-title">Let's Build Something Exceptional</h2>
+            </div>
+
+            <div class="contact-card glass-card tilt-card">
+                <div class="contact-info">
+                    <h3>Direct Reach</h3>
+                    <p>Open for full-time roles, architectural consulting, and AI collaborations.</p>
+                    <div class="c-items">
+                        <a href="mailto:mdshahroznasir@gmail.com" class="c-item copy-email-btn magnetic-target">
+                            <i class="bx bx-envelope"></i> mdshahroznasir@gmail.com
+                        </a>
+                        <button class="c-item download-vcard-btn magnetic-target" style="background:transparent; border:none; padding:0; text-align:left; cursor:pointer;">
+                            <i class="bx bx-id-card"></i> Save vCard Contact (.vcf)
+                        </button>
+                        <div class="c-item">
+                            <i class="bx bx-map"></i> Bengaluru, India
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="4" placeholder="Tell me about your product or engineering goals..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-liquid magnetic-target">
+                        Send Message <i class="bx bx-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer with Animated Neon Skyline -->
+        <footer class="footer">
+            <div class="skyline-animation"></div>
+            <div class="footer-content">
+                <p>&copy; 2026 Md. Shahroz Nasir. Crafted with Apple + Linear aesthetics.</p>
+                <div class="f-links">
+                    <a href="https://github.com/shahroznasir" target="_blank"><i class="bx bxl-github"></i></a>
+                    <a href="mailto:mdshahroznasir@gmail.com" class="copy-email-btn"><i class="bx bx-envelope"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating macOS-Style Bottom Dock -->
+    <div class="macos-dock" id="macos-dock">
+        <a href="#hero" class="dock-item magnetic-target" title="Home"><i class="bx bx-home-alt"></i></a>
+        <a href="#projects" class="dock-item magnetic-target" title="Projects"><i class="bx bx-grid-alt"></i></a>
+        <button class="dock-item magnetic-target" id="dock-term-btn" title="Hacker Terminal"><i class="bx bx-terminal"></i></button>
+        <button class="dock-item magnetic-target" id="dock-cmd-btn" title="Command Palette (Ctrl + K)"><i class="bx bx-command"></i></button>
+        <button class="dock-item magnetic-target" id="dock-ai-btn" title="AI Assistant"><i class="bx bx-bot"></i></button>
+        <button class="dock-item magnetic-target download-vcard-btn" title="Save vCard Contact"><i class="bx bx-id-card"></i></button>
+        <a href="mailto:mdshahroznasir@gmail.com" class="dock-item magnetic-target copy-email-btn" title="Contact Email"><i class="bx bx-envelope"></i></a>
+    </div>
+
+    <!-- Command Palette Overlay Modal (Ctrl + K) -->
+    <div class="cmd-modal" id="cmd-modal">
+        <div class="cmd-box glass-card">
+            <div class="cmd-header">
+                <i class="bx bx-search"></i>
+                <input type="text" id="cmd-input" placeholder="Type a command or search section (e.g. projects, resume, contact)...">
+                <span class="cmd-esc">ESC</span>
+            </div>
+            <ul class="cmd-results" id="cmd-results">
+                <li data-action="goto" data-target="#hero"><i class="bx bx-home"></i> Home Section</li>
+                <li data-action="goto" data-target="#about"><i class="bx bx-user"></i> About &amp; Timeline</li>
+                <li data-action="goto" data-target="#skills"><i class="bx bx-code-alt"></i> Skills &amp; Tech Orbit</li>
+                <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Selected Projects</li>
+                <li data-action="goto" data-target="#experience"><i class="bx bx-briefcase"></i> Experience Roadmap</li>
+                <li data-action="vcard"><i class="bx bx-id-card"></i> Save vCard Contact (.vcf)</li>
+                <li data-action="email"><i class="bx bx-copy"></i> Copy Email (mdshahroznasir@gmail.com)</li>
+                <li data-action="github"><i class="bx bxl-github"></i> Open GitHub Profile</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Fullscreen Apple-Style Case Study Modal -->
+    <div class="casestudy-modal" id="casestudy-modal">
+        <div class="casestudy-content glass-card">
+            <button class="casestudy-close" id="casestudy-close"><i class="bx bx-x"></i></button>
+            <div id="casestudy-body">
+                <!-- Case study details dynamically injected -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating AI Assistant Drawer -->
+    <div class="ai-drawer" id="ai-drawer">
+        <div class="ai-header">
+            <div class="ai-title"><i class="bx bx-bot"></i> Shahroz AI Assistant</div>
+            <button class="ai-close" id="ai-close"><i class="bx bx-x"></i></button>
+        </div>
+        <div class="ai-messages" id="ai-messages">
+            <div class="ai-msg bot">Hi! I am Shahroz's AI assistant. Ask me about his projects, skills, background, or availability!</div>
+        </div>
+        <div class="ai-input-bar">
+            <input type="text" id="ai-input" placeholder="Ask AI anything (e.g. What are his skills?)...">
+            <button id="ai-send"><i class="bx bx-send"></i></button>
+        </div>
+    </div>
+
+    <!-- Interactive Hacker Terminal Modal -->
+    <div class="hacker-term-modal" id="hacker-term-modal">
+        <div class="term-box glass-card">
+            <div class="term-top">
+                <span>SHAHROZ_CLI_OS v1.0</span>
+                <button class="term-close" id="term-close"><i class="bx bx-x"></i></button>
+            </div>
+            <div class="term-body" id="term-body">
+                <p class="t-line">Welcome to Shahroz CLI. Type <span class="t-gold">'help'</span> for a list of available commands.</p>
+            </div>
+            <div class="term-input-line">
+                <span class="prompt">$</span>
+                <input type="text" id="term-input" autofocus>
+            </div>
+        </div>
+    </div>
+
+    <!-- CDNs: Three.js, GSAP, ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
-
