@@ -323,28 +323,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const bootFill = document.getElementById('boot-fill');
 
     let progress = 0;
-    const bootInterval = setInterval(() => {
-        progress += Math.floor(Math.random() * 15) + 10;
-        if (progress > 100) progress = 100;
-        if (bootFill) bootFill.style.width = `${progress}%`;
-
-        if (progress === 100) {
-            clearInterval(bootInterval);
-            setTimeout(() => {
-                if (bootScreen) bootScreen.classList.add('hide');
-                initHeroAnimations();
-            }, 400);
-        }
-    }, 80);
-
-    window.addEventListener('keydown', () => {
+    const hideBootScreen = () => {
         if (bootScreen && !bootScreen.classList.contains('hide')) {
-            clearInterval(bootInterval);
             if (bootFill) bootFill.style.width = '100%';
             bootScreen.classList.add('hide');
+            setTimeout(() => {
+                bootScreen.style.display = 'none';
+            }, 800);
             initHeroAnimations();
         }
-    });
+    };
+
+    const bootInterval = setInterval(() => {
+        progress += Math.floor(Math.random() * 25) + 20;
+        if (progress >= 100) {
+            progress = 100;
+            if (bootFill) bootFill.style.width = '100%';
+            clearInterval(bootInterval);
+            setTimeout(hideBootScreen, 120);
+        } else if (bootFill) {
+            bootFill.style.width = `${progress}%`;
+        }
+    }, 40);
+
+    // Failsafe max timeout: auto-dismiss after 600ms
+    setTimeout(() => {
+        clearInterval(bootInterval);
+        hideBootScreen();
+    }, 600);
+
+    window.addEventListener('keydown', hideBootScreen);
+    window.addEventListener('click', hideBootScreen);
+    window.addEventListener('touchstart', hideBootScreen);
 
     /* ==========================================================================
        8. Custom Dual-Ring Cursor
