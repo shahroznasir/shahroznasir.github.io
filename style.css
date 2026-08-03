@@ -198,9 +198,7 @@ body {
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 
-/* ==========================================================================
-   Reference Mockup Pixel-Exact Floating Header & Capsule Inset
-   ========================================================================== */
+/* Floating Header */
 header {
     position: fixed; top: 16px; left: 20px; right: 20px;
     max-width: 1260px; height: 54px; margin: 0 auto;
@@ -236,19 +234,15 @@ header {
     background: #00E5A8; border-radius: 50%; box-shadow: 0 0 8px #00E5A8;
 }
 
-/* Center: 7 Navigation Links & Active Centered Blue Dot */
+/* Center: 7 Navigation Links */
 .nav-center { position: relative; display: flex; align-items: center; }
-
 header nav ul { display: flex; gap: 22px; list-style: none; }
-
 header nav ul a {
     text-decoration: none; color: rgba(255, 255, 255, 0.7);
     font-size: 13px; font-weight: 500; transition: color 0.3s, text-shadow 0.3s;
     display: inline-block; padding: 4px 0;
 }
-
 header nav ul a:hover { color: #FFFFFF; text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); }
-
 header nav ul a.active {
     color: #5B8CFF; font-weight: 600;
     text-shadow: 0 0 12px rgba(91, 140, 255, 0.6);
@@ -261,10 +255,9 @@ header nav ul a.active {
     opacity: 0;
 }
 
-/* Right: Action Sequence */
+/* Right: Actions */
 .header-actions { display: flex; align-items: center; gap: 10px; }
 
-/* Status Pill 🟢 Open to Work */
 .status-pill {
     font-size: 11.5px; color: #00E5A8; background: rgba(0, 229, 168, 0.08);
     border: 1px solid rgba(0, 229, 168, 0.25); padding: 4px 14px;
@@ -273,12 +266,11 @@ header nav ul a.active {
 }
 .status-dot { width: 6px; height: 6px; background: #00E5A8; border-radius: 50%; box-shadow: 0 0 8px #00E5A8; }
 
-/* Resume ↗ Pill Button */
 .btn-resume-glow {
     background: linear-gradient(135deg, #4A7BFF 0%, #2B5CFF 100%);
     color: #FFFFFF; border: none; padding: 7px 18px; border-radius: 20px;
     font-size: 12.5px; font-weight: 600; display: flex; align-items: center; gap: 5px;
-    cursor: pointer; transition: var(--transition-smooth);
+    cursor: pointer; transition: var(--transition-smooth); text-decoration: none;
     box-shadow: 0 4px 15px rgba(59, 102, 255, 0.4); white-space: nowrap;
 }
 .btn-resume-glow:hover {
@@ -286,9 +278,7 @@ header nav ul a.active {
     box-shadow: 0 6px 20px rgba(59, 102, 255, 0.6); transform: translateY(-2px);
 }
 
-/* Round Icon Buttons (Moon & Speaker) */
 .theme-menu-wrapper { position: relative; }
-
 .icon-round-btn {
     width: 32px; height: 32px; border-radius: 50%;
     background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
@@ -298,7 +288,6 @@ header nav ul a.active {
 }
 .icon-round-btn:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.1); border-color: rgba(91, 140, 255, 0.3); }
 
-/* ⌘ Ctrl K Command Palette Badge Button */
 .cmd-pill-btn {
     background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.8); padding: 5px 12px; border-radius: 16px;
@@ -376,12 +365,10 @@ header nav ul a.active {
 }
 
 .hero-left { display: flex; flex-direction: column; align-items: flex-start; }
-
 .hero-name-title {
     font-family: var(--font-heading); font-size: 58px; font-weight: 800;
     line-height: 1.08; color: var(--text-main); letter-spacing: -0.02em; margin-bottom: 6px;
 }
-
 .hero-role-title { font-size: 26px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
 
 .hero-subhead-tags {
@@ -554,7 +541,7 @@ header nav ul a.active {
     border: 1px solid rgba(0, 229, 168, 0.2); color: var(--secondary);
     border-radius: 16px; display: flex; align-items: center; gap: 6px;
 }
-.proj-actions { display: flex; gap: 15px; }
+.proj-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .screen-mockup { width: 100%; height: 220px; background: #02040A; border-radius: 12px; border: 1px solid var(--border-card); padding: 20px; display: flex; flex-direction: column; gap: 14px; }
 .mockup-line { width: 50%; height: 10px; background: rgba(91, 140, 255, 0.2); border-radius: 5px; }
@@ -597,8 +584,8 @@ header nav ul a.active {
 .t-author h4 { font-size: 16px; color: var(--text-main); font-weight: 600; }
 .t-author span { font-size: 12.5px; color: var(--secondary); }
 
-/* Contact Section */
-.contact-card { display: grid; grid-template-columns: 1fr 1fr; padding: 50px; gap: 50px; }
+/* Contact Section & Form Success Card */
+.contact-card { display: grid; grid-template-columns: 1fr 1fr; padding: 50px; gap: 50px; position: relative; }
 .contact-info h3 { font-size: 28px; margin-bottom: 16px; }
 .contact-info p { font-size: 15px; color: var(--text-sub); margin-bottom: 30px; }
 .c-items { display: flex; flex-direction: column; gap: 16px; }
@@ -613,6 +600,15 @@ header nav ul a.active {
     border-radius: 8px; color: var(--text-main); outline: none; font-family: var(--font-body);
 }
 .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(91, 140, 255, 0.2); }
+
+.form-success-card {
+    padding: 40px; text-align: center; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 16px;
+    border-color: rgba(0, 229, 168, 0.4); box-shadow: 0 0 30px rgba(0, 229, 168, 0.2);
+}
+.form-success-card .success-icon { font-size: 54px; color: var(--secondary); }
+.form-success-card h3 { font-size: 24px; color: var(--text-main); }
+.form-success-card p { font-size: 14.5px; color: var(--text-sub); line-height: 1.6; }
 
 /* Footer */
 .footer { border-top: 1px solid var(--border-card); padding: 50px 0; margin-top: 60px; position: relative; }

@@ -1,0 +1,79 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+5 0 obj
+<< /Length 2765 >>
+stream
+BT
+/F1 9 Tf
+11 TL
+36 750 Td
+(Md. Shahroz Nasir) '
+(Software Engineer | Backend ? AI ? Full Stack) '
+(Email: mdshahroznasir@gmail.com | Phone: +91 9876543210) '
+(GitHub: https://github.com/shahroznasir | Location: Bengaluru, India) '
+() '
+(================================================================================) '
+(EXECUTIVE SUMMARY) '
+(================================================================================) '
+(Computer Science Engineering graduate \(2025\) specializing in scalable Python ) '
+(FastAPI backends, Generative AI / LLM pipeline integration, and modern web software. ) '
+(Demonstrated engineering discipline across 37+ GitHub repositories, RESTful API ) '
+(architecture, database schema optimization, and Docker containerization.) '
+() '
+(================================================================================) '
+(TECHNICAL COMPETENCIES) '
+(================================================================================) '
+(? Languages: Python \(Expert\), C++, JavaScript \(ES6+\), SQL, HTML5/CSS3) '
+(? Frameworks: FastAPI, Node.js, Express, React, SQLAlchemy, Streamlit, LangChain) '
+(? AI & ML: OpenAI API, LLM RAG Pipelines, Prompt Engineering, OpenCV, Vector DBs) '
+(? Databases & Caching: PostgreSQL, Redis, SQLite, Database Indexing & Query Profiling) '
+(? Cloud & DevOps: Docker, AWS \(S3, EC2\), Git, GitHub Actions CI/CD, Linux CLI) '
+() '
+(================================================================================) '
+(FEATURED PROJECTS) '
+(================================================================================) '
+(1. ADCB Card AI Intelligence Platform \(Python, FastAPI, OpenAI API, Docker\)) '
+(   ? Engineered an intelligent credit profiling engine querying card reward metrics ) '
+(     and approval limits dynamically using LLMs and RAG pipelines.) '
+(   ? Designed async API endpoints with sub-60ms response latencies.) '
+() '
+(2. YouTube Video Summarizer & Transcript Pipeline \(Python, Streamlit, LangChain\)) '
+(   ? Built automated transcript extraction and LLM summarization pipeline.) '
+(   ? Delivered structured executive bullet highlights from multi-hour video lectures.) '
+() '
+(3. Social Media Scalable RESTful API \(Python, FastAPI, PostgreSQL, JWT Auth\)) '
+(   ? Production-grade RESTful API featuring JWT authentication, password hashing,) '
+(     transactional post handling, and Pydantic request validation middleware.) '
+() '
+(================================================================================) '
+(EDUCATION) '
+(================================================================================) '
+(Bachelor of Technology in Computer Science & Engineering \(2021 - 2025\)) '
+(Focus: Data Structures & Algorithms, OS, DBMS, Software Engineering, AI/ML) '
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000309 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3126
+%%EOF

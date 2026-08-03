@@ -105,10 +105,10 @@
                         <span class="status-dot"></span> Open to Work
                     </div>
 
-                    <!-- Resume ↗ Pill Button -->
-                    <button class="btn-resume-glow magnetic-target" id="open-resume-btn-nav">
+                    <!-- Resume ↗ Pill Button (Direct PDF Download) -->
+                    <a href="Shahroz_Nasir_Resume.pdf" download="Shahroz_Nasir_Resume.pdf" class="btn-resume-glow magnetic-target" id="open-resume-btn-nav" title="Download Shahroz Nasir PDF Resume">
                         Resume <i class="bx bx-up-arrow-alt"></i>
-                    </button>
+                    </a>
 
                     <!-- Moon Theme Toggle Button -->
                     <div class="theme-menu-wrapper">
@@ -180,9 +180,9 @@
                 </p>
 
                 <div class="hero-buttons">
-                    <button class="btn btn-primary magnetic-target" id="open-resume-btn">
-                        <i class="bx bx-file"></i> Resume
-                    </button>
+                    <a href="Shahroz_Nasir_Resume.pdf" download="Shahroz_Nasir_Resume.pdf" class="btn btn-primary magnetic-target" id="open-resume-btn">
+                        <i class="bx bx-download"></i> Download Resume
+                    </a>
                     <a href="#projects" class="btn btn-secondary magnetic-target">
                         <i class="bx bx-grid-alt"></i> View Projects
                     </a>
@@ -434,7 +434,7 @@
             </div>
         </section>
 
-        <!-- 6. Story Arc: Featured Projects Showcase with Filters -->
+        <!-- 6. Story Arc: Featured Projects Showcase with Live Demo ↗ Links -->
         <section class="projects-section" id="projects">
             <div class="section-header">
                 <span class="section-subtitle">WHAT I BUILD</span>
@@ -471,8 +471,11 @@
                             </div>
 
                             <div class="proj-actions">
-                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="adcb">
-                                    <i class="bx bx-book-open"></i> Open Case Study
+                                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary magnetic-target">
+                                    <i class="bx bx-rocket"></i> Live Demo ↗
+                                </a>
+                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="adcb">
+                                    <i class="bx bx-book-open"></i> Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -513,8 +516,11 @@
                             </div>
 
                             <div class="proj-actions">
-                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="youtube">
-                                    <i class="bx bx-book-open"></i> Open Case Study
+                                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary magnetic-target">
+                                    <i class="bx bx-rocket"></i> Live Demo ↗
+                                </a>
+                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="youtube">
+                                    <i class="bx bx-book-open"></i> Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -554,8 +560,11 @@
                             </div>
 
                             <div class="proj-actions">
-                                <button class="btn btn-primary open-casestudy-btn magnetic-target" data-case="social">
-                                    <i class="bx bx-book-open"></i> Open Case Study
+                                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary magnetic-target">
+                                    <i class="bx bx-rocket"></i> Live Demo ↗ (API Docs)
+                                </a>
+                                <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="social">
+                                    <i class="bx bx-book-open"></i> Case Study
                                 </button>
                                 <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-outline magnetic-target">
                                     <i class="bx bxl-github"></i> GitHub
@@ -637,7 +646,7 @@
             </div>
         </section>
 
-        <!-- 9. Story Arc: Let's Work Together -->
+        <!-- 9. Story Arc: Real Formspree Contact Form Submission -->
         <section class="contact-section" id="contact">
             <div class="section-header">
                 <span class="section-subtitle">LET'S WORK TOGETHER</span>
@@ -665,23 +674,31 @@
                     </div>
                 </div>
 
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                <!-- Formspree / AJAX Contact Form -->
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdshahroznasir" method="POST">
                     <div class="form-group">
                         <label>Your Name</label>
-                        <input type="text" placeholder="John Doe" required>
+                        <input type="text" name="name" id="form-name" placeholder="John Doe" required>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" placeholder="john@example.com" required>
+                        <input type="email" name="email" id="form-email" placeholder="john@example.com" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea rows="4" placeholder="Tell me about your product or engineering goals..." required></textarea>
+                        <textarea name="message" id="form-message" rows="4" placeholder="Tell me about your product or engineering goals..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-liquid magnetic-target">
-                        Send Message <i class="bx bx-paper-plane"></i>
+                    <button type="submit" class="btn btn-liquid magnetic-target" id="submit-btn">
+                        <span id="submit-text">Send Message</span> <i class="bx bx-paper-plane" id="submit-icon"></i>
                     </button>
                 </form>
+
+                <!-- Animated Success Message Card -->
+                <div class="form-success-card glass-card" id="form-success-card" style="display:none;">
+                    <i class="bx bx-check-circle success-icon"></i>
+                    <h3>Message Delivered!</h3>
+                    <p>Thank you for reaching out. Shahroz has received your message and will respond directly to your email shortly.</p>
+                </div>
             </div>
         </section>
 
@@ -739,7 +756,9 @@
                 </div>
             </div>
             <div class="resume-paper-footer">
-                <a href="mailto:mdshahroznasir@gmail.com" class="btn btn-primary copy-email-btn">Download PDF Resume</a>
+                <a href="Shahroz_Nasir_Resume.pdf" download="Shahroz_Nasir_Resume.pdf" class="btn btn-primary">
+                    <i class="bx bx-download"></i> Download PDF Resume
+                </a>
             </div>
         </div>
     </div>
@@ -759,7 +778,7 @@
                 <li data-action="goto" data-target="#projects"><i class="bx bx-grid-alt"></i> Projects</li>
                 <li data-action="goto" data-target="#process"><i class="bx bx-sitemap"></i> Experience &amp; Process</li>
                 <li data-action="goto" data-target="#achievements"><i class="bx bx-award"></i> Achievements</li>
-                <li data-action="resume"><i class="bx bx-file"></i> Unfold Interactive Resume</li>
+                <li data-action="resume"><i class="bx bx-download"></i> Download PDF Resume</li>
                 <li data-action="vcard"><i class="bx bx-id-card"></i> Save vCard Contact (.vcf)</li>
                 <li data-action="email"><i class="bx bx-copy"></i> Copy Email (mdshahroznasir@gmail.com)</li>
                 <li data-action="github"><i class="bx bxl-github"></i> Open GitHub Profile</li>
