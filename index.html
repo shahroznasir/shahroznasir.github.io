@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Md. Shahroz Nasir — Software Engineer | Backend • AI • Full Stack</title>
     
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://shahroznasir.github.io">
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
@@ -18,10 +21,12 @@
     <meta property="og:description" content="I build scalable backend systems, AI-powered applications, and modern web experiences. Open for AI, Backend, and Full-Stack roles.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shahroznasir.github.io">
+    <meta property="og:image" content="https://shahroznasir.github.io/assets/favicon.svg">
     
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Md. Shahroz Nasir — Software Engineer">
     <meta property="twitter:description" content="I build scalable backend systems, AI-powered applications, and modern web experiences.">
+    <meta property="twitter:image" content="https://shahroznasir.github.io/assets/favicon.svg">
 
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="style.css">
@@ -131,19 +136,21 @@
             </div>
         </header>
 
-        <!-- Mobile Sidebar -->
-        <div class="sidebar" id="mobile-sidebar">
+        <!-- Mobile Sidebar Drawer -->
+        <div class="sidebar" id="mobile-sidebar" aria-label="Mobile Navigation Drawer">
             <div class="close-icon" id="mobile-menu-close" aria-label="Close Navigation Menu">
                 <i class="bx bx-x"></i>
             </div>
-            <ul class="sidebar-links">
-                <li><a href="#hero" class="sidebar-link">home</a></li>
-                <li><a href="#about" class="sidebar-link">about</a></li>
-                <li><a href="#skills" class="sidebar-link">skills</a></li>
-                <li><a href="#projects" class="sidebar-link">projects</a></li>
-                <li><a href="#process" class="sidebar-link">experience</a></li>
-                <li><a href="#contact" class="sidebar-link">contact</a></li>
-            </ul>
+            <nav aria-label="Mobile Sidebar Links">
+                <ul class="sidebar-links">
+                    <li><a href="#hero" class="sidebar-link">home</a></li>
+                    <li><a href="#about" class="sidebar-link">about</a></li>
+                    <li><a href="#skills" class="sidebar-link">skills</a></li>
+                    <li><a href="#projects" class="sidebar-link">projects</a></li>
+                    <li><a href="#process" class="sidebar-link">experience</a></li>
+                    <li><a href="#contact" class="sidebar-link">contact</a></li>
+                </ul>
+            </nav>
         </div>
 
         <!-- 1. Hero Section -->
@@ -375,10 +382,10 @@
             </div>
         </section>
 
-        <!-- 5. Story Arc: 6-Stage Engineering Process Section -->
+        <!-- 5. Story Arc: 6-Stage Engineering Process & Experience Section -->
         <section class="process-section" id="process">
             <div class="section-header">
-                <span class="section-subtitle">HOW I BUILD SOFTWARE</span>
+                <span class="section-subtitle">METHODOLOGY &amp; EXPERIENCE</span>
                 <h2 class="section-title">6-Stage Engineering Process</h2>
             </div>
 
@@ -422,7 +429,7 @@
             </div>
         </section>
 
-        <!-- 6. Story Arc: Featured Projects Showcase with Direct Live Demo ↗ Links -->
+        <!-- 6. Story Arc: Featured Projects Showcase -->
         <section class="projects-section" id="projects">
             <div class="section-header">
                 <span class="section-subtitle">WHAT I BUILD</span>
@@ -460,14 +467,11 @@
 
                             <div class="proj-actions">
                                 <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bx-rocket"></i> Live Demo ↗
+                                    <i class="bx bxl-github"></i> GitHub Repo ↗
                                 </a>
                                 <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="adcb">
                                     <i class="bx bx-book-open"></i> Case Study
                                 </button>
-                                <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-outline magnetic-target">
-                                    <i class="bx bxl-github"></i> GitHub
-                                </a>
                             </div>
                         </div>
                         <div class="proj-right">
@@ -510,14 +514,11 @@
 
                             <div class="proj-actions">
                                 <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bx-rocket"></i> Live Demo ↗
+                                    <i class="bx bxl-github"></i> GitHub Repo ↗
                                 </a>
                                 <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="youtube">
                                     <i class="bx bx-book-open"></i> Case Study
                                 </button>
-                                <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-outline magnetic-target">
-                                    <i class="bx bxl-github"></i> GitHub
-                                </a>
                             </div>
                         </div>
                         <div class="proj-right">
@@ -559,14 +560,11 @@
 
                             <div class="proj-actions">
                                 <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bx-rocket"></i> Live Demo ↗ (API Docs)
+                                    <i class="bx bxl-github"></i> GitHub Repo ↗
                                 </a>
                                 <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="social">
                                     <i class="bx bx-book-open"></i> Case Study
                                 </button>
-                                <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-outline magnetic-target">
-                                    <i class="bx bxl-github"></i> GitHub
-                                </a>
                             </div>
                         </div>
                         <div class="proj-right">
@@ -817,7 +815,7 @@
         </div>
     </div>
 
-    <!-- Interactive Hacker Terminal Modal -->
+    <!-- Interactive Hacker Terminal Modal (autofocus removed for page load focus safety) -->
     <div class="hacker-term-modal" id="hacker-term-modal">
         <div class="term-box glass-card">
             <div class="term-top">
@@ -829,7 +827,7 @@
             </div>
             <div class="term-input-line">
                 <span class="prompt">$</span>
-                <input type="text" id="term-input" autofocus>
+                <input type="text" id="term-input">
             </div>
         </div>
     </div>

@@ -6,6 +6,36 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
+       0. Core Element Queries & Helpers (Declared First for Scope Safety)
+       ========================================================================== */
+    const navLinks = document.querySelectorAll('.term-nav-item');
+    const sections = document.querySelectorAll('section[id]');
+    const termPathSpan = document.getElementById('term-path-span');
+    const moreMenuBtn = document.getElementById('more-menu-btn');
+    const moreDropdown = document.getElementById('more-dropdown');
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeDropdown = document.getElementById('theme-dropdown');
+    const cmdModal = document.getElementById('cmd-modal');
+    const resumeModal = document.getElementById('resume-modal');
+    const toast = document.getElementById('toast');
+
+    const showToast = (msg) => {
+        if (!toast) return;
+        const msgEl = document.getElementById('toast-message');
+        if (msgEl) msgEl.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3200);
+    };
+
+    const copyEmail = () => {
+        navigator.clipboard.writeText('mdshahroznasir@gmail.com').then(() => {
+            showToast("Copied mdshahroznasir@gmail.com!");
+        }).catch(() => {
+            showToast("mdshahroznasir@gmail.com");
+        });
+    };
+
+    /* ==========================================================================
        1. Lenis Smooth Scroll Engine (60fps Buttery Inertia)
        ========================================================================== */
     if (typeof Lenis !== 'undefined') {
@@ -17,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         function raf(time) {
-            lenis.raf(time);
+            if (!document.hidden) lenis.raf(time);
             requestAnimationFrame(raf);
         }
         requestAnimationFrame(raf);
@@ -26,10 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        2. Terminal-Prompt Navbar Dynamic Path Morphing & ScrollSpy Engine
        ========================================================================== */
-    const navLinks = document.querySelectorAll('.term-nav-item');
-    const sections = document.querySelectorAll('section[id]');
-    const termPathSpan = document.getElementById('term-path-span');
-
     const updateTerminalPath = (path) => {
         if (termPathSpan && path) {
             termPathSpan.textContent = path;
@@ -39,9 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         }
     };
-
-    const moreMenuBtn = document.getElementById('more-menu-btn');
-    const moreDropdown = document.getElementById('more-dropdown');
 
     if (moreMenuBtn && moreDropdown) {
         moreMenuBtn.addEventListener('click', (e) => {
@@ -340,10 +363,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const renderRing = () => {
-            ringX += (mouseX - ringX) * 0.15;
-            ringY += (mouseY - ringY) * 0.15;
-            cursorRing.style.left = `${ringX}px`;
-            cursorRing.style.top = `${ringY}px`;
+            if (!document.hidden) {
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+                cursorRing.style.left = `${ringX}px`;
+                cursorRing.style.top = `${ringY}px`;
+            }
             requestAnimationFrame(renderRing);
         };
         renderRing();
@@ -415,10 +440,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const animateThree = () => {
-                laptopGroup.rotation.y += (targetRotY - laptopGroup.rotation.y) * 0.05;
-                laptopGroup.rotation.x += (targetRotX - laptopGroup.rotation.x) * 0.05;
-                laptopGroup.position.y = Math.sin(Date.now() * 0.0015) * 0.1;
-                renderer.render(scene, camera);
+                if (!document.hidden) {
+                    laptopGroup.rotation.y += (targetRotY - laptopGroup.rotation.y) * 0.05;
+                    laptopGroup.rotation.x += (targetRotX - laptopGroup.rotation.x) * 0.05;
+                    laptopGroup.position.y = Math.sin(Date.now() * 0.0015) * 0.1;
+                    renderer.render(scene, camera);
+                }
                 requestAnimationFrame(animateThree);
             };
             animateThree();
@@ -461,23 +488,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const animateBgParticles = () => {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
+            if (!document.hidden) {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
 
-                if (p.x < 0) p.x = width;
-                if (p.x > width) p.x = 0;
-                if (p.y < 0) p.y = height;
-                if (p.y > height) p.y = 0;
+                    if (p.x < 0) p.x = width;
+                    if (p.x > width) p.x = 0;
+                    if (p.y < 0) p.y = height;
+                    if (p.y > height) p.y = 0;
 
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(91, 140, 255, ${p.alpha})`;
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = '#5B8CFF';
-                ctx.fill();
-            });
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(91, 140, 255, ${p.alpha})`;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#5B8CFF';
+                    ctx.fill();
+                });
+            }
             requestAnimationFrame(animateBgParticles);
         };
         animateBgParticles();
@@ -958,7 +987,7 @@ END:VCARD`;
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            card.style.transform = '';
         });
     });
 
