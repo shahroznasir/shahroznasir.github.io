@@ -310,14 +310,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const bootScreen = document.getElementById('boot-screen');
     const bootFill = document.getElementById('boot-fill');
 
+    const initHeroAnimations = () => {
+        if (typeof gsap !== 'undefined') {
+            gsap.from('.hero-left > *', {
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                stagger: 0.15,
+                ease: 'power3.out'
+            });
+        }
+    };
+
     let progress = 0;
     const hideBootScreen = () => {
         if (bootScreen && !bootScreen.classList.contains('hide')) {
             if (bootFill) bootFill.style.width = '100%';
-            bootScreen.classList.add('hide');
-            setTimeout(() => {
-                bootScreen.style.display = 'none';
-            }, 800);
+            bootScreen.classList.add('hide'); // CSS .hide sets display:none immediately
             initHeroAnimations();
         }
     };
@@ -626,17 +635,7 @@ END:VCARD`;
 
     typeRole();
 
-    const initHeroAnimations = () => {
-        if (typeof gsap !== 'undefined') {
-            gsap.from('.hero-left > *', {
-                opacity: 0,
-                y: 30,
-                duration: 1,
-                stagger: 0.15,
-                ease: 'power3.out'
-            });
-        }
-    };
+
 
     /* ==========================================================================
        14. Command Palette (Ctrl + K) & Theme Switcher
