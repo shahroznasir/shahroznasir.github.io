@@ -186,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        4. Interactive Paper Resume Unfold Modal Handlers & Execution Feedback
        ========================================================================== */
-    const resumeModal = document.getElementById('resume-modal');
     const openResumeBtn = document.getElementById('open-resume-btn');
     const openResumeBtnNav = document.getElementById('open-resume-btn-nav');
     const resumeBtnText = document.getElementById('resume-btn-text');
@@ -211,18 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resumeClose.addEventListener('click', () => {
             resumeModal.classList.remove('show');
         });
-    }
-
-    // Resume PDF check
-    const resumeDownloadBtn = document.getElementById('resume-download-btn');
-    if (resumeDownloadBtn) {
-        fetch(resumeDownloadBtn.getAttribute('href'), { method: 'HEAD' })
-            .then(res => {
-                if (!res.ok) resumeDownloadBtn.style.display = 'none';
-            })
-            .catch(() => {
-                // Keep visible for static PDF asset download
-            });
     }
 
     const resumePrintBtn = document.getElementById('resume-print-btn');
@@ -654,9 +641,6 @@ END:VCARD`;
     /* ==========================================================================
        14. Command Palette (Ctrl + K) & Theme Switcher
        ========================================================================== */
-    const themeDropdown = document.getElementById('theme-dropdown');
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const cmdModal = document.getElementById('cmd-modal');
     const cmdTrigger = document.getElementById('cmd-trigger');
     const dockCmdBtn = document.getElementById('dock-cmd-btn');
     const cmdInput = document.getElementById('cmd-input');

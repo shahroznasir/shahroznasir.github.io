@@ -21,12 +21,14 @@
     <meta property="og:description" content="I build scalable backend systems, AI-powered applications, and modern web experiences. Open for AI, Backend, and Full-Stack roles.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shahroznasir.github.io">
-    <meta property="og:image" content="https://shahroznasir.github.io/assets/favicon.svg">
+    <meta property="og:image" content="https://shahroznasir.github.io/assets/og-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="Md. Shahroz Nasir — Software Engineer">
     <meta property="twitter:description" content="I build scalable backend systems, AI-powered applications, and modern web experiences.">
-    <meta property="twitter:image" content="https://shahroznasir.github.io/assets/favicon.svg">
+    <meta property="twitter:image" content="https://shahroznasir.github.io/assets/og-card.jpg">
 
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="style.css">
@@ -62,8 +64,33 @@
             <div class="boot-progress-bar">
                 <div class="boot-fill" id="boot-fill"></div>
             </div>
-        </div>
     </div>
+    <script>
+        (function() {
+            var bs = document.getElementById('boot-screen');
+            var bf = document.getElementById('boot-fill');
+            if (bs) {
+                var p = 0;
+                var timer = setInterval(function() {
+                    p += 25;
+                    if (bf) bf.style.width = Math.min(p, 100) + '%';
+                    if (p >= 100) {
+                        clearInterval(timer);
+                        bs.classList.add('hide');
+                        setTimeout(function() { bs.style.display = 'none'; }, 600);
+                    }
+                }, 40);
+                setTimeout(function() {
+                    clearInterval(timer);
+                    bs.classList.add('hide');
+                    setTimeout(function() { bs.style.display = 'none'; }, 600);
+                }, 500);
+                window.addEventListener('click', function() { bs.classList.add('hide'); bs.style.display = 'none'; });
+                window.addEventListener('keydown', function() { bs.classList.add('hide'); bs.style.display = 'none'; });
+                window.addEventListener('touchstart', function() { bs.classList.add('hide'); bs.style.display = 'none'; });
+            }
+        })();
+    </script>
 
     <!-- Custom Dual-Ring Magnetic Cursor & Trail Container -->
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -467,7 +494,7 @@
 
                             <div class="proj-actions">
                                 <a href="https://github.com/shahroznasir/adcb-card-ai-platform" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bxl-github"></i> GitHub Repo ↗
+                                    <i class="bx bxl-github"></i> View Source ↗
                                 </a>
                                 <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="adcb">
                                     <i class="bx bx-book-open"></i> Case Study
@@ -514,7 +541,7 @@
 
                             <div class="proj-actions">
                                 <a href="https://github.com/shahroznasir/youtube-summarizer" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bxl-github"></i> GitHub Repo ↗
+                                    <i class="bx bxl-github"></i> View Source ↗
                                 </a>
                                 <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="youtube">
                                     <i class="bx bx-book-open"></i> Case Study
@@ -560,7 +587,7 @@
 
                             <div class="proj-actions">
                                 <a href="https://github.com/shahroznasir/social-media-api" target="_blank" class="btn btn-primary magnetic-target">
-                                    <i class="bx bxl-github"></i> GitHub Repo ↗
+                                    <i class="bx bxl-github"></i> View Source ↗
                                 </a>
                                 <button class="btn btn-secondary open-casestudy-btn magnetic-target" data-case="social">
                                     <i class="bx bx-book-open"></i> Case Study

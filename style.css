@@ -96,6 +96,14 @@ body {
     .float-anim, .float-anim-delay, .orbit-ring { animation: none !important; }
 }
 
+/* Keyboard Focus Ring — WCAG 2.1 AA (2.4.7) */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px rgba(91, 140, 255, 0.15);
+}
+
 /* Top Neon Progress Bar */
 .scroll-progress {
     position: fixed;
