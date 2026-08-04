@@ -122,7 +122,7 @@ body {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.boot-screen.hide { opacity: 0; transform: scale(1.1); pointer-events: none; }
+.boot-screen.hide { opacity: 0; transform: scale(1.1); pointer-events: none; display: none; }
 
 .boot-container {
     width: 500px; max-width: 90%;
